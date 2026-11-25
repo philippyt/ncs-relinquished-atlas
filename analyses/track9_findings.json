@@ -40,38 +40,7 @@
     "unrisked_mmboe": 457.1,
     "risked_mmboe": 192.8
   },
-  "changed_circumstances_rows": [
-    {
-      "name": "Kr\u00e5ktind \u00d8rn",
-      "licence": "PL1027",
-      "stated_pg": 0.3,
-      "unrisked_mmboe": 66.8,
-      "risked_mmboe": 20.0,
-      "years_open": 4,
-      "nearby_awards_since": 0,
-      "times_relinquished": 2,
-      "predecessor_ids": "PL715_KRAKTIND_NORTH",
-      "dist_at_relinq_km": 174.5,
-      "dist_now_km": 41.5,
-      "nearest_same_play_dry_well_km": 9.9,
-      "nearest_same_play_dry_well": "7220/6-3"
-    },
-    {
-      "name": "B\u00f8rselv North \u00d8rn",
-      "licence": "PL1027",
-      "stated_pg": 0.3,
-      "unrisked_mmboe": 31.7,
-      "risked_mmboe": 9.5,
-      "years_open": 4,
-      "nearby_awards_since": 0,
-      "times_relinquished": 2,
-      "predecessor_ids": "PL715_KRAKTIND_SOUTH",
-      "dist_at_relinq_km": 168.8,
-      "dist_now_km": 36.2,
-      "nearest_same_play_dry_well_km": 4.0,
-      "nearest_same_play_dry_well": "7220/6-3"
-    }
-  ],
+  "changed_circumstances_rows": [],
   "top_14": [
     {
       "name": "Edinburgh",

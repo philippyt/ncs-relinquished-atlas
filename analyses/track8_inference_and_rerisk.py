@@ -56,6 +56,25 @@ HOST_END_YEARS = {
     "OSEBERG": ("2040+", "Equinor Oseberg future"),
 }
 
+HOST_PDO_APPROVAL_YEARS = {
+    "JOHAN CASTBERG": 2018,
+    "JOHAN SVERDRUP": 2015,
+    "AASTA HANSTEEN": 2013,
+    "MARTIN LINGE": 2012,
+    "EDVARD GRIEG": 2012,
+    "IVAR AASEN": 2013,
+    "GINA KROG": 2013,
+    "GOLIAT": 2009,
+    "VALEMON": 2011,
+    "YME": 2018,
+    "BALDER": 1996,
+    "NJORD": 1995,
+    "HOD": 1988,
+    "ELDFISK": 1975,
+    "VALHALL": 1977,
+    "OSEBERG": 1984,
+}
+
 GAS_REINJECTION_ONLY = {
     "GOLIAT",
     "JOHAN CASTBERG",
@@ -689,8 +708,9 @@ def run_steps_6_7_8_inventory(
         fname = str(r.get("fclName") or "")
         ffld = str(r.get("fclBelongsToName") or "")
         sy = parse_year(r.get("fclStartupDate"))
+        pdo_yr = HOST_PDO_APPROVAL_YEARS.get(ffld.upper(), sy)
         gas_ok = ffld.upper() not in GAS_REINJECTION_ONLY and "GOLIAT" not in fname.upper() and "CASTBERG" not in fname.upper()
-        all_hosts.append({"lon": lon, "lat": lat, "name": fname, "field": ffld, "phase": phase, "startup_year": sy, "gas_ok": gas_ok})
+        all_hosts.append({"lon": lon, "lat": lat, "name": fname, "field": ffld, "phase": phase, "startup_year": sy, "pdo_year": pdo_yr, "gas_ok": gas_ok})
 
     in_service_hosts = [h for h in all_hosts if h["phase"] == "IN SERVICE"]
 
@@ -866,7 +886,7 @@ def run_steps_6_7_8_inventory(
         host_fld_key = str(best_now["field"] if best_now else "").upper()
         host_end, host_end_src = HOST_END_YEARS.get(host_fld_key, ("unknown", ""))
 
-        rel_pool = [h for h in all_hosts if (h["gas_ok"] if is_gas else True) and h["startup_year"] is not None and (ryear is None or h["startup_year"] <= ryear)]
+        rel_pool = [h for h in all_hosts if (h["gas_ok"] if is_gas else True) and h["pdo_year"] is not None and (ryear is None or h["pdo_year"] <= ryear)]
         best_rel = min(rel_pool, key=lambda h: haversine_km(cx, cy, h["lon"], h["lat"])) if rel_pool else None
         dist_rel = round(haversine_km(cx, cy, best_rel["lon"], best_rel["lat"]), 1) if best_rel else None
 
@@ -896,6 +916,15 @@ def run_steps_6_7_8_inventory(
         nearby_awards = sum(1 for lx, ly, gy, _ in active_centroids_with_yr if ryear and gy > ryear and haversine_km(cx, cy, lx, ly) <= 20.0)
 
         rerisked_pg = round(min(0.95, pg * (nf_mult if (dist_now is not None and dist_now <= 15.0) else ff_mult)), 3)
+        end_yr_num = parse_year(host_end)
+        if end_yr_num is None:
+            host_viability = "unknown"
+        elif end_yr_num < 2033:
+            host_viability = "host_ends_before_startup"
+        elif end_yr_num <= 2040:
+            host_viability = "short_host_window"
+        else:
+            host_viability = "viable_window"
 
         row_dict = {
             "prospect_id": pid,
@@ -919,6 +948,7 @@ def run_steps_6_7_8_inventory(
             "dist_at_relinq_km": dist_rel,
             "host_end_year": host_end,
             "host_end_source": host_end_src,
+            "host_viability_flag": host_viability,
             "economic_envelope_msmo3": round(thresh, 2),
             "economic_flag": "below_p10_envelope" if below_econ else "above_envelope",
             "changed_circumstances_flag": changed_circ,
