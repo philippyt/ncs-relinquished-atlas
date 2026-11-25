@@ -29,6 +29,6 @@ All metrics below are strictly **conditional on licence relinquishment** and ref
 
 ## Detailed Files
 
-- Full BLUF writeup `reports/WRITEUP.md`
+- Full technical writeup `reports/WRITEUP.md`
 - Interactive summary dashboard `reports/ncs_atlas_discoveries.html`
 - Reproducible scripts `analyses/track1_redrilled_graveyard.py` through `analyses/track7_reconcile_and_logit.py`

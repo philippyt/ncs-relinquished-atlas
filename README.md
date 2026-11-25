@@ -4,7 +4,7 @@ Private exploratory audit and screened open-acreage inventory built from 756 Nor
 
 ## Key Outputs
 
-- [reports/WRITEUP.md](reports/WRITEUP.md) Final BLUF technical writeup.
+- [reports/WRITEUP.md](reports/WRITEUP.md) Technical writeup.
 - [reports/EXECUTIVE_FINDINGS.md](reports/EXECUTIVE_FINDINGS.md) Concise executive summary.
 - [reports/ncs_atlas_discoveries.html](reports/ncs_atlas_discoveries.html) Visual summary dashboard.
 - `reports/figures/` Four publication-style matplotlib figures in both `.svg` and `.png`.
