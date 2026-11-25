@@ -519,19 +519,22 @@ def run_steps_1_2_3_and_5(
         mean_pg = sum(c["pg"] for c in chosen) / len(chosen)
         target_pers = set().union(*(c["periods"] for c in chosen))
         if target_pers:
-            hit_target = 1.0 if (info["is_disc"] and bool(info["hc_ages"] & target_pers)) else 0.0
+            hit_tech = 1.0 if (info["is_disc"] and bool(info["hc_ages"] & target_pers)) else 0.0
         else:
-            hit_target = 1.0 if info["is_disc"] else 0.0
-        cal_pairs.append({"pw": pw, "dist_km": info["dist_km"], "pg": mean_pg, "hit": hit_target})
+            hit_tech = 1.0 if info["is_disc"] else 0.0
+        oe_val = info["oe"] or 0.0
+        hit_mat1 = 1.0 if (hit_tech == 1.0 and oe_val >= 1.0) else 0.0
+        hit_mat3 = 1.0 if (hit_tech == 1.0 and oe_val >= 3.0) else 0.0
+        cal_pairs.append({"pw": pw, "dist_km": info["dist_km"], "pg": mean_pg, "hit_tech": hit_tech, "hit_mat1": hit_mat1, "hit_mat3": hit_mat3})
 
     rng = np.random.default_rng(42)
 
-    def boot_ratio(sub: list[dict]) -> dict:
+    def boot_ratio(sub: list[dict], key: str = "hit_mat3") -> dict:
         n = len(sub)
         if n == 0:
             return {"n": 0}
         pgs = np.array([x["pg"] for x in sub])
-        hits = np.array([x["hit"] for x in sub])
+        hits = np.array([x[key] for x in sub])
         ratio = float(hits.mean() / pgs.mean())
         idx = rng.integers(0, n, size=(9999, n))
         b_ratios = hits[idx].mean(axis=1) / pgs[idx].mean(axis=1)
@@ -539,16 +542,27 @@ def run_steps_1_2_3_and_5(
         return {
             "n": n,
             "mean_stated_pg": round(float(pgs.mean()), 4),
-            "observed_target_hit_rate": round(float(hits.mean()), 4),
+            "observed_hit_rate": round(float(hits.mean()), 4),
             "obs_over_stated_ratio": round(ratio, 3),
             "ci95": [round(lo, 3), round(hi, 3)],
             "ci_excludes_1": bool(lo > 1.0 or hi < 1.0),
         }
 
     step5 = {
-        "all_calibrated_redrills": boot_ratio(cal_pairs),
-        "near_field_le15km": boot_ratio([x for x in cal_pairs if x["dist_km"] <= 15.0]),
-        "far_field_gt15km": boot_ratio([x for x in cal_pairs if x["dist_km"] > 15.0]),
+        "technical_target_hit": {
+            "near_field_le15km": boot_ratio([x for x in cal_pairs if x["dist_km"] <= 15.0], "hit_tech"),
+            "far_field_gt15km": boot_ratio([x for x in cal_pairs if x["dist_km"] > 15.0], "hit_tech"),
+        },
+        "material_1msmo3_target_hit": {
+            "all": boot_ratio(cal_pairs, "hit_mat1"),
+            "near_field_le15km": boot_ratio([x for x in cal_pairs if x["dist_km"] <= 15.0], "hit_mat1"),
+            "far_field_gt15km": boot_ratio([x for x in cal_pairs if x["dist_km"] > 15.0], "hit_mat1"),
+        },
+        "material_3msmo3_target_hit": {
+            "all": boot_ratio(cal_pairs, "hit_mat3"),
+            "near_field_le15km": boot_ratio([x for x in cal_pairs if x["dist_km"] <= 15.0], "hit_mat3"),
+            "far_field_gt15km": boot_ratio([x for x in cal_pairs if x["dist_km"] > 15.0], "hit_mat3"),
+        },
     }
     return step123, step5, redrilled_pids
 
@@ -570,7 +584,7 @@ def run_step4_dry_hole_reconciliation(kept_json: dict, wells_df: pl.DataFrame) -
             cats.add("Reservoir")
         if any(k in t for k in ("charge", "source", "migration", "maturity", "kitchen", "shadow", "timing")):
             cats.add("Charge")
-        if any(k in t for k in ("trap", "seal", "retention", "breach", "leak", "fault seal", "top seal", "topseal", "lateral seal", "closure", "spilled", "tilting", "uplift")):
+        if any(k in t for k in ("trap", "seal", "retention", "breach", "leak", "fault seal", "top seal", "topseal", "lateral seal", "closure", "spilled", "tilting", "uplift", "residual", "paleo-column", "paleo column", "paleocolumn", "underfilled", "gas expansion")):
             cats.add("Trap")
         return cats
 
@@ -635,17 +649,13 @@ def run_step4_dry_hole_reconciliation(kept_json: dict, wells_df: pl.DataFrame) -
     for b in ("North Sea", "Norwegian Sea", "Barents Sea"):
         by_basin[b] = agg_weights([r for r in win if r["basin"] == b])
 
-    rng = random.Random(42)
-    sample_20 = rng.sample(win, min(20, len(win)))
+    rng_oos = random.Random(123)
+    sample_20_oos = rng_oos.sample(win, min(20, len(win)))
     return {
         "window_2007_2019_all": agg_weights(win),
         "window_2007_2019_by_basin": by_basin,
-        "sodir_rr2020_factbox34_benchmark": {
-            "North Sea": {"Charge_pct": 47.0, "Trap_pct": 29.0, "Reservoir_pct": 24.0, "source": "SODIR Resource Report 2020, Fact box 3.4"},
-            "Norwegian Sea": {"Charge_pct": ">40.0", "note": "Source failed in >40% of targets (main pre-drill risk in only 22%); trap functioned more often than predicted"},
-            "Barents Sea": {"Trap_pre_drill_main_risk_pct": 64.0, "note": "Trap specified as main pre-drill risk in 64%; post-drill dry targets reflect trap, reservoir, and source"},
-        },
-        "audit_sample_20_seed42": sample_20,
+        "sodir_rr2020_factbox34_north_sea": {"Charge_pct": 47.0, "Trap_pct": 29.0, "Reservoir_pct": 24.0, "source": "SODIR Resource Report 2020, Fact box 3.4 (targets)"},
+        "audit_sample_20_oos_seed123": sample_20_oos,
     }
 
 
@@ -685,17 +695,6 @@ def run_steps_6_7_8_inventory(
     in_service_hosts = [h for h in all_hosts if h["phase"] == "IN SERVICE"]
 
     approved_hosts = list(in_service_hosts)
-    fld_geo_path = CACHE / "fields_502.geojson"
-    if fld_geo_path.exists():
-        for feat in json.loads(fld_geo_path.read_text(encoding="utf-8")).get("features") or []:
-            props = feat.get("properties") or {}
-            st = str(props.get("fldCurrentActivitySatus") or "").upper()
-            if "APPROVED" in st:
-                c = geom_centroid(feat.get("geometry"))
-                if c:
-                    fn = str(props.get("fldName") or "")
-                    approved_hosts.append({"lon": c[0], "lat": c[1], "name": f"{fn} (PDO)", "field": fn, "phase": "APPROVED FOR PRODUCTION", "startup_year": 2026, "gas_ok": True})
-
     latest_fld = fld_res.sort("fldVersion", descending=True).unique(subset=["fldName"], keep="first")
     fld_oe_map = {r["fldName"]: float(r["fldRecoverableOE"]) for r in latest_fld.select(["fldName", "fldRecoverableOE"]).drop_nulls().iter_rows(named=True)}
     dsc_oe_map = {r["dscName"]: float(r["dscRecoverableOe"]) for r in disc_res.select(["dscName", "dscRecoverableOe"]).drop_nulls().iter_rows(named=True)}
@@ -703,7 +702,6 @@ def run_steps_6_7_8_inventory(
         r["wlbWellboreName"]: (float(r["wlbEwDecDeg"]), float(r["wlbNsDecDeg"]))
         for r in wells_df.select(["wlbWellboreName", "wlbEwDecDeg", "wlbNsDecDeg"]).drop_nulls().iter_rows(named=True)
     }
-
     pdo_rows = []
     for r in disc_df.iter_rows(named=True):
         st = str(r.get("dscCurrentActivityStatus") or "").upper()
@@ -723,29 +721,35 @@ def run_steps_6_7_8_inventory(
         hc = str(r.get("dscHcType") or "").upper()
         fluid = "gas" if ("GAS" in hc and "OIL" not in hc) else "oil"
         lon, lat = wcoord[wn]
-        pool = [h for h in in_service_hosts if (h["gas_ok"] if fluid == "gas" else True)]
+        fld_self = str(r.get("fldName") or "").upper()
+        pool = [h for h in in_service_hosts if (h["gas_ok"] if fluid == "gas" else True) and h["field"].upper() != fld_self]
         if not pool:
             continue
         dkm = min(haversine_km(lon, lat, h["lon"], h["lat"]) for h in pool)
-        pdo_rows.append({"fluid": fluid, "oe_msmo3": oe, "log_oe": math.log(oe), "dist_km": dkm})
+        if dkm < 2.0:
+            continue
+        pdo_rows.append({"fluid": fluid, "is_gas": 1.0 if fluid == "gas" else 0.0, "oe_msmo3": oe, "log_oe": math.log(oe), "dist_km": dkm})
 
-    envelopes = {}
-    for fluid in ("oil", "gas"):
-        sub = [x for x in pdo_rows if x["fluid"] == fluid]
-        if len(sub) >= 15:
-            df_p = pd.DataFrame(sub)
-            qr = smf.quantreg("log_oe ~ dist_km", df_p).fit(q=0.10)
-            envelopes[fluid] = {"method": "quantreg_tau010", "n": len(sub), "intercept": float(qr.params["Intercept"]), "slope": float(qr.params["dist_km"])}
-        else:
-            vals = sorted(x["oe_msmo3"] for x in sub)
-            p10_v = vals[max(0, int(0.10 * len(vals)))] if vals else 0.5
-            envelopes[fluid] = {"method": "empirical_p10_flat", "n": len(sub), "min_msmo3": float(p10_v)}
+    df_p = pd.DataFrame(pdo_rows)
+    qr = smf.quantreg("log_oe ~ dist_km + is_gas", df_p).fit(q=0.10)
+    raw_slope = float(qr.params["dist_km"])
+    envelopes = {
+        "method": "pooled_tieback_only_quantreg_tau010",
+        "n_tiebacks": len(pdo_rows),
+        "n_oil": sum(1 for x in pdo_rows if x["fluid"] == "oil"),
+        "n_gas": sum(1 for x in pdo_rows if x["fluid"] == "gas"),
+        "intercept": round(float(qr.params["Intercept"]), 4),
+        "raw_slope_dist_km": round(raw_slope, 5),
+        "gas_offset": round(float(qr.params["is_gas"]), 4),
+        "monotone_slope_used": round(max(0.0, raw_slope), 5),
+        "uninformative_negative_slope": bool(raw_slope <= 0.0),
+    }
 
     def envelope_threshold(fluid: str, dist_km: float | None) -> float:
-        env = envelopes[fluid]
-        if env["method"] == "quantreg_tau010" and dist_km is not None:
-            return math.exp(env["intercept"] + env["slope"] * min(dist_km, 250.0))
-        return env.get("min_msmo3", 0.5)
+        slope_use = max(0.0, raw_slope)
+        gas_off = float(qr.params["is_gas"]) if fluid == "gas" else 0.0
+        d = min(dist_km or 0.0, 250.0)
+        return math.exp(float(qr.params["Intercept"]) + slope_use * d + gas_off)
 
     active_feats = json.loads((CACHE / "active_licences_616.geojson").read_text(encoding="utf-8")).get("features") or []
     lic_grant_year = {}
@@ -775,8 +779,10 @@ def run_steps_6_7_8_inventory(
     comm_nt_tags = {"volume_too_small", "commercial", "economics", "infrastructure", "partner_disagreement", "licence_expiry", "outside_licence", "portfolio_prioritization", "gas_market", "rig_availability"}
     geo_tags = {"seal_risk", "trap_risk", "charge_risk", "migration_risk", "reservoir_risk", "source_risk", "timing_risk", "retention_risk", "high_risk"}
 
-    nf_mult = step5_cal["near_field_le15km"]["obs_over_stated_ratio"] if step5_cal["near_field_le15km"].get("ci_excludes_1") else 1.0
-    ff_mult = step5_cal["far_field_gt15km"]["obs_over_stated_ratio"] if step5_cal["far_field_gt15km"].get("ci_excludes_1") else 1.0
+    nf_cal = step5_cal["material_3msmo3_target_hit"]["near_field_le15km"]
+    ff_cal = step5_cal["material_3msmo3_target_hit"]["far_field_gt15km"]
+    nf_mult = nf_cal["obs_over_stated_ratio"] if nf_cal.get("ci_excludes_1") else 1.0
+    ff_mult = ff_cal["obs_over_stated_ratio"] if ff_cal.get("ci_excludes_1") else 1.0
 
     inv_rows = []
     inv_features = []
@@ -871,14 +877,14 @@ def run_steps_6_7_8_inventory(
         has_geo = bool(reasons & geo_tags)
         tier = "Tier_A" if (has_comm_nt and not has_geo) else "Tier_B"
 
-        infra_cited = tier == "Tier_A" and (
-            bool(reasons & {"infrastructure", "gas_market"})
-            or any(k in concl_txt.lower() for k in ("infrastructure", "tie-back", "tieback", "host", "distance", "capacity", "ullage", "pipeline"))
+        infra_cited = bool(reasons & {"infrastructure", "infrastructure_distance", "dependency_on_infrastructure", "gas_market"}) or any(
+            k in concl_txt.lower() for k in ("infrastructure", "tie-back", "tieback", "host", "distance", "capacity", "ullage", "pipeline")
         )
         changed_circ = bool(
             infra_cited
             and dist_rel is not None
             and dist_now is not None
+            and dist_now <= 50.0
             and ((dist_rel - dist_now >= 20.0) or (dist_rel > 50.0 and dist_now <= 50.0))
         )
 
@@ -1001,7 +1007,7 @@ def main() -> None:
                 print(f"    {ck:24s} coef={cv['coef']:+.3f} OR={cv['or']} | p_naive={cv['p_naive']} p_lic={cv['p_cluster_licence']} p_quad={cv['p_cluster_quadrant']} p_wcb={cv['p_wcb_quadrant_lpm']} -> MAX_P={cv['p_most_conservative']}")
 
     print("\n=== STEP 4: DRY-HOLE RECONCILIATION (2007-2019) ===")
-    print(json.dumps({k: v for k, v in step4.items() if k != "audit_sample_20_seed42"}, indent=2))
+    print(json.dumps({k: v for k, v in step4.items() if not k.startswith("audit_sample")}, indent=2))
 
     print("\n=== STEP 5: REDRILL RE-RISKING CALIBRATION ===")
     print(json.dumps(step5, indent=2))
