@@ -329,7 +329,18 @@ def run_steps_1_2_3_and_5(
 
     wc = (
         wells_df.filter(pl.col("wlbPurpose").str.to_uppercase() == "WILDCAT")
-        .filter(pl.col("wlbCompletionYear").is_not_null())
+        .filter(pl.col("wlbCompletionYear").is_not_null() & (pl.col("wlbCompletionYear") > 0))
+        .filter(
+            ~pl.col("wlbStatus")
+            .fill_null("")
+            .str.to_uppercase()
+            .is_in(["JUNKED", "WILL NEVER BE DRILLED", "DRILLING", "PREDRILLED"])
+        )
+        .filter(
+            pl.col("wlbContent").is_not_null()
+            & (pl.col("wlbContent").str.strip_chars() != "")
+            & (pl.col("wlbContent").str.to_uppercase() != "NOT APPLICABLE")
+        )
         .with_columns(
             (
                 pl.col("wlbContent").fill_null("").str.to_uppercase().str.contains("OIL|GAS|COND")
