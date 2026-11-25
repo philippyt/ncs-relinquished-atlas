@@ -415,9 +415,9 @@ def build_fig3(kept_json: dict) -> None:
             ass = p.get("assessments") or []
             if len(ass) < 2:
                 continue
-            init_a = next((a for a in ass if str(a.get("stage") or "").lower() in init_stages), ass[0])
-            fin_a = next((a for a in reversed(ass) if str(a.get("stage") or "").lower() in final_stages), ass[-1])
-            if init_a is fin_a:
+            init_a = next((a for a in ass if str(a.get("stage") or "").lower() in init_stages), None)
+            fin_a = next((a for a in reversed(ass) if str(a.get("stage") or "").lower() in final_stages), None)
+            if init_a is None or fin_a is None or init_a is fin_a:
                 continue
             v0 = pick_vol_mean(init_a)
             v1 = pick_vol_mean(fin_a)
@@ -486,11 +486,11 @@ def build_fig4(t4: dict) -> None:
     ax_dhi.set_yticks(y)
     ax_dhi.set_yticklabels(labels, fontweight="bold")
     ax_dhi.invert_yaxis()
-    ax_dhi.set_xlim(0, 92)
+    ax_dhi.set_xlim(0, 108)
     ax_dhi.set_xlabel("Technical Discovery Rate (%)")
     ax_dhi.set_title("A. DHI Discovery Rate & Barents Gas-Only Inset")
 
-    ins = ax_dhi.inset_axes([0.56, 0.08, 0.41, 0.38])
+    ins = ax_dhi.inset_axes([0.62, 0.06, 0.35, 0.36])
     ins.bar([0, 1, 2], [6.7, 43.3, 84.6], color=["#2563eb", "#d97706", "#7c3aed"], width=0.58)
     ins.set_xticks([0, 1, 2])
     ins.set_xticklabels(["North", "Norw.", "Barents"])
