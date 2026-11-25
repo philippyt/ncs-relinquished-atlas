@@ -1,0 +1,2697 @@
+{
+  "dataset_summary": {
+    "raw_reports": 756,
+    "deduplicated_reports": 738,
+    "dropped_duplicate_reports": 18,
+    "total_prospects_in_atlas": 5325,
+    "prospects_with_polygon_geometry": 3476,
+    "polygon_features_checked": 3476,
+    "unmatched_polygon_features": 110,
+    "sodir_completed_exploration_wells": 2149,
+    "raw_feature_well_post_relinq_hits": 192,
+    "internal_qc_flag_sodir_well_mentions": 18
+  },
+  "cohorts": {
+    "primary_undrilled_wildcat": {
+      "n_prospects_redrilled": 130,
+      "n_prospects_discovered": 65,
+      "prospect_discovery_rate": 0.5,
+      "n_prospects_became_field": 9,
+      "n_unique_wells": 87,
+      "n_unique_wells_discovery": 37,
+      "unique_well_discovery_rate": 0.4253,
+      "n_unique_named_discoveries": 36,
+      "unique_named_discoveries": [
+        "2/6-7 S (Othello)",
+        "2/8-19 (Overly)",
+        "24/12-7 (Lyderhorn)",
+        "25/7-11 S (Norma)",
+        "25/7-13 (Linga)",
+        "25/7-8 S (Enniberg)",
+        "26/10-1 (Zulu Øst)",
+        "30/5-4 S (Oswig)",
+        "31/1-2 S (Røver Nord)",
+        "31/1-3 S (Røver Sør)",
+        "31/7-1 Bestla",
+        "34/4-19 S (Omega Sør Alfa)",
+        "35/6-3 S (Ofelia)",
+        "35/6-4 A (Ofelia Kyrre)",
+        "35/9-14",
+        "36/4-2 (Alpehumle)",
+        "36/7-5 B (Cerisa West)",
+        "36/7-5 S (Cerisa)",
+        "6406/2-8 (Imsa)",
+        "6406/6-7 S (Mistral Sør)",
+        "6407/5-3 S (Lakris)",
+        "6407/8-8 S (Calypso)",
+        "6506/11-10 Berling",
+        "6506/5-1 S (Nidhogg)",
+        "6507/4-1 (Warka)",
+        "6507/4-2 S (Dvalin Nord)",
+        "6507/4-3 S",
+        "6507/5-10 S (Slagugle)",
+        "6604/5-1 (Balderbrå)",
+        "6605/6-1 S",
+        "6607/12-4 (Alve Nordøst)",
+        "6607/3-1 S (Velocette)",
+        "6611/1-1 (Toutatis)",
+        "7122/9-1 (Lupa)",
+        "7122/9-2 (Elgol)",
+        "7324/6-2 (Ferdinand Nord)"
+      ],
+      "n_unique_producing_fields": 4,
+      "unique_producing_fields": [
+        "BERLING",
+        "BESTLA",
+        "DUVA",
+        "DVALIN"
+      ],
+      "pg_calibration": {
+        "n_with_pg": 86,
+        "n_discovered_with_pg": 40,
+        "actual_discovery_rate_with_pg": 0.4651,
+        "mean_stated_pg": 0.2396,
+        "median_stated_pg": 0.19,
+        "calibration_ratio_actual_over_stated": 1.941,
+        "binomial_two_sided_p": 1e-06,
+        "mean_pg_of_discoveries": 0.3152,
+        "mean_pg_of_dry_holes": 0.1738,
+        "by_pg_bucket": [
+          {
+            "bucket": "<10%",
+            "n": 13,
+            "discoveries": 4,
+            "actual_rate": 0.3077,
+            "mean_stated_pg": 0.0536
+          },
+          {
+            "bucket": "10-20%",
+            "n": 30,
+            "discoveries": 12,
+            "actual_rate": 0.4,
+            "mean_stated_pg": 0.1348
+          },
+          {
+            "bucket": "20-30%",
+            "n": 19,
+            "discoveries": 6,
+            "actual_rate": 0.3158,
+            "mean_stated_pg": 0.2309
+          },
+          {
+            "bucket": "30-50%",
+            "n": 18,
+            "discoveries": 12,
+            "actual_rate": 0.6667,
+            "mean_stated_pg": 0.3775
+          },
+          {
+            "bucket": ">=50%",
+            "n": 6,
+            "discoveries": 6,
+            "actual_rate": 1.0,
+            "mean_stated_pg": 0.78
+          }
+        ]
+      },
+      "operator_comparison": {
+        "lineage_normalized": {
+          "same_operator": {
+            "n_prospects": 33,
+            "discoveries": 13,
+            "discovery_rate": 0.3939,
+            "became_field": 0,
+            "mean_stated_pg": 0.222
+          },
+          "different_operator": {
+            "n_prospects": 97,
+            "discoveries": 52,
+            "discovery_rate": 0.5361,
+            "became_field": 9,
+            "mean_stated_pg": 0.2464
+          },
+          "z_test": {
+            "z": 1.411,
+            "p_value": 0.15834
+          }
+        },
+        "canonical_only": {
+          "same_operator": {
+            "n_prospects": 30,
+            "discoveries": 13,
+            "discovery_rate": 0.4333,
+            "became_field": 0,
+            "mean_stated_pg": 0.2208
+          },
+          "different_operator": {
+            "n_prospects": 100,
+            "discoveries": 52,
+            "discovery_rate": 0.52,
+            "became_field": 9,
+            "mean_stated_pg": 0.246
+          },
+          "z_test": {
+            "z": 0.833,
+            "p_value": 0.40503
+          }
+        },
+        "unique_well_level_lineage": {
+          "same_operator": {
+            "n_wells": 23,
+            "discoveries": 8,
+            "discovery_rate": 0.3478
+          },
+          "different_operator": {
+            "n_wells": 64,
+            "discoveries": 29,
+            "discovery_rate": 0.4531
+          },
+          "z_test": {
+            "z": 0.876,
+            "p_value": 0.38098
+          }
+        }
+      },
+      "by_feature_layer": {
+        "prospect": {
+          "n_prospects": 91,
+          "discoveries": 46,
+          "discovery_rate": 0.5055,
+          "became_field": 5,
+          "mean_stated_pg": 0.255
+        },
+        "lead": {
+          "n_prospects": 39,
+          "discoveries": 19,
+          "discovery_rate": 0.4872,
+          "became_field": 4,
+          "mean_stated_pg": 0.1531
+        }
+      }
+    },
+    "undrilled_all_exploration_wells": {
+      "n_prospects_redrilled": 133,
+      "n_prospects_discovered": 68,
+      "prospect_discovery_rate": 0.5113,
+      "n_prospects_became_field": 12,
+      "n_unique_wells": 110,
+      "n_unique_wells_discovery": 55,
+      "unique_well_discovery_rate": 0.5,
+      "n_unique_named_discoveries": 39,
+      "unique_named_discoveries": [
+        "2/6-7 S (Othello)",
+        "2/8-19 (Overly)",
+        "24/12-7 (Lyderhorn)",
+        "25/2-1 Øst Frigg",
+        "25/7-11 S (Norma)",
+        "25/7-13 (Linga)",
+        "25/7-8 S (Enniberg)",
+        "26/10-1 (Zulu Øst)",
+        "30/5-4 S (Oswig)",
+        "31/1-2 S (Røver Nord)",
+        "31/1-3 S (Røver Sør)",
+        "31/7-1 Bestla",
+        "34/4-19 S (Omega Sør Alfa)",
+        "35/6-3 S (Ofelia)",
+        "35/6-4 A (Ofelia Kyrre)",
+        "35/9-14",
+        "35/9-3 (Gjøa Nord)",
+        "36/4-2 (Alpehumle)",
+        "36/7-5 B (Cerisa West)",
+        "36/7-5 S (Cerisa)",
+        "6406/2-8 (Imsa)",
+        "6406/6-7 S (Mistral Sør)",
+        "6407/5-3 S (Lakris)",
+        "6407/8-8 S (Calypso)",
+        "6506/11-10 Berling",
+        "6506/5-1 S (Nidhogg)",
+        "6507/4-1 (Warka)",
+        "6507/4-2 S (Adriana Sabina)",
+        "6507/4-2 S (Dvalin Nord)",
+        "6507/4-3 S",
+        "6507/5-10 S (Slagugle)",
+        "6604/5-1 (Balderbrå)",
+        "6605/6-1 S",
+        "6607/12-4 (Alve Nordøst)",
+        "6607/3-1 S (Velocette)",
+        "6611/1-1 (Toutatis)",
+        "7122/9-1 (Lupa)",
+        "7122/9-2 (Elgol)",
+        "7324/6-2 (Ferdinand Nord)"
+      ],
+      "n_unique_producing_fields": 6,
+      "unique_producing_fields": [
+        "BERLING",
+        "BESTLA",
+        "DUVA",
+        "DVALIN",
+        "GJØA",
+        "ØST FRIGG"
+      ],
+      "pg_calibration": {
+        "n_with_pg": 89,
+        "n_discovered_with_pg": 43,
+        "actual_discovery_rate_with_pg": 0.4831,
+        "mean_stated_pg": 0.2449,
+        "median_stated_pg": 0.2,
+        "calibration_ratio_actual_over_stated": 1.973,
+        "binomial_two_sided_p": 0.0,
+        "mean_pg_of_discoveries": 0.3148,
+        "mean_pg_of_dry_holes": 0.1795,
+        "by_pg_bucket": [
+          {
+            "bucket": "<10%",
+            "n": 14,
+            "discoveries": 5,
+            "actual_rate": 0.3571,
+            "mean_stated_pg": 0.0548
+          },
+          {
+            "bucket": "10-20%",
+            "n": 30,
+            "discoveries": 12,
+            "actual_rate": 0.4,
+            "mean_stated_pg": 0.1348
+          },
+          {
+            "bucket": "20-30%",
+            "n": 19,
+            "discoveries": 6,
+            "actual_rate": 0.3158,
+            "mean_stated_pg": 0.2309
+          },
+          {
+            "bucket": "30-50%",
+            "n": 19,
+            "discoveries": 14,
+            "actual_rate": 0.7368,
+            "mean_stated_pg": 0.3787
+          },
+          {
+            "bucket": ">=50%",
+            "n": 7,
+            "discoveries": 6,
+            "actual_rate": 0.8571,
+            "mean_stated_pg": 0.7714
+          }
+        ]
+      },
+      "operator_comparison": {
+        "lineage_normalized": {
+          "same_operator": {
+            "n_prospects": 34,
+            "discoveries": 13,
+            "discovery_rate": 0.3824,
+            "became_field": 0,
+            "mean_stated_pg": 0.2419
+          },
+          "different_operator": {
+            "n_prospects": 99,
+            "discoveries": 55,
+            "discovery_rate": 0.5556,
+            "became_field": 12,
+            "mean_stated_pg": 0.246
+          },
+          "z_test": {
+            "z": 1.743,
+            "p_value": 0.08131
+          }
+        },
+        "canonical_only": {
+          "same_operator": {
+            "n_prospects": 31,
+            "discoveries": 13,
+            "discovery_rate": 0.4194,
+            "became_field": 0,
+            "mean_stated_pg": 0.2425
+          },
+          "different_operator": {
+            "n_prospects": 102,
+            "discoveries": 55,
+            "discovery_rate": 0.5392,
+            "became_field": 12,
+            "mean_stated_pg": 0.2457
+          },
+          "z_test": {
+            "z": 1.169,
+            "p_value": 0.24234
+          }
+        },
+        "unique_well_level_lineage": {
+          "same_operator": {
+            "n_wells": 25,
+            "discoveries": 9,
+            "discovery_rate": 0.36
+          },
+          "different_operator": {
+            "n_wells": 85,
+            "discoveries": 46,
+            "discovery_rate": 0.5412
+          },
+          "z_test": {
+            "z": 1.593,
+            "p_value": 0.11124
+          }
+        }
+      },
+      "by_feature_layer": {
+        "prospect": {
+          "n_prospects": 93,
+          "discoveries": 47,
+          "discovery_rate": 0.5054,
+          "became_field": 7,
+          "mean_stated_pg": 0.2631
+        },
+        "lead": {
+          "n_prospects": 40,
+          "discoveries": 21,
+          "discovery_rate": 0.525,
+          "became_field": 5,
+          "mean_stated_pg": 0.1471
+        }
+      }
+    },
+    "non_discovery_incl_drilled_dry_wildcat": {
+      "n_prospects_redrilled": 136,
+      "n_prospects_discovered": 68,
+      "prospect_discovery_rate": 0.5,
+      "n_prospects_became_field": 9,
+      "n_unique_wells": 90,
+      "n_unique_wells_discovery": 39,
+      "unique_well_discovery_rate": 0.4333,
+      "n_unique_named_discoveries": 38,
+      "unique_named_discoveries": [
+        "16/1-34 S (Lillefix)",
+        "2/6-7 S (Othello)",
+        "2/8-19 (Overly)",
+        "24/12-7 (Lyderhorn)",
+        "25/7-11 S (Norma)",
+        "25/7-13 (Linga)",
+        "25/7-8 S (Enniberg)",
+        "26/10-1 (Zulu Øst)",
+        "30/5-4 S (Oswig)",
+        "31/1-2 S (Røver Nord)",
+        "31/1-3 S (Røver Sør)",
+        "31/7-1 Bestla",
+        "34/4-19 S (Omega Sør Alfa)",
+        "35/6-3 S (Ofelia)",
+        "35/6-4 A (Ofelia Kyrre)",
+        "35/9-14",
+        "36/4-2 (Alpehumle)",
+        "36/7-5 B (Cerisa West)",
+        "36/7-5 S (Cerisa)",
+        "6406/2-8 (Imsa)",
+        "6406/6-7 S (Mistral Sør)",
+        "6407/5-3 S (Lakris)",
+        "6407/8-8 S (Calypso)",
+        "6506/11-10 Berling",
+        "6506/5-1 S (Nidhogg)",
+        "6507/3-15",
+        "6507/4-1 (Warka)",
+        "6507/4-2 S (Dvalin Nord)",
+        "6507/4-3 S",
+        "6507/5-10 S (Slagugle)",
+        "6604/5-1 (Balderbrå)",
+        "6605/6-1 S",
+        "6607/12-4 (Alve Nordøst)",
+        "6607/3-1 S (Velocette)",
+        "6611/1-1 (Toutatis)",
+        "7122/9-1 (Lupa)",
+        "7122/9-2 (Elgol)",
+        "7324/6-2 (Ferdinand Nord)"
+      ],
+      "n_unique_producing_fields": 4,
+      "unique_producing_fields": [
+        "BERLING",
+        "BESTLA",
+        "DUVA",
+        "DVALIN"
+      ],
+      "pg_calibration": {
+        "n_with_pg": 91,
+        "n_discovered_with_pg": 42,
+        "actual_discovery_rate_with_pg": 0.4615,
+        "mean_stated_pg": 0.2343,
+        "median_stated_pg": 0.18,
+        "calibration_ratio_actual_over_stated": 1.97,
+        "binomial_two_sided_p": 0.0,
+        "mean_pg_of_discoveries": 0.3095,
+        "mean_pg_of_dry_holes": 0.1699,
+        "by_pg_bucket": [
+          {
+            "bucket": "<10%",
+            "n": 14,
+            "discoveries": 4,
+            "actual_rate": 0.2857,
+            "mean_stated_pg": 0.0541
+          },
+          {
+            "bucket": "10-20%",
+            "n": 33,
+            "discoveries": 13,
+            "actual_rate": 0.3939,
+            "mean_stated_pg": 0.1347
+          },
+          {
+            "bucket": "20-30%",
+            "n": 20,
+            "discoveries": 7,
+            "actual_rate": 0.35,
+            "mean_stated_pg": 0.2324
+          },
+          {
+            "bucket": "30-50%",
+            "n": 18,
+            "discoveries": 12,
+            "actual_rate": 0.6667,
+            "mean_stated_pg": 0.3775
+          },
+          {
+            "bucket": ">=50%",
+            "n": 6,
+            "discoveries": 6,
+            "actual_rate": 1.0,
+            "mean_stated_pg": 0.78
+          }
+        ]
+      },
+      "operator_comparison": {
+        "lineage_normalized": {
+          "same_operator": {
+            "n_prospects": 37,
+            "discoveries": 14,
+            "discovery_rate": 0.3784,
+            "became_field": 0,
+            "mean_stated_pg": 0.2096
+          },
+          "different_operator": {
+            "n_prospects": 99,
+            "discoveries": 54,
+            "discovery_rate": 0.5455,
+            "became_field": 9,
+            "mean_stated_pg": 0.2448
+          },
+          "z_test": {
+            "z": 1.734,
+            "p_value": 0.08289
+          }
+        },
+        "canonical_only": {
+          "same_operator": {
+            "n_prospects": 33,
+            "discoveries": 14,
+            "discovery_rate": 0.4242,
+            "became_field": 0,
+            "mean_stated_pg": 0.2099
+          },
+          "different_operator": {
+            "n_prospects": 103,
+            "discoveries": 54,
+            "discovery_rate": 0.5243,
+            "became_field": 9,
+            "mean_stated_pg": 0.2431
+          },
+          "z_test": {
+            "z": 1.0,
+            "p_value": 0.31724
+          }
+        },
+        "unique_well_level_lineage": {
+          "same_operator": {
+            "n_wells": 26,
+            "discoveries": 9,
+            "discovery_rate": 0.3462
+          },
+          "different_operator": {
+            "n_wells": 64,
+            "discoveries": 30,
+            "discovery_rate": 0.4688
+          },
+          "z_test": {
+            "z": 1.064,
+            "p_value": 0.28742
+          }
+        }
+      },
+      "by_feature_layer": {
+        "prospect": {
+          "n_prospects": 97,
+          "discoveries": 49,
+          "discovery_rate": 0.5052,
+          "became_field": 5,
+          "mean_stated_pg": 0.2479
+        },
+        "lead": {
+          "n_prospects": 39,
+          "discoveries": 19,
+          "discovery_rate": 0.4872,
+          "became_field": 4,
+          "mean_stated_pg": 0.1531
+        }
+      }
+    },
+    "previously_drilled_dry_wildcat": {
+      "n_prospects_redrilled": 6,
+      "n_prospects_discovered": 3,
+      "prospect_discovery_rate": 0.5,
+      "n_prospects_became_field": 0,
+      "n_unique_wells": 6,
+      "n_unique_wells_discovery": 3,
+      "unique_well_discovery_rate": 0.5,
+      "n_unique_named_discoveries": 3,
+      "unique_named_discoveries": [
+        "16/1-34 S (Lillefix)",
+        "2/8-19 (Overly)",
+        "6507/3-15"
+      ],
+      "n_unique_producing_fields": 0,
+      "unique_producing_fields": [],
+      "pg_calibration": {
+        "n_with_pg": 5,
+        "n_discovered_with_pg": 2,
+        "actual_discovery_rate_with_pg": 0.4,
+        "mean_stated_pg": 0.144,
+        "median_stated_pg": 0.13,
+        "calibration_ratio_actual_over_stated": 2.778,
+        "binomial_two_sided_p": 0.103007,
+        "mean_pg_of_discoveries": 0.195,
+        "mean_pg_of_dry_holes": 0.11,
+        "by_pg_bucket": [
+          {
+            "bucket": "<10%",
+            "n": 1,
+            "discoveries": 0,
+            "actual_rate": 0.0,
+            "mean_stated_pg": 0.06
+          },
+          {
+            "bucket": "10-20%",
+            "n": 3,
+            "discoveries": 1,
+            "actual_rate": 0.3333,
+            "mean_stated_pg": 0.1333
+          },
+          {
+            "bucket": "20-30%",
+            "n": 1,
+            "discoveries": 1,
+            "actual_rate": 1.0,
+            "mean_stated_pg": 0.26
+          }
+        ]
+      },
+      "operator_comparison": {
+        "lineage_normalized": {
+          "same_operator": {
+            "n_prospects": 4,
+            "discoveries": 1,
+            "discovery_rate": 0.25,
+            "became_field": 0,
+            "mean_stated_pg": 0.11
+          },
+          "different_operator": {
+            "n_prospects": 2,
+            "discoveries": 2,
+            "discovery_rate": 1.0,
+            "became_field": 0,
+            "mean_stated_pg": 0.195
+          },
+          "z_test": {
+            "z": 1.732,
+            "p_value": 0.08326
+          }
+        },
+        "canonical_only": {
+          "same_operator": {
+            "n_prospects": 3,
+            "discoveries": 1,
+            "discovery_rate": 0.3333,
+            "became_field": 0,
+            "mean_stated_pg": 0.09
+          },
+          "different_operator": {
+            "n_prospects": 3,
+            "discoveries": 2,
+            "discovery_rate": 0.6667,
+            "became_field": 0,
+            "mean_stated_pg": 0.18
+          },
+          "z_test": {
+            "z": 0.816,
+            "p_value": 0.41422
+          }
+        },
+        "unique_well_level_lineage": {
+          "same_operator": {
+            "n_wells": 4,
+            "discoveries": 1,
+            "discovery_rate": 0.25
+          },
+          "different_operator": {
+            "n_wells": 2,
+            "discoveries": 2,
+            "discovery_rate": 1.0
+          },
+          "z_test": {
+            "z": 1.732,
+            "p_value": 0.08326
+          }
+        }
+      },
+      "by_feature_layer": {
+        "prospect": {
+          "n_prospects": 6,
+          "discoveries": 3,
+          "discovery_rate": 0.5,
+          "became_field": 0,
+          "mean_stated_pg": 0.144
+        },
+        "lead": {
+          "n_prospects": 0,
+          "discoveries": 0,
+          "discovery_rate": null,
+          "became_field": 0,
+          "mean_stated_pg": null
+        }
+      }
+    },
+    "all_prospects_all_exploration_wells": {
+      "n_prospects_redrilled": 139,
+      "n_prospects_discovered": 71,
+      "prospect_discovery_rate": 0.5108,
+      "n_prospects_became_field": 13,
+      "n_unique_wells": 114,
+      "n_unique_wells_discovery": 58,
+      "unique_well_discovery_rate": 0.5088,
+      "n_unique_named_discoveries": 42,
+      "unique_named_discoveries": [
+        "16/1-29 S Symra",
+        "16/1-34 S (Lillefix)",
+        "2/6-7 S (Othello)",
+        "2/8-19 (Overly)",
+        "24/12-7 (Lyderhorn)",
+        "25/2-1 Øst Frigg",
+        "25/7-11 S (Norma)",
+        "25/7-13 (Linga)",
+        "25/7-8 S (Enniberg)",
+        "26/10-1 (Zulu Øst)",
+        "30/5-4 S (Oswig)",
+        "31/1-2 S (Røver Nord)",
+        "31/1-3 S (Røver Sør)",
+        "31/7-1 Bestla",
+        "34/4-19 S (Omega Sør Alfa)",
+        "35/6-3 S (Ofelia)",
+        "35/6-4 A (Ofelia Kyrre)",
+        "35/9-14",
+        "35/9-3 (Gjøa Nord)",
+        "36/4-2 (Alpehumle)",
+        "36/7-5 B (Cerisa West)",
+        "36/7-5 S (Cerisa)",
+        "6406/2-8 (Imsa)",
+        "6406/6-7 S (Mistral Sør)",
+        "6407/5-3 S (Lakris)",
+        "6407/8-8 S (Calypso)",
+        "6506/11-10 Berling",
+        "6506/5-1 S (Nidhogg)",
+        "6507/3-15",
+        "6507/4-1 (Warka)",
+        "6507/4-2 S (Adriana Sabina)",
+        "6507/4-2 S (Dvalin Nord)",
+        "6507/4-3 S",
+        "6507/5-10 S (Slagugle)",
+        "6604/5-1 (Balderbrå)",
+        "6605/6-1 S",
+        "6607/12-4 (Alve Nordøst)",
+        "6607/3-1 S (Velocette)",
+        "6611/1-1 (Toutatis)",
+        "7122/9-1 (Lupa)",
+        "7122/9-2 (Elgol)",
+        "7324/6-2 (Ferdinand Nord)"
+      ],
+      "n_unique_producing_fields": 7,
+      "unique_producing_fields": [
+        "BERLING",
+        "BESTLA",
+        "DUVA",
+        "DVALIN",
+        "GJØA",
+        "SYMRA",
+        "ØST FRIGG"
+      ],
+      "pg_calibration": {
+        "n_with_pg": 94,
+        "n_discovered_with_pg": 45,
+        "actual_discovery_rate_with_pg": 0.4787,
+        "mean_stated_pg": 0.2395,
+        "median_stated_pg": 0.18,
+        "calibration_ratio_actual_over_stated": 1.999,
+        "binomial_two_sided_p": 0.0,
+        "mean_pg_of_discoveries": 0.3095,
+        "mean_pg_of_dry_holes": 0.1752,
+        "by_pg_bucket": [
+          {
+            "bucket": "<10%",
+            "n": 15,
+            "discoveries": 5,
+            "actual_rate": 0.3333,
+            "mean_stated_pg": 0.0551
+          },
+          {
+            "bucket": "10-20%",
+            "n": 33,
+            "discoveries": 13,
+            "actual_rate": 0.3939,
+            "mean_stated_pg": 0.1347
+          },
+          {
+            "bucket": "20-30%",
+            "n": 20,
+            "discoveries": 7,
+            "actual_rate": 0.35,
+            "mean_stated_pg": 0.2324
+          },
+          {
+            "bucket": "30-50%",
+            "n": 19,
+            "discoveries": 14,
+            "actual_rate": 0.7368,
+            "mean_stated_pg": 0.3787
+          },
+          {
+            "bucket": ">=50%",
+            "n": 7,
+            "discoveries": 6,
+            "actual_rate": 0.8571,
+            "mean_stated_pg": 0.7714
+          }
+        ]
+      },
+      "operator_comparison": {
+        "lineage_normalized": {
+          "same_operator": {
+            "n_prospects": 38,
+            "discoveries": 14,
+            "discovery_rate": 0.3684,
+            "became_field": 1,
+            "mean_stated_pg": 0.2278
+          },
+          "different_operator": {
+            "n_prospects": 101,
+            "discoveries": 57,
+            "discovery_rate": 0.5644,
+            "became_field": 12,
+            "mean_stated_pg": 0.2445
+          },
+          "z_test": {
+            "z": 2.06,
+            "p_value": 0.03943
+          }
+        },
+        "canonical_only": {
+          "same_operator": {
+            "n_prospects": 34,
+            "discoveries": 14,
+            "discovery_rate": 0.4118,
+            "became_field": 1,
+            "mean_stated_pg": 0.2303
+          },
+          "different_operator": {
+            "n_prospects": 105,
+            "discoveries": 57,
+            "discovery_rate": 0.5429,
+            "became_field": 12,
+            "mean_stated_pg": 0.2428
+          },
+          "z_test": {
+            "z": 1.329,
+            "p_value": 0.18384
+          }
+        },
+        "unique_well_level_lineage": {
+          "same_operator": {
+            "n_wells": 29,
+            "discoveries": 11,
+            "discovery_rate": 0.3793
+          },
+          "different_operator": {
+            "n_wells": 85,
+            "discoveries": 47,
+            "discovery_rate": 0.5529
+          },
+          "z_test": {
+            "z": 1.615,
+            "p_value": 0.1063
+          }
+        }
+      },
+      "by_feature_layer": {
+        "prospect": {
+          "n_prospects": 99,
+          "discoveries": 50,
+          "discovery_rate": 0.5051,
+          "became_field": 8,
+          "mean_stated_pg": 0.2557
+        },
+        "lead": {
+          "n_prospects": 40,
+          "discoveries": 21,
+          "discovery_rate": 0.525,
+          "became_field": 5,
+          "mean_stated_pg": 0.1471
+        }
+      }
+    }
+  },
+  "risk_factor_analysis_undrilled_wildcat": {
+    "n_discovered": 65,
+    "n_dry": 65,
+    "n_atlas_undrilled": 4903,
+    "key_risk_elements": [
+      {
+        "risk_element": "reservoir_quality",
+        "discovered_count": 9,
+        "discovered_pct": 0.1385,
+        "dry_count": 10,
+        "dry_pct": 0.1538,
+        "discovery_rate_when_cited": 0.4737,
+        "atlas_baseline_pct": 0.1101
+      },
+      {
+        "risk_element": "trap",
+        "discovered_count": 9,
+        "discovered_pct": 0.1385,
+        "dry_count": 9,
+        "dry_pct": 0.1385,
+        "discovery_rate_when_cited": 0.5,
+        "atlas_baseline_pct": 0.1293
+      },
+      {
+        "risk_element": "reservoir_presence",
+        "discovered_count": 9,
+        "discovered_pct": 0.1385,
+        "dry_count": 11,
+        "dry_pct": 0.1692,
+        "discovery_rate_when_cited": 0.45,
+        "atlas_baseline_pct": 0.1444
+      },
+      {
+        "risk_element": "migration",
+        "discovered_count": 8,
+        "discovered_pct": 0.1231,
+        "dry_count": 12,
+        "dry_pct": 0.1846,
+        "discovery_rate_when_cited": 0.4,
+        "atlas_baseline_pct": 0.1358
+      },
+      {
+        "risk_element": "lateral_fault_seal",
+        "discovered_count": 6,
+        "discovered_pct": 0.0923,
+        "dry_count": 9,
+        "dry_pct": 0.1385,
+        "discovery_rate_when_cited": 0.4,
+        "atlas_baseline_pct": 0.0814
+      },
+      {
+        "risk_element": "charge",
+        "discovered_count": 5,
+        "discovered_pct": 0.0769,
+        "dry_count": 6,
+        "dry_pct": 0.0923,
+        "discovery_rate_when_cited": 0.4545,
+        "atlas_baseline_pct": 0.111
+      },
+      {
+        "risk_element": "top_seal",
+        "discovered_count": 5,
+        "discovered_pct": 0.0769,
+        "dry_count": 5,
+        "dry_pct": 0.0769,
+        "discovery_rate_when_cited": 0.5,
+        "atlas_baseline_pct": 0.0394
+      },
+      {
+        "risk_element": "retention",
+        "discovered_count": 5,
+        "discovered_pct": 0.0769,
+        "dry_count": 7,
+        "dry_pct": 0.1077,
+        "discovery_rate_when_cited": 0.4167,
+        "atlas_baseline_pct": 0.0422
+      },
+      {
+        "risk_element": "trap_seal",
+        "discovered_count": 4,
+        "discovered_pct": 0.0615,
+        "dry_count": 8,
+        "dry_pct": 0.1231,
+        "discovery_rate_when_cited": 0.3333,
+        "atlas_baseline_pct": 0.0551
+      },
+      {
+        "risk_element": "reservoir",
+        "discovered_count": 3,
+        "discovered_pct": 0.0462,
+        "dry_count": 5,
+        "dry_pct": 0.0769,
+        "discovery_rate_when_cited": 0.375,
+        "atlas_baseline_pct": 0.0475
+      },
+      {
+        "risk_element": "seal",
+        "discovered_count": 3,
+        "discovered_pct": 0.0462,
+        "dry_count": 5,
+        "dry_pct": 0.0769,
+        "discovery_rate_when_cited": 0.375,
+        "atlas_baseline_pct": 0.0404
+      },
+      {
+        "risk_element": "hc_phase",
+        "discovered_count": 2,
+        "discovered_pct": 0.0308,
+        "dry_count": 2,
+        "dry_pct": 0.0308,
+        "discovery_rate_when_cited": 0.5,
+        "atlas_baseline_pct": 0.0251
+      },
+      {
+        "risk_element": "other",
+        "discovered_count": 2,
+        "discovered_pct": 0.0308,
+        "dry_count": 0,
+        "dry_pct": 0.0,
+        "discovery_rate_when_cited": 1.0,
+        "atlas_baseline_pct": 0.0245
+      },
+      {
+        "risk_element": "trap_geometry",
+        "discovered_count": 2,
+        "discovered_pct": 0.0308,
+        "dry_count": 4,
+        "dry_pct": 0.0615,
+        "discovery_rate_when_cited": 0.3333,
+        "atlas_baseline_pct": 0.0279
+      },
+      {
+        "risk_element": "timing",
+        "discovered_count": 1,
+        "discovered_pct": 0.0154,
+        "dry_count": 1,
+        "dry_pct": 0.0154,
+        "discovery_rate_when_cited": 0.5,
+        "atlas_baseline_pct": 0.0051
+      }
+    ],
+    "reasons_not_drilled": [
+      {
+        "reason_not_drilled": "volume_too_small",
+        "discovered_count": 30,
+        "discovered_pct": 0.4615,
+        "dry_count": 24,
+        "dry_pct": 0.3692,
+        "discovery_rate_when_cited": 0.5556,
+        "atlas_baseline_pct": 0.425
+      },
+      {
+        "reason_not_drilled": "commercial",
+        "discovered_count": 24,
+        "discovered_pct": 0.3692,
+        "dry_count": 14,
+        "dry_pct": 0.2154,
+        "discovery_rate_when_cited": 0.6316,
+        "atlas_baseline_pct": 0.2256
+      },
+      {
+        "reason_not_drilled": "high_risk",
+        "discovered_count": 23,
+        "discovered_pct": 0.3538,
+        "dry_count": 35,
+        "dry_pct": 0.5385,
+        "discovery_rate_when_cited": 0.3966,
+        "atlas_baseline_pct": 0.4385
+      },
+      {
+        "reason_not_drilled": "reservoir_risk",
+        "discovered_count": 18,
+        "discovered_pct": 0.2769,
+        "dry_count": 20,
+        "dry_pct": 0.3077,
+        "discovery_rate_when_cited": 0.4737,
+        "atlas_baseline_pct": 0.2384
+      },
+      {
+        "reason_not_drilled": "trap_risk",
+        "discovered_count": 13,
+        "discovered_pct": 0.2,
+        "dry_count": 8,
+        "dry_pct": 0.1231,
+        "discovery_rate_when_cited": 0.619,
+        "atlas_baseline_pct": 0.1318
+      },
+      {
+        "reason_not_drilled": "seal_risk",
+        "discovered_count": 11,
+        "discovered_pct": 0.1692,
+        "dry_count": 20,
+        "dry_pct": 0.3077,
+        "discovery_rate_when_cited": 0.3548,
+        "atlas_baseline_pct": 0.112
+      },
+      {
+        "reason_not_drilled": "other",
+        "discovered_count": 10,
+        "discovered_pct": 0.1538,
+        "dry_count": 8,
+        "dry_pct": 0.1231,
+        "discovery_rate_when_cited": 0.5556,
+        "atlas_baseline_pct": 0.0887
+      },
+      {
+        "reason_not_drilled": "migration_risk",
+        "discovered_count": 6,
+        "discovered_pct": 0.0923,
+        "dry_count": 15,
+        "dry_pct": 0.2308,
+        "discovery_rate_when_cited": 0.2857,
+        "atlas_baseline_pct": 0.1201
+      },
+      {
+        "reason_not_drilled": "charge_risk",
+        "discovered_count": 5,
+        "discovered_pct": 0.0769,
+        "dry_count": 8,
+        "dry_pct": 0.1231,
+        "discovery_rate_when_cited": 0.3846,
+        "atlas_baseline_pct": 0.1568
+      },
+      {
+        "reason_not_drilled": "no_prospectivity",
+        "discovered_count": 3,
+        "discovered_pct": 0.0462,
+        "dry_count": 4,
+        "dry_pct": 0.0615,
+        "discovery_rate_when_cited": 0.4286,
+        "atlas_baseline_pct": 0.1105
+      },
+      {
+        "reason_not_drilled": "portfolio_strategy",
+        "discovered_count": 3,
+        "discovered_pct": 0.0462,
+        "dry_count": 3,
+        "dry_pct": 0.0462,
+        "discovery_rate_when_cited": 0.5,
+        "atlas_baseline_pct": 0.0069
+      },
+      {
+        "reason_not_drilled": "prospect_moved_outside_licence",
+        "discovered_count": 3,
+        "discovered_pct": 0.0462,
+        "dry_count": 1,
+        "dry_pct": 0.0154,
+        "discovery_rate_when_cited": 0.75,
+        "atlas_baseline_pct": 0.0061
+      },
+      {
+        "reason_not_drilled": "negative_emv",
+        "discovered_count": 2,
+        "discovered_pct": 0.0308,
+        "dry_count": 2,
+        "dry_pct": 0.0308,
+        "discovery_rate_when_cited": 0.5,
+        "atlas_baseline_pct": 0.031
+      },
+      {
+        "reason_not_drilled": "dependency_on_infrastructure",
+        "discovered_count": 2,
+        "discovered_pct": 0.0308,
+        "dry_count": 0,
+        "dry_pct": 0.0,
+        "discovery_rate_when_cited": 1.0,
+        "atlas_baseline_pct": 0.0106
+      },
+      {
+        "reason_not_drilled": "fault_seal_risk",
+        "discovered_count": 2,
+        "discovered_pct": 0.0308,
+        "dry_count": 5,
+        "dry_pct": 0.0769,
+        "discovery_rate_when_cited": 0.2857,
+        "atlas_baseline_pct": 0.0377
+      }
+    ]
+  },
+  "top_25_ones_that_got_away": [
+    {
+      "prospect_name": "Jotne",
+      "prospect_id": "PL686_JOTNE",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 378.006,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL686",
+      "relinquishing_operator": "A/S Norske Shell",
+      "relinquishing_operator_canonical": "Shell",
+      "relinquishment_year": 2015,
+      "area": "North Sea",
+      "pre_relinquishment_pg": 0.09,
+      "pre_relinquishment_mean_msmo3": 25.0,
+      "pre_relinquishment_mean_mmboe": 157.25,
+      "reasons_not_drilled": [
+        "high_risk",
+        "seal_risk",
+        "trap_risk",
+        "volume_too_small"
+      ],
+      "risk_elements": [
+        "retention",
+        "seal",
+        "top_seal",
+        "trap"
+      ],
+      "key_risks": [
+        {
+          "element": "seal",
+          "severity": null,
+          "reason": "presence of lateral (up-dip) seal - thief sands in up-dip feeder canyons, no mappable sealing faults"
+        },
+        {
+          "element": "top_seal",
+          "severity": null,
+          "reason": "likely silty or sandier top seal locally above the eastern pinch-out line"
+        },
+        {
+          "element": "retention",
+          "severity": null,
+          "reason": "stratigraphic trap without structural support - significant risk on retention and seal integrity"
+        }
+      ],
+      "conclusion_text": "Jotne is not a drill-worthy candidate due to the high risk associated with the trapping configuration; limited volumes and a very low probability of finding commercial hydrocarbons (low POS on seal, no depth-conform contact, little support from rock physics/AVO and DNME for a large fill).",
+      "later_discovery_well": "36/7-5 B",
+      "later_operator": "Vår Energi Norge AS",
+      "later_operator_canonical": "Vår Energi (incl. Eni/Point/Neptune/ExxonMobil)",
+      "later_licence": "636",
+      "later_year": 2024,
+      "years_after_relinquishment": 9,
+      "same_operator_lineage": false,
+      "discovery_name": "36/7-5 B (Cerisa West)",
+      "discovery_wellbore_flag": true,
+      "content": "OIL",
+      "field": "DUVA",
+      "hc_formation": "AGAT FM",
+      "hc_age": "EARLY CRETACEOUS",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "36/7-5 B",
+          "year": 2024,
+          "operator": "Vår Energi Norge AS",
+          "content": "OIL",
+          "discovery": "36/7-5 B (Cerisa West)",
+          "field": "DUVA"
+        },
+        {
+          "wellbore": "36/7-5 S",
+          "year": 2024,
+          "operator": "Neptune Energy Norge AS",
+          "content": "OIL/GAS",
+          "discovery": "36/7-5 S (Cerisa)",
+          "field": "DUVA"
+        },
+        {
+          "wellbore": "36/4-2",
+          "year": 2026,
+          "operator": "Aker BP ASA",
+          "content": "GAS",
+          "discovery": "36/4-2 (Alpehumle)",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Hades",
+      "prospect_id": "PL477_HADES",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 30.771,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL477",
+      "relinquishing_operator": "Centrica Resources (Norge) AS",
+      "relinquishing_operator_canonical": "Sval / Spirit / Centrica",
+      "relinquishment_year": 2015,
+      "area": "Norwegian Sea",
+      "pre_relinquishment_pg": null,
+      "pre_relinquishment_mean_msmo3": null,
+      "pre_relinquishment_mean_mmboe": null,
+      "reasons_not_drilled": [
+        "no_prospectivity"
+      ],
+      "risk_elements": [],
+      "key_risks": [],
+      "conclusion_text": "Licence-level: Remaining prospectivity has been evaluated with no drillable prospects identified (p.5); the remaining prospectivity in PL477/477B is seen as limited with no drillable candidates left (p.6); the remaining potential in PL477 and 477B is considered to be limited (p.16).",
+      "later_discovery_well": "6506/11-10",
+      "later_operator": "OMV (Norge) AS",
+      "later_operator_canonical": "OMV",
+      "later_licence": "644 B",
+      "later_year": 2018,
+      "years_after_relinquishment": 3,
+      "same_operator_lineage": false,
+      "discovery_name": "6506/11-10 Berling",
+      "discovery_wellbore_flag": true,
+      "content": "GAS/CONDENSATE",
+      "field": "BERLING",
+      "hc_formation": "LANGE FM",
+      "hc_age": "EARLY CRETACEOUS",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "6506/11-10",
+          "year": 2018,
+          "operator": "OMV (Norge) AS",
+          "content": "GAS/CONDENSATE",
+          "discovery": "6506/11-10 Berling",
+          "field": "BERLING"
+        }
+      ]
+    },
+    {
+      "prospect_name": "Yngling",
+      "prospect_id": "PL576_YNGLING",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 8.031,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL576",
+      "relinquishing_operator": "Lundin Norway AS",
+      "relinquishing_operator_canonical": "Lundin",
+      "relinquishment_year": 2013,
+      "area": "North Sea",
+      "pre_relinquishment_pg": null,
+      "pre_relinquishment_mean_msmo3": null,
+      "pre_relinquishment_mean_mmboe": null,
+      "reasons_not_drilled": [
+        "commercial",
+        "volume_too_small"
+      ],
+      "risk_elements": [],
+      "key_risks": [],
+      "conclusion_text": "The estimated chance of success for the Draupne/Sognefjord Yngling prospect is more than 20%, but the volumes are too small to be commercially interesting.",
+      "later_discovery_well": "31/7-1",
+      "later_operator": "Faroe Petroleum Norge AS",
+      "later_operator_canonical": "DNO (incl. Faroe)",
+      "later_licence": "740",
+      "later_year": 2016,
+      "years_after_relinquishment": 3,
+      "same_operator_lineage": false,
+      "discovery_name": "31/7-1 Bestla",
+      "discovery_wellbore_flag": true,
+      "content": "OIL/GAS",
+      "field": "BESTLA",
+      "hc_formation": "SOGNEFJORD FM",
+      "hc_age": "LATE JURASSIC",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "31/7-1",
+          "year": 2016,
+          "operator": "Faroe Petroleum Norge AS",
+          "content": "OIL/GAS",
+          "discovery": "31/7-1 Bestla",
+          "field": "BESTLA"
+        }
+      ]
+    },
+    {
+      "prospect_name": "Sabina",
+      "prospect_id": "PL647_SABINA",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 119.798,
+      "status_at_report": "segmented",
+      "relinquishing_licence": "PL647",
+      "relinquishing_operator": "Maersk Oil Norway AS",
+      "relinquishing_operator_canonical": "TotalEnergies (incl. Maersk/Total)",
+      "relinquishment_year": 2014,
+      "area": "Norwegian Sea",
+      "pre_relinquishment_pg": 0.36,
+      "pre_relinquishment_mean_msmo3": null,
+      "pre_relinquishment_mean_mmboe": null,
+      "reasons_not_drilled": [
+        "high_risk",
+        "reservoir_risk",
+        "volume_too_small"
+      ],
+      "risk_elements": [
+        "reservoir"
+      ],
+      "key_risks": [
+        {
+          "element": "reservoir",
+          "severity": null,
+          "reason": "presence of thin low porosity and permeability sandstones (Mid Norway experience); poor sand presence mapped within PL647"
+        }
+      ],
+      "conclusion_text": "The Sabina prospect seen at the time of the application has now become much better defined separated into several separate leads and prospects. The most prospective interval now appears to be located within PL211/PL211 B stretching only partly into PL647. As there are no concrete plans to drill in PL211, there is no appetite in the PL647 to take a drill decision in PL647.",
+      "later_discovery_well": "6507/4-2 S",
+      "later_operator": "Wintershall Dea Norge AS",
+      "later_operator_canonical": "Harbour / Wintershall Dea",
+      "later_licence": "211",
+      "later_year": 2021,
+      "years_after_relinquishment": 7,
+      "same_operator_lineage": false,
+      "discovery_name": "6507/4-2 S (Dvalin Nord)",
+      "discovery_wellbore_flag": true,
+      "content": "OIL/GAS/CONDENSATE",
+      "field": "DVALIN",
+      "hc_formation": "GARN FM",
+      "hc_age": "MIDDLE JURASSIC",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "6507/4-2 S",
+          "year": 2021,
+          "operator": "Wintershall Dea Norge AS",
+          "content": "OIL/GAS/CONDENSATE",
+          "discovery": "6507/4-2 S (Dvalin Nord)",
+          "field": "DVALIN"
+        }
+      ]
+    },
+    {
+      "prospect_name": "Andotten",
+      "prospect_id": "PL768_ANDOTTEN",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 26.252,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL768",
+      "relinquishing_operator": "Wintershall Norge AS (Wintershall Dea)",
+      "relinquishing_operator_canonical": "Harbour / Wintershall Dea",
+      "relinquishment_year": 2019,
+      "area": "Barents Sea",
+      "pre_relinquishment_pg": 0.15,
+      "pre_relinquishment_mean_msmo3": 65.1,
+      "pre_relinquishment_mean_mmboe": 409.47,
+      "reasons_not_drilled": [
+        "charge_risk",
+        "high_risk",
+        "migration_risk",
+        "trap_risk"
+      ],
+      "risk_elements": [
+        "migration",
+        "trap"
+      ],
+      "key_risks": [
+        {
+          "element": "trap",
+          "severity": null,
+          "reason": "Trap effectiveness (40 %): potential reservoir sandstone - carbonate platform (Røye Fm) juxtaposition; top seal and trap effectiveness a major risk in the SW part"
+        },
+        {
+          "element": "migration",
+          "severity": null,
+          "reason": "Charge - Migration (70 %); Carboniferous source potential uncertain"
+        }
+      ],
+      "conclusion_text": "As a result of the work conducted the main geological risks of trap effectiveness as well as charge/migration are high. The updated volumes significantly decreased compared to the initial evaluation, but the remaining potential is still seen as significant and above the economic threshold. Wintershall recommended the drill decision in August 2019; the licence partners voted for licence drop.",
+      "later_discovery_well": "7122/9-2",
+      "later_operator": "Vår Energi ASA",
+      "later_operator_canonical": "Vår Energi (incl. Eni/Point/Neptune/ExxonMobil)",
+      "later_licence": "1131",
+      "later_year": 2025,
+      "years_after_relinquishment": 6,
+      "same_operator_lineage": false,
+      "discovery_name": "7122/9-2 (Elgol)",
+      "discovery_wellbore_flag": true,
+      "content": "GAS",
+      "field": null,
+      "hc_formation": null,
+      "hc_age": "PERMIAN",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "7122/9-2",
+          "year": 2025,
+          "operator": "Vår Energi ASA",
+          "content": "GAS",
+          "discovery": "7122/9-2 (Elgol)",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Celsius",
+      "prospect_id": "PL694_CELSIUS",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 17.141,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL694",
+      "relinquishing_operator": "DEA Norge AS (formerly RWE Dea Norge AS)",
+      "relinquishing_operator_canonical": "Harbour / Wintershall Dea",
+      "relinquishment_year": 2017,
+      "area": "Norwegian Sea",
+      "pre_relinquishment_pg": 0.39,
+      "pre_relinquishment_mean_msmo3": 26.3,
+      "pre_relinquishment_mean_mmboe": 165.42,
+      "reasons_not_drilled": [
+        "commercial",
+        "dependency_on_infrastructure",
+        "portfolio_strategy"
+      ],
+      "risk_elements": [],
+      "key_risks": [],
+      "conclusion_text": "The main identified prospect is the Celsius prospect with P50 recoverable reserves of 23.8 GSm3 gas ... The economy in the current market is marginal to negative for a gas development project of this size ... DEA wanted to drill the Celsius prospect in 2015 but did not get partner approval ... a decision has been made to relinquish the license.",
+      "later_discovery_well": "6607/3-1 S",
+      "later_operator": "OMV (Norge) AS",
+      "later_operator_canonical": "OMV",
+      "later_licence": "1016",
+      "later_year": 2023,
+      "years_after_relinquishment": 6,
+      "same_operator_lineage": false,
+      "discovery_name": "6607/3-1 S (Velocette)",
+      "discovery_wellbore_flag": true,
+      "content": "GAS",
+      "field": null,
+      "hc_formation": "NISE FM",
+      "hc_age": "CRETACEOUS",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "6607/3-1 S",
+          "year": 2023,
+          "operator": "OMV (Norge) AS",
+          "content": "GAS",
+          "discovery": "6607/3-1 S (Velocette)",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Toutatis",
+      "prospect_id": "PL656_TOUTATIS",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 29.343,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL656",
+      "relinquishing_operator": "DEA E&P Norge AS (E.ON E&P Norge AS renamed)",
+      "relinquishing_operator_canonical": "Harbour / Wintershall Dea",
+      "relinquishment_year": 2016,
+      "area": "Norwegian Sea",
+      "pre_relinquishment_pg": 0.27,
+      "pre_relinquishment_mean_msmo3": 25.7,
+      "pre_relinquishment_mean_mmboe": 161.65,
+      "reasons_not_drilled": [
+        "commercial",
+        "high_risk",
+        "seal_risk"
+      ],
+      "risk_elements": [
+        "retention",
+        "top_seal"
+      ],
+      "key_risks": [
+        {
+          "element": "retention",
+          "severity": "major",
+          "reason": "The main risk for this prospect is linked to the retention of the HCs through time as the area is affected by late Tertiary uplift generating the erosion of 500-600m of most recent sediments."
+        },
+        {
+          "element": "top_seal",
+          "severity": "major",
+          "reason": "The key geological risk is linked to the thickness and effect of the Top Seal and its ability to retain the trapped hydrocarbons during the uplift period in Tertiary."
+        }
+      ],
+      "conclusion_text": "Despite the identified prospectivity and technical recommendation from the operator to drill, the risk/reward balance for the main prospect (Toutatis) was such that the partnership was unable to reach agreement on a drill decision. E.ON, then DEA E&P Norge, recommend to relinquish the licence. This recommendation was supported by all partners. The main risk is linked to the top seal and its ability to retain hydrocarbons during the Late Tertiary uplift period affecting the area.",
+      "later_discovery_well": "6611/1-1",
+      "later_operator": "DEA Norge AS",
+      "later_operator_canonical": "Harbour / Wintershall Dea",
+      "later_licence": "896",
+      "later_year": 2019,
+      "years_after_relinquishment": 3,
+      "same_operator_lineage": true,
+      "discovery_name": "6611/1-1 (Toutatis)",
+      "discovery_wellbore_flag": true,
+      "content": "OIL",
+      "field": null,
+      "hc_formation": null,
+      "hc_age": "EARLY JURASSIC",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "6611/1-1",
+          "year": 2019,
+          "operator": "DEA Norge AS",
+          "content": "OIL",
+          "discovery": "6611/1-1 (Toutatis)",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Balderbrå",
+      "prospect_id": "PL522_BALDERBRAA",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 40.257,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL522",
+      "relinquishing_operator": "BG Norge AS",
+      "relinquishing_operator_canonical": "BG Norge",
+      "relinquishment_year": 2014,
+      "area": "Norwegian Sea",
+      "pre_relinquishment_pg": 0.37,
+      "pre_relinquishment_mean_msmo3": 25.2,
+      "pre_relinquishment_mean_mmboe": 158.5,
+      "reasons_not_drilled": [
+        "commercial",
+        "reservoir_risk"
+      ],
+      "risk_elements": [
+        "reservoir_quality"
+      ],
+      "key_risks": [
+        {
+          "element": "reservoir_quality",
+          "severity": "critical",
+          "reason": "reservoir effectiveness - illite diagenesis and lateral facies change degrade the Springar reservoir"
+        }
+      ],
+      "conclusion_text": "The two remaining prospects are Balderbrå and Gullstjerne, both defined by robust structural closures; critical risk for Balderbrå is reservoir effectiveness. The partnership concluded the remaining prospectivity is not economically viable.",
+      "later_discovery_well": "6604/5-1",
+      "later_operator": "Wintershall Norge AS",
+      "later_operator_canonical": "Harbour / Wintershall Dea",
+      "later_licence": "894",
+      "later_year": 2018,
+      "years_after_relinquishment": 4,
+      "same_operator_lineage": false,
+      "discovery_name": "6604/5-1 (Balderbrå)",
+      "discovery_wellbore_flag": true,
+      "content": "GAS",
+      "field": null,
+      "hc_formation": "SPRINGAR FM",
+      "hc_age": "LATE CRETACEOUS",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "6604/5-1",
+          "year": 2018,
+          "operator": "Wintershall Norge AS",
+          "content": "GAS",
+          "discovery": "6604/5-1 (Balderbrå)",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Warka",
+      "prospect_id": "PL799_WARKA",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 56.199,
+      "status_at_report": "upgraded_to_prospect",
+      "relinquishing_licence": "PL799",
+      "relinquishing_operator": "PGNiG Upstream International AS",
+      "relinquishing_operator_canonical": "ORLEN / PGNiG",
+      "relinquishment_year": 2017,
+      "area": "Norwegian Sea",
+      "pre_relinquishment_pg": null,
+      "pre_relinquishment_mean_msmo3": 13.9,
+      "pre_relinquishment_mean_mmboe": 87.43,
+      "reasons_not_drilled": [
+        "other"
+      ],
+      "risk_elements": [
+        "migration"
+      ],
+      "key_risks": [
+        {
+          "element": "migration",
+          "severity": null,
+          "reason": "main uncertainty for the Lange Fm. sandstone fans is migration from the Jurassic source levels to the Cretaceous"
+        }
+      ],
+      "conclusion_text": "Based on the G&G evaluation and positive economics the Operator recommended to drill Warka; the licence partners did not support the drill decision and the licence was surrendered according to voting rules. In the Operator's opinion the Cretaceous play is underexplored in the licence area.",
+      "later_discovery_well": "6507/4-1",
+      "later_operator": "ConocoPhillips Skandinavia AS",
+      "later_operator_canonical": "ConocoPhillips",
+      "later_licence": "1009",
+      "later_year": 2020,
+      "years_after_relinquishment": 3,
+      "same_operator_lineage": false,
+      "discovery_name": "6507/4-1 (Warka)",
+      "discovery_wellbore_flag": true,
+      "content": "GAS",
+      "field": null,
+      "hc_formation": "LANGE FM",
+      "hc_age": "EARLY CRETACEOUS",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "6507/4-1",
+          "year": 2020,
+          "operator": "ConocoPhillips Skandinavia AS",
+          "content": "GAS",
+          "discovery": "6507/4-1 (Warka)",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Alfa",
+      "prospect_id": "PL525_ALFA",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 30.986,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL525",
+      "relinquishing_operator": "Norwegian Energy Company ASA (Noreco) - operator from 15 May 2012; Hess Norge AS before",
+      "relinquishing_operator_canonical": "Norwegian Energy Company ASA (Noreco) - operator from 15 May 2012; Hess Norge AS before",
+      "relinquishment_year": 2013,
+      "area": "Norwegian Sea",
+      "pre_relinquishment_pg": 0.32,
+      "pre_relinquishment_mean_msmo3": 10.0,
+      "pre_relinquishment_mean_mmboe": 62.9,
+      "reasons_not_drilled": [
+        "commercial",
+        "volume_too_small"
+      ],
+      "risk_elements": [],
+      "key_risks": [],
+      "conclusion_text": "Part of the many small gas segments in the Fles area; licence relinquished for lack of a partner.",
+      "later_discovery_well": "6605/6-1 S",
+      "later_operator": "OMV (Norge) AS",
+      "later_operator_canonical": "OMV",
+      "later_licence": "1194",
+      "later_year": 2024,
+      "years_after_relinquishment": 11,
+      "same_operator_lineage": false,
+      "discovery_name": "6605/6-1 S",
+      "discovery_wellbore_flag": true,
+      "content": "GAS",
+      "field": null,
+      "hc_formation": "SPRINGAR FM",
+      "hc_age": "LATE CRETACEOUS",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "6605/6-1 S",
+          "year": 2024,
+          "operator": "OMV (Norge) AS",
+          "content": "GAS",
+          "discovery": "6605/6-1 S",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Svimse",
+      "prospect_id": "PL571_SVIMSE",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 13.336,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL571",
+      "relinquishing_operator": "Suncor Energy Norge AS",
+      "relinquishing_operator_canonical": "Suncor",
+      "relinquishment_year": 2017,
+      "area": "North Sea",
+      "pre_relinquishment_pg": 0.24,
+      "pre_relinquishment_mean_msmo3": 8.0,
+      "pre_relinquishment_mean_mmboe": 50.32,
+      "reasons_not_drilled": [
+        "commercial",
+        "other"
+      ],
+      "risk_elements": [],
+      "key_risks": [],
+      "conclusion_text": "The partnership had different views on the technical economical evaluation and were unable to reach a positive drill decision; licence surrendered.",
+      "later_discovery_well": "25/7-8 S",
+      "later_operator": "ConocoPhillips Skandinavia AS",
+      "later_operator_canonical": "ConocoPhillips",
+      "later_licence": "917",
+      "later_year": 2020,
+      "years_after_relinquishment": 3,
+      "same_operator_lineage": false,
+      "discovery_name": "25/7-8 S (Enniberg)",
+      "discovery_wellbore_flag": true,
+      "content": "OIL/GAS",
+      "field": null,
+      "hc_formation": "NANSEN FM",
+      "hc_age": "EARLY JURASSIC",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "25/7-8 S",
+          "year": 2020,
+          "operator": "ConocoPhillips Skandinavia AS",
+          "content": "OIL/GAS",
+          "discovery": "25/7-8 S (Enniberg)",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "French",
+      "prospect_id": "PL419_FRENCH",
+      "classification": "lead",
+      "feature_layer": "lead",
+      "feature_area_km2": 39.074,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL419",
+      "relinquishing_operator": "Nexen Exploration Norge AS",
+      "relinquishing_operator_canonical": "Nexen Exploration Norge AS",
+      "relinquishment_year": 2011,
+      "area": "North Sea",
+      "pre_relinquishment_pg": null,
+      "pre_relinquishment_mean_msmo3": 6.4,
+      "pre_relinquishment_mean_mmboe": 40.25,
+      "reasons_not_drilled": [
+        "no_prospectivity",
+        "reservoir_risk",
+        "seal_risk"
+      ],
+      "risk_elements": [
+        "reservoir_presence",
+        "top_seal"
+      ],
+      "key_risks": [
+        {
+          "element": "reservoir_presence",
+          "severity": null,
+          "reason": "The result of well 35/9-5 had a negative impact on the remaining prospectivity in the block, both on reservoir presence, quality and containment."
+        },
+        {
+          "element": "top_seal",
+          "severity": null,
+          "reason": "Containment risk increased by the 35/9-5 result"
+        }
+      ],
+      "conclusion_text": "The result of well 35/9-5 had a negative impact on the remaining prospectivity in the block, both on reservoir presence, quality and containment. The technical evaluation and 35/9-5 results indicate that there is little prospectivity in the block. The well result has increased risk on effective reservoir presence at all levels, including Upper and Lower Cretaceous, and Upper Jurassic.",
+      "later_discovery_well": "35/9-14",
+      "later_operator": "Spirit Energy Norge AS",
+      "later_operator_canonical": "Sval / Spirit / Centrica",
+      "later_licence": "682",
+      "later_year": 2018,
+      "years_after_relinquishment": 7,
+      "same_operator_lineage": false,
+      "discovery_name": "35/9-14",
+      "discovery_wellbore_flag": true,
+      "content": "OIL",
+      "field": null,
+      "hc_formation": "INTRA HEATHER FM SS",
+      "hc_age": "MIDDLE JURASSIC",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "35/9-9",
+          "year": 2013,
+          "operator": "GDF SUEZ E&P Norge AS",
+          "content": "DRY",
+          "discovery": null,
+          "field": null
+        },
+        {
+          "wellbore": "35/9-14",
+          "year": 2018,
+          "operator": "Spirit Energy Norge AS",
+          "content": "OIL",
+          "discovery": "35/9-14",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Karma",
+      "prospect_id": "PL550_KARMA",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 5.04,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL550",
+      "relinquishing_operator": "Tullow Oil Norge AS",
+      "relinquishing_operator_canonical": "Tullow",
+      "relinquishment_year": 2016,
+      "area": "North Sea",
+      "pre_relinquishment_pg": 0.36,
+      "pre_relinquishment_mean_msmo3": 4.817,
+      "pre_relinquishment_mean_mmboe": 30.3,
+      "reasons_not_drilled": [
+        "commercial",
+        "volume_too_small"
+      ],
+      "risk_elements": [
+        "hc_phase"
+      ],
+      "key_risks": [
+        {
+          "element": "hc_phase",
+          "severity": "major",
+          "reason": "Hydrocarbon phase is the largest risk; 70 % probability for an oil case"
+        }
+      ],
+      "conclusion_text": "The Karma prospect have a high probability of technical success, but because of the limited hydrocarbon volume potential the technical and economical evaluation concludes that the Karma prospect alone is not sufficient as basis for a robust commercial development project (p.13).",
+      "later_discovery_well": "31/1-2 S",
+      "later_operator": "Equinor Energy AS",
+      "later_operator_canonical": "Equinor (incl. Statoil/Hydro)",
+      "later_licence": "923",
+      "later_year": 2021,
+      "years_after_relinquishment": 5,
+      "same_operator_lineage": false,
+      "discovery_name": "31/1-2 S (Røver Nord)",
+      "discovery_wellbore_flag": true,
+      "content": "OIL/GAS",
+      "field": null,
+      "hc_formation": "ETIVE FM",
+      "hc_age": "MIDDLE JURASSIC",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "31/1-2 S",
+          "year": 2021,
+          "operator": "Equinor Energy AS",
+          "content": "OIL/GAS",
+          "discovery": "31/1-2 S (Røver Nord)",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Skilpadde",
+      "prospect_id": "PL828_SKILPADDE",
+      "classification": "lead",
+      "feature_layer": "lead",
+      "feature_area_km2": 35.29,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL828",
+      "relinquishing_operator": "Neptune Energy Norge AS",
+      "relinquishing_operator_canonical": "Vår Energi (incl. Eni/Point/Neptune/ExxonMobil)",
+      "relinquishment_year": 2021,
+      "area": "North Sea",
+      "pre_relinquishment_pg": 0.05,
+      "pre_relinquishment_mean_msmo3": 4.1,
+      "pre_relinquishment_mean_mmboe": 25.79,
+      "reasons_not_drilled": [
+        "high_risk",
+        "seal_risk",
+        "trap_risk",
+        "volume_too_small"
+      ],
+      "risk_elements": [
+        "retention",
+        "trap_seal"
+      ],
+      "key_risks": [
+        {
+          "element": "trap_seal",
+          "severity": null,
+          "reason": "trap seal risk is critical: up-dip truncated traps with signature of sand remobilisation"
+        },
+        {
+          "element": "retention",
+          "severity": null,
+          "reason": "associated with polygonal faults and injection wings - retention is a critical concern"
+        }
+      ],
+      "conclusion_text": "The revised interpretation and geological studies have led to conclude that the leads mapped in PL828 do not have a combination of risk and volume potential that can justify the drilling of exploration well; drop decision based on small volumes combined with a significant risk associated with traps (p.19). Due to the small volumes and low geological chances of success, none of these leads live up to the technical evaluation (p.18).",
+      "later_discovery_well": "36/4-2",
+      "later_operator": "Aker BP ASA",
+      "later_operator_canonical": "Aker BP (incl. Det norske/BP Norge)",
+      "later_licence": "1153",
+      "later_year": 2026,
+      "years_after_relinquishment": 5,
+      "same_operator_lineage": false,
+      "discovery_name": "36/4-2 (Alpehumle)",
+      "discovery_wellbore_flag": true,
+      "content": "GAS",
+      "field": null,
+      "hc_formation": null,
+      "hc_age": "EARLY CRETACEOUS",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "36/4-2",
+          "year": 2026,
+          "operator": "Aker BP ASA",
+          "content": "GAS",
+          "discovery": "36/4-2 (Alpehumle)",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Freki",
+      "prospect_id": "PL567_FREKI",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 14.42,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL567",
+      "relinquishing_operator": "Premier Oil Norge AS (Det norske from Nov 2015)",
+      "relinquishing_operator_canonical": "Aker BP (incl. Det norske/BP Norge)",
+      "relinquishment_year": 2016,
+      "area": "North Sea",
+      "pre_relinquishment_pg": 0.13,
+      "pre_relinquishment_mean_msmo3": 3.816,
+      "pre_relinquishment_mean_mmboe": 24.0,
+      "reasons_not_drilled": [
+        "migration_risk",
+        "negative_emv",
+        "reservoir_risk"
+      ],
+      "risk_elements": [
+        "migration",
+        "reservoir_presence"
+      ],
+      "key_risks": [
+        {
+          "element": "migration",
+          "severity": "critical",
+          "reason": "Long-distance migration; limited expulsion from local kitchens"
+        },
+        {
+          "element": "reservoir_presence",
+          "severity": "critical",
+          "reason": "Lateral extent of J64-J54 sands not mappable; condensed/shaly in 2/6-4 S"
+        }
+      ],
+      "conclusion_text": "The economic assessment clearly shows that the Freki prospect fails to meet prudent investment thresholds (p.11). Detailed seismic interpretation and basin modelling study has highlighted the significant challenges to charging identified structures on the licence with the exception of Gersemi. Reservoir has also been identified as a risk for Freki. Technical and economical evaluation of PL567 has illustrated that the identified prospectivity in PL567 does not meet commercial viability criterion and an unanimous decision to drop the licence has been taken by the partnership (p.12).",
+      "later_discovery_well": "2/6-7 S",
+      "later_operator": "DNO Norge AS (old)",
+      "later_operator_canonical": "DNO (incl. Faroe)",
+      "later_licence": "1086",
+      "later_year": 2024,
+      "years_after_relinquishment": 8,
+      "same_operator_lineage": false,
+      "discovery_name": "2/6-7 S (Othello)",
+      "discovery_wellbore_flag": true,
+      "content": "OIL",
+      "field": null,
+      "hc_formation": "VÅLE FM",
+      "hc_age": "EARLY PALEOCENE",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "2/6-7 S",
+          "year": 2024,
+          "operator": "DNO Norge AS (old)",
+          "content": "OIL",
+          "discovery": "2/6-7 S (Othello)",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Mistral South",
+      "prospect_id": "PL1003_MISTRAL_SOUTH",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 5.855,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL1003",
+      "relinquishing_operator": "OKEA ASA",
+      "relinquishing_operator_canonical": "OKEA",
+      "relinquishment_year": 2020,
+      "area": "Norwegian Sea",
+      "pre_relinquishment_pg": 0.4,
+      "pre_relinquishment_mean_msmo3": 3.44,
+      "pre_relinquishment_mean_mmboe": 21.64,
+      "reasons_not_drilled": [
+        "other"
+      ],
+      "risk_elements": [
+        "retention"
+      ],
+      "key_risks": [
+        {
+          "element": "retention",
+          "severity": null,
+          "reason": "Seal is the key risk (probability of a gas column less than the P90); leakage risk considered smaller than at Mistral North"
+        }
+      ],
+      "conclusion_text": "Based on the subsurface evaluation the Operator put forward a recommendation to drill one exploration well on Mistral. However, the partner could not support that. As a consequence, the licenses lapse.",
+      "later_discovery_well": "6406/6-7 S",
+      "later_operator": "Equinor Energy AS",
+      "later_operator_canonical": "Equinor (incl. Statoil/Hydro)",
+      "later_licence": "1119",
+      "later_year": 2025,
+      "years_after_relinquishment": 5,
+      "same_operator_lineage": false,
+      "discovery_name": "6406/6-7 S (Mistral Sør)",
+      "discovery_wellbore_flag": true,
+      "content": "GAS/CONDENSATE",
+      "field": null,
+      "hc_formation": null,
+      "hc_age": "MIDDLE JURASSIC",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "6406/6-7 S",
+          "year": 2025,
+          "operator": "Equinor Energy AS",
+          "content": "GAS/CONDENSATE",
+          "discovery": "6406/6-7 S (Mistral Sør)",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Herzer",
+      "prospect_id": "PL798_HERZER",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 18.379,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL798",
+      "relinquishing_operator": "Centrica Resources (Norge) AS",
+      "relinquishing_operator_canonical": "Sval / Spirit / Centrica",
+      "relinquishment_year": 2017,
+      "area": "Norwegian Sea",
+      "pre_relinquishment_pg": 0.72,
+      "pre_relinquishment_mean_msmo3": 2.35,
+      "pre_relinquishment_mean_mmboe": 14.78,
+      "reasons_not_drilled": [
+        "below_mef",
+        "compartmentalisation",
+        "volume_too_small"
+      ],
+      "risk_elements": [],
+      "key_risks": [],
+      "conclusion_text": "The Herzer Prospect is much smaller and far below the MEFS for this area.",
+      "later_discovery_well": "6506/5-1 S",
+      "later_operator": "Aker BP ASA",
+      "later_operator_canonical": "Aker BP (incl. Det norske/BP Norge)",
+      "later_licence": "1008",
+      "later_year": 2020,
+      "years_after_relinquishment": 3,
+      "same_operator_lineage": false,
+      "discovery_name": "6506/5-1 S (Nidhogg)",
+      "discovery_wellbore_flag": true,
+      "content": "GAS",
+      "field": null,
+      "hc_formation": "LYSING FM",
+      "hc_age": "LATE CRETACEOUS",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "6506/5-1 S",
+          "year": 2020,
+          "operator": "Aker BP ASA",
+          "content": "GAS",
+          "discovery": "6506/5-1 S (Nidhogg)",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Dobby",
+      "prospect_id": "PL348C_DOBBY",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 2.45,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL348C",
+      "relinquishing_operator": "Statoil Petroleum AS",
+      "relinquishing_operator_canonical": "Equinor (incl. Statoil/Hydro)",
+      "relinquishment_year": 2016,
+      "area": "Norwegian Sea",
+      "pre_relinquishment_pg": 0.69,
+      "pre_relinquishment_mean_msmo3": 2.2,
+      "pre_relinquishment_mean_mmboe": 13.84,
+      "reasons_not_drilled": [
+        "commercial",
+        "volume_too_small"
+      ],
+      "risk_elements": [],
+      "key_risks": [],
+      "conclusion_text": "All cases show no or very limited economic value due to low probability of discovery (Nilus) or limited volume potential (Dobby). Due to the lack of economically viable prospects it has been decided to drop the PL348C license.",
+      "later_discovery_well": "6407/8-8 S",
+      "later_operator": "Neptune Energy Norge AS",
+      "later_operator_canonical": "Vår Energi (incl. Eni/Point/Neptune/ExxonMobil)",
+      "later_licence": "938",
+      "later_year": 2022,
+      "years_after_relinquishment": 6,
+      "same_operator_lineage": false,
+      "discovery_name": "6407/8-8 S (Calypso)",
+      "discovery_wellbore_flag": true,
+      "content": "OIL/GAS",
+      "field": null,
+      "hc_formation": "GARN FM",
+      "hc_age": "JURASSIC",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "6407/8-8 S",
+          "year": 2022,
+          "operator": "Neptune Energy Norge AS",
+          "content": "OIL/GAS",
+          "discovery": "6407/8-8 S (Calypso)",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Lead A",
+      "prospect_id": "PL558_LEAD_A",
+      "classification": "lead",
+      "feature_layer": "lead",
+      "feature_area_km2": 1.508,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL558",
+      "relinquishing_operator": "E.ON E&P Norge AS",
+      "relinquishing_operator_canonical": "E.ON",
+      "relinquishment_year": 2015,
+      "area": "Norwegian Sea",
+      "pre_relinquishment_pg": 0.17,
+      "pre_relinquishment_mean_msmo3": 1.56,
+      "pre_relinquishment_mean_mmboe": 9.81,
+      "reasons_not_drilled": [
+        "charge_risk",
+        "volume_too_small"
+      ],
+      "risk_elements": [
+        "charge"
+      ],
+      "key_risks": [
+        {
+          "element": "charge",
+          "severity": "major",
+          "reason": "Source and migration was the main risk in Terne and the main reason it was dry; Lead A charge only improves if its Northern fault seals completely (low-confidence model); chance of HC presence decreases for the deeper Ile and Tilje segments"
+        }
+      ],
+      "conclusion_text": "Lead A is too small to be evaluated on its own, but it was considered as an opportunity in a 6507/5-7 success case (p.26); too high risk and too little reward (p.27).",
+      "later_discovery_well": "6507/5-10 S",
+      "later_operator": "ConocoPhillips Skandinavia AS",
+      "later_operator_canonical": "ConocoPhillips",
+      "later_licence": "891",
+      "later_year": 2020,
+      "years_after_relinquishment": 5,
+      "same_operator_lineage": false,
+      "discovery_name": "6507/5-10 S (Slagugle)",
+      "discovery_wellbore_flag": true,
+      "content": "OIL",
+      "field": null,
+      "hc_formation": "ÅRE FM",
+      "hc_age": "EARLY JURASSIC",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "6507/5-10 S",
+          "year": 2020,
+          "operator": "ConocoPhillips Skandinavia AS",
+          "content": "OIL",
+          "discovery": "6507/5-10 S (Slagugle)",
+          "field": null
+        },
+        {
+          "wellbore": "6507/5-11",
+          "year": 2022,
+          "operator": "ConocoPhillips Skandinavia AS",
+          "content": "DRY",
+          "discovery": "6507/5-10 S (Slagugle)",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Ferdinand North",
+      "prospect_id": "PL855_FERDINAND_NORTH",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 14.308,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL855",
+      "relinquishing_operator": "Equinor Energy AS",
+      "relinquishing_operator_canonical": "Equinor (incl. Statoil/Hydro)",
+      "relinquishment_year": 2020,
+      "area": "Barents Sea",
+      "pre_relinquishment_pg": 0.57,
+      "pre_relinquishment_mean_msmo3": 1.122,
+      "pre_relinquishment_mean_mmboe": 7.06,
+      "reasons_not_drilled": [
+        "commercial",
+        "volume_too_small"
+      ],
+      "risk_elements": [
+        "other"
+      ],
+      "key_risks": [
+        {
+          "element": "other",
+          "severity": null,
+          "reason": "volumes on the borderline to be commercial (oil tie-back to Wisting)"
+        }
+      ],
+      "conclusion_text": "The Viasat and Ferdinand prospects in the licence could trigger an oil tie-back to the Wisting development but are at present in borderline to be economic.",
+      "later_discovery_well": "7324/6-2",
+      "later_operator": "Aker BP ASA",
+      "later_operator_canonical": "Aker BP (incl. Det norske/BP Norge)",
+      "later_licence": "1170",
+      "later_year": 2024,
+      "years_after_relinquishment": 4,
+      "same_operator_lineage": false,
+      "discovery_name": "7324/6-2 (Ferdinand Nord)",
+      "discovery_wellbore_flag": true,
+      "content": "GAS",
+      "field": null,
+      "hc_formation": "STØ FM",
+      "hc_age": "MIDDLE JURASSIC",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "7324/6-2",
+          "year": 2024,
+          "operator": "Aker BP ASA",
+          "content": "GAS",
+          "discovery": "7324/6-2 (Ferdinand Nord)",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Kuhegre South",
+      "prospect_id": "PL547S_KUHEGRE_SOUTH",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 22.018,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL547S",
+      "relinquishing_operator": "Marathon Oil Norge AS",
+      "relinquishing_operator_canonical": "Aker BP (incl. Det norske/BP Norge)",
+      "relinquishment_year": 2012,
+      "area": "North Sea",
+      "pre_relinquishment_pg": 0.072,
+      "pre_relinquishment_mean_msmo3": null,
+      "pre_relinquishment_mean_mmboe": null,
+      "reasons_not_drilled": [
+        "high_risk",
+        "reservoir_risk",
+        "trap_risk"
+      ],
+      "risk_elements": [
+        "lateral_fault_seal",
+        "reservoir_quality",
+        "trap"
+      ],
+      "key_risks": [
+        {
+          "element": "trap",
+          "severity": "critical",
+          "reason": "No N-S structural closure; stratigraphic trap required to north and south (highest risk to the south); Kuhegre amplitude not separated from the rest of the system"
+        },
+        {
+          "element": "reservoir_quality",
+          "severity": "critical",
+          "reason": "Porosity at 4600-5000 m"
+        },
+        {
+          "element": "lateral_fault_seal",
+          "severity": "major",
+          "reason": "Lateral seal risk; Kuhegre Top Sand reflector appears connected to the up-dip Earb system"
+        }
+      ],
+      "conclusion_text": "The major concerns being reservoir quality and closure. The Kuhegre system seems to be connected with the up-dip Earb system, and the lateral trap mechanism is dependent on a stratigraphic component working in both the North and South direction. The drilling of the Earb well was needed to derisk the Kuhegre prospectivity, but unfortunately it had no impact. After reevaluating the Upper Jurassic prospectivity on the newly reprocessed seismic, no drillable prospects were identified. No confident trap could be determined, therefore no prospect could be confidently outlined. Additionally, the leads identified do not have associated volumes large enough to warrant drilling a well (p.19).",
+      "later_discovery_well": "25/7-11 S",
+      "later_operator": "DNO Norge AS (old)",
+      "later_operator_canonical": "DNO (incl. Faroe)",
+      "later_licence": "984",
+      "later_year": 2023,
+      "years_after_relinquishment": 11,
+      "same_operator_lineage": false,
+      "discovery_name": "25/7-11 S (Norma)",
+      "discovery_wellbore_flag": true,
+      "content": "GAS/CONDENSATE",
+      "field": null,
+      "hc_formation": "DRAUPNE FM",
+      "hc_age": "LATE JURASSIC",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "25/7-11 S",
+          "year": 2023,
+          "operator": "DNO Norge AS (old)",
+          "content": "GAS/CONDENSATE",
+          "discovery": "25/7-11 S (Norma)",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Bonna",
+      "prospect_id": "PL550_BONNA",
+      "classification": "lead",
+      "feature_layer": "lead",
+      "feature_area_km2": 3.967,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL550",
+      "relinquishing_operator": "Tullow Oil Norge AS",
+      "relinquishing_operator_canonical": "Tullow",
+      "relinquishment_year": 2016,
+      "area": "North Sea",
+      "pre_relinquishment_pg": null,
+      "pre_relinquishment_mean_msmo3": null,
+      "pre_relinquishment_mean_mmboe": null,
+      "reasons_not_drilled": [
+        "volume_too_small"
+      ],
+      "risk_elements": [],
+      "key_risks": [],
+      "conclusion_text": "Blåskia, Gluteus Medius, Gluteus Minimus, Nye Ski, Hagen,and Bonna all have in common that the risked resources become too small (p.11).",
+      "later_discovery_well": "31/1-3 S",
+      "later_operator": "Equinor Energy AS",
+      "later_operator_canonical": "Equinor (incl. Statoil/Hydro)",
+      "later_licence": "923",
+      "later_year": 2023,
+      "years_after_relinquishment": 7,
+      "same_operator_lineage": false,
+      "discovery_name": "31/1-3 S (Røver Sør)",
+      "discovery_wellbore_flag": true,
+      "content": "OIL/GAS",
+      "field": null,
+      "hc_formation": "TARBERT FM",
+      "hc_age": "MIDDLE JURASSIC",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "31/1-3 S",
+          "year": 2023,
+          "operator": "Equinor Energy AS",
+          "content": "OIL/GAS",
+          "discovery": "31/1-3 S (Røver Sør)",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Brent 2",
+      "prospect_id": "PL553_BRENT_2",
+      "classification": "lead",
+      "feature_layer": "lead",
+      "feature_area_km2": 7.975,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL553",
+      "relinquishing_operator": "Det norske oljeselskap ASA",
+      "relinquishing_operator_canonical": "Aker BP (incl. Det norske/BP Norge)",
+      "relinquishment_year": 2015,
+      "area": "North Sea",
+      "pre_relinquishment_pg": null,
+      "pre_relinquishment_mean_msmo3": null,
+      "pre_relinquishment_mean_mmboe": null,
+      "reasons_not_drilled": [
+        "commercial"
+      ],
+      "risk_elements": [],
+      "key_risks": [],
+      "conclusion_text": "Several leads have been added to the list since the APA application, but it is difficult to mature any of the leads to drillable prospect or prospects (p.14). The remaining exploration potential in the license is considered none commercial and has not been technically evaluated (p.16).",
+      "later_discovery_well": "34/4-19 S",
+      "later_operator": "Equinor Energy AS",
+      "later_operator_canonical": "Equinor (incl. Statoil/Hydro)",
+      "later_licence": "057",
+      "later_year": 2026,
+      "years_after_relinquishment": 11,
+      "same_operator_lineage": false,
+      "discovery_name": "34/4-19 S (Omega Sør Alfa)",
+      "discovery_wellbore_flag": true,
+      "content": "OIL",
+      "field": null,
+      "hc_formation": null,
+      "hc_age": "MIDDLE JURASSIC",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "34/4-19 S",
+          "year": 2026,
+          "operator": "Equinor Energy AS",
+          "content": "OIL",
+          "discovery": "34/4-19 S (Omega Sør Alfa)",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Tower Agat North",
+      "prospect_id": "PL578_TOWER_AGAT_NORTH",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 13.142,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL578",
+      "relinquishing_operator": "Idemitsu Petroleum Norge AS",
+      "relinquishing_operator_canonical": "Idemitsu",
+      "relinquishment_year": 2016,
+      "area": "North Sea",
+      "pre_relinquishment_pg": 0.45,
+      "pre_relinquishment_mean_msmo3": null,
+      "pre_relinquishment_mean_mmboe": null,
+      "reasons_not_drilled": [
+        "commercial",
+        "reservoir_risk",
+        "volume_too_small"
+      ],
+      "risk_elements": [
+        "migration",
+        "reservoir_presence"
+      ],
+      "key_risks": [
+        {
+          "element": "reservoir_presence",
+          "severity": null,
+          "reason": "sandstone distribution locally very thin and/or compartmentalized; data quality challenging at the crest where the Agat thins"
+        },
+        {
+          "element": "migration",
+          "severity": null,
+          "reason": "moderate risk on oil-case dynamics; basin modelling suggests a more gas-prone setting"
+        }
+      ],
+      "conclusion_text": "PL 153 operator Engie could not support advancing a common Tower complex project with PL 578 and the technical-economical evaluation of the Tower North stand-alone project did not demonstrate sufficient economic potential.",
+      "later_discovery_well": "35/6-3 S",
+      "later_operator": "Neptune Energy Norge AS",
+      "later_operator_canonical": "Vår Energi (incl. Eni/Point/Neptune/ExxonMobil)",
+      "later_licence": "929",
+      "later_year": 2022,
+      "years_after_relinquishment": 6,
+      "same_operator_lineage": false,
+      "discovery_name": "35/6-3 S (Ofelia)",
+      "discovery_wellbore_flag": true,
+      "content": "OIL",
+      "field": null,
+      "hc_formation": "AGAT FM",
+      "hc_age": "EARLY CRETACEOUS",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "35/6-3 S",
+          "year": 2022,
+          "operator": "Neptune Energy Norge AS",
+          "content": "OIL",
+          "discovery": "35/6-3 S (Ofelia)",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Nora",
+      "prospect_id": "PL647_NORA",
+      "classification": "lead",
+      "feature_layer": "lead",
+      "feature_area_km2": 21.193,
+      "status_at_report": "dropped",
+      "relinquishing_licence": "PL647",
+      "relinquishing_operator": "Maersk Oil Norway AS",
+      "relinquishing_operator_canonical": "TotalEnergies (incl. Maersk/Total)",
+      "relinquishment_year": 2014,
+      "area": "Norwegian Sea",
+      "pre_relinquishment_pg": null,
+      "pre_relinquishment_mean_msmo3": null,
+      "pre_relinquishment_mean_mmboe": null,
+      "reasons_not_drilled": [
+        "high_risk",
+        "volume_too_small"
+      ],
+      "risk_elements": [],
+      "key_risks": [],
+      "conclusion_text": "The Cretaceous leads mainly sit within PL211/PL211 B (Fig 4) and only parts of them extend into PL647. The view on prospectivity is that the PL647 parts of the leads likely only contain sub economical volumes with a high risk, inside PL647. Prospectivity inside PL647 is most likely tested in a better position inside PL211 acreage.",
+      "later_discovery_well": "6507/4-3 S",
+      "later_operator": "ConocoPhillips Skandinavia AS",
+      "later_operator_canonical": "ConocoPhillips",
+      "later_licence": "1064",
+      "later_year": 2022,
+      "years_after_relinquishment": 8,
+      "same_operator_lineage": false,
+      "discovery_name": "6507/4-3 S",
+      "discovery_wellbore_flag": true,
+      "content": "GAS",
+      "field": null,
+      "hc_formation": "LANGE FM",
+      "hc_age": "LATE CRETACEOUS",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "6507/4-3 S",
+          "year": 2022,
+          "operator": "ConocoPhillips Skandinavia AS",
+          "content": "GAS",
+          "discovery": "6507/4-3 S",
+          "field": null
+        }
+      ]
+    }
+  ],
+  "drilled_dry_then_discovered_resurrections": [
+    {
+      "prospect_name": "Salander",
+      "prospect_id": "PL650_SALANDER",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 0.293,
+      "status_at_report": "drilled_dry",
+      "relinquishing_licence": "PL650",
+      "relinquishing_operator": "DEA E&P Norge AS",
+      "relinquishing_operator_canonical": "Harbour / Wintershall Dea",
+      "relinquishment_year": 2017,
+      "area": "Norwegian Sea",
+      "pre_relinquishment_pg": 0.13,
+      "pre_relinquishment_mean_msmo3": 1.129,
+      "pre_relinquishment_mean_mmboe": 7.1,
+      "reasons_not_drilled": [
+        "high_risk",
+        "volume_too_small"
+      ],
+      "risk_elements": [
+        "charge",
+        "reservoir_presence",
+        "trap_seal"
+      ],
+      "key_risks": [
+        {
+          "element": "reservoir_presence",
+          "severity": null,
+          "reason": "no wells in the same structural setting within the Revfallet Fault Complex; difficult seismic tie to offset wells"
+        },
+        {
+          "element": "trap_seal",
+          "severity": null,
+          "reason": "trap seal relatively high pre-drill risk; post-well most likely failure reason is seal capacity"
+        },
+        {
+          "element": "charge",
+          "severity": null,
+          "reason": "charge relatively high pre-drill risk; thermogenic gas proves migration but volumes not large"
+        }
+      ],
+      "conclusion_text": "The probability of success and the volume potential in the Salander 4-way closure is considered to be too low to be considered as a future drill candidate in PL650.",
+      "later_discovery_well": "6507/3-15",
+      "later_operator": "Aker BP ASA",
+      "later_operator_canonical": "Aker BP (incl. Det norske/BP Norge)",
+      "later_licence": "941",
+      "later_year": 2022,
+      "years_after_relinquishment": 5,
+      "same_operator_lineage": false,
+      "discovery_name": "6507/3-15",
+      "discovery_wellbore_flag": true,
+      "content": "OIL/GAS",
+      "field": null,
+      "hc_formation": "FANGST GP",
+      "hc_age": "MIDDLE JURASSIC",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "6507/3-15",
+          "year": 2022,
+          "operator": "Aker BP ASA",
+          "content": "OIL/GAS",
+          "discovery": "6507/3-15",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Kopervik",
+      "prospect_id": "PL625_KOPERVIK",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 21.613,
+      "status_at_report": "drilled_dry",
+      "relinquishing_licence": "PL625",
+      "relinquishing_operator": "Lundin Norway AS",
+      "relinquishing_operator_canonical": "Lundin",
+      "relinquishment_year": 2016,
+      "area": "North Sea",
+      "pre_relinquishment_pg": null,
+      "pre_relinquishment_mean_msmo3": null,
+      "pre_relinquishment_mean_mmboe": null,
+      "reasons_not_drilled": [
+        "high_risk",
+        "volume_too_small"
+      ],
+      "risk_elements": [
+        "migration",
+        "seal"
+      ],
+      "key_risks": [
+        {
+          "element": "migration",
+          "severity": null,
+          "reason": "named as one of the main risks for the prospect (no further reason given; prospect lies up-dip of the Hanz and down-dip of the Midway discoveries)"
+        },
+        {
+          "element": "seal",
+          "severity": null,
+          "reason": "base seal potential of the Statfjord Formation (largest risk)"
+        }
+      ],
+      "conclusion_text": "Well 25/10-12 S tested the Kopervik prospect and was dry. Based on subsequent analysis of well data and interpretation of seismic data the volume potential of Kopervik up-dip well 25/10-12 S is considered very high risk and too small to justify another exploration well. The remaining prospectivity in PL 625 is interpreted to be low.",
+      "later_discovery_well": "16/1-34 S",
+      "later_operator": "Lundin Energy Norway AS",
+      "later_operator_canonical": "Lundin",
+      "later_licence": "167",
+      "later_year": 2021,
+      "years_after_relinquishment": 5,
+      "same_operator_lineage": true,
+      "discovery_name": "16/1-34 S (Lillefix)",
+      "discovery_wellbore_flag": true,
+      "content": "OIL",
+      "field": null,
+      "hc_formation": "HEIMDAL FM",
+      "hc_age": "PALEOCENE",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "16/1-34 S",
+          "year": 2021,
+          "operator": "Lundin Energy Norway AS",
+          "content": "OIL",
+          "discovery": "16/1-34 S (Lillefix)",
+          "field": null
+        }
+      ]
+    },
+    {
+      "prospect_name": "Clapton",
+      "prospect_id": "PL440S_CLAPTON",
+      "classification": "prospect",
+      "feature_layer": "prospect",
+      "feature_area_km2": 7.321,
+      "status_at_report": "drilled_dry",
+      "relinquishing_licence": "PL440S",
+      "relinquishing_operator": "Faroe Petroleum Norge AS",
+      "relinquishing_operator_canonical": "DNO (incl. Faroe)",
+      "relinquishment_year": 2013,
+      "area": "North Sea",
+      "pre_relinquishment_pg": 0.26,
+      "pre_relinquishment_mean_msmo3": 4.0,
+      "pre_relinquishment_mean_mmboe": 25.16,
+      "reasons_not_drilled": [],
+      "risk_elements": [
+        "retention"
+      ],
+      "key_risks": [
+        {
+          "element": "retention",
+          "severity": "major",
+          "reason": "dynamic seal in the overburden periodically leaking hydrocarbons through lateral transfer - \"one of the main risks\"; the well result is interpreted as fill then leakage by seal failure"
+        }
+      ],
+      "conclusion_text": "Clapton was the only remaining prospect before 2/8-18 S; the disappointing well result is the main reason for relinquishing the licence.",
+      "later_discovery_well": "2/8-19",
+      "later_operator": "Aker BP ASA",
+      "later_operator_canonical": "Aker BP (incl. Det norske/BP Norge)",
+      "later_licence": "1085",
+      "later_year": 2022,
+      "years_after_relinquishment": 9,
+      "same_operator_lineage": false,
+      "discovery_name": "2/8-19 (Overly)",
+      "discovery_wellbore_flag": true,
+      "content": "OIL/GAS",
+      "field": null,
+      "hc_formation": "NORDLAND GP",
+      "hc_age": "PLIOCENE",
+      "all_later_wildcat_wells": [
+        {
+          "wellbore": "2/8-19",
+          "year": 2022,
+          "operator": "Aker BP ASA",
+          "content": "OIL/GAS",
+          "discovery": "2/8-19 (Overly)",
+          "field": null
+        }
+      ]
+    }
+  ]
+}
