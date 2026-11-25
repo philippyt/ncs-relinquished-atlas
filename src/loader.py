@@ -73,6 +73,14 @@ def safe_canonical_volume_msmo3(vol: dict[str, Any], field: str = "mean") -> flo
         return float(val) / 1000.0
     if raw_unit == "GSm³ OE" and cunit == "1e6 Sm3 o.e." and us.get("factor") == 1000.0:
         return float(val) / 1000.0
+    if (
+        vol.get("phase") == "condensate"
+        and raw_unit.lower().replace(" ", "") == "1e9sm3"
+        and cunit == "1e6 Sm3"
+        and us.get("factor") == 1000.0
+        and float(val) > 500.0
+    ):
+        return float(val) / 1000.0
     if cunit == "1e6 Sm3 o.e.":
         return float(val)
     if cunit == "1e6 Sm3":
