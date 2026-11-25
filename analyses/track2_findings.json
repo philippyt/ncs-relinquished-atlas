@@ -1,0 +1,2192 @@
+{
+  "corpus": {
+    "deduplicated_licences": 738,
+    "dropped_duplicate_licences": 18,
+    "total_prospects": 5325,
+    "prospects_with_exploration_pg": 2233,
+    "in_licence_drilled_total": 553,
+    "in_licence_drilled_outcomes": {
+      "dry": 340,
+      "discovery": 213
+    },
+    "post_relinquishment_spatial_matched_total": 138,
+    "post_relinquishment_with_pg": 92,
+    "post_relinquishment_tight_le50km2_with_pg": 76
+  },
+  "calibration": {
+    "strict_in_licence_exploration": {
+      "n": 138,
+      "discoveries": 25,
+      "mean_predicted_pg": 0.27,
+      "actual_discovery_rate": 0.1812,
+      "gap_pp": -8.89,
+      "actual_ci_95": [
+        0.1258,
+        0.2538
+      ],
+      "brier_score": 0.1386,
+      "ece": 0.0889,
+      "z_stat": -2.474,
+      "p_value": 0.013362,
+      "bins": [
+        {
+          "bin": "<15%",
+          "n": 18,
+          "mean_pg": 0.1013,
+          "discoveries": 1,
+          "actual_rate": 0.0556,
+          "gap_pp": -4.57,
+          "ci_95": [
+            0.0099,
+            0.2576
+          ]
+        },
+        {
+          "bin": "15-25%",
+          "n": 55,
+          "mean_pg": 0.199,
+          "discoveries": 6,
+          "actual_rate": 0.1091,
+          "gap_pp": -8.99,
+          "ci_95": [
+            0.051,
+            0.2183
+          ]
+        },
+        {
+          "bin": "25-35%",
+          "n": 36,
+          "mean_pg": 0.2969,
+          "discoveries": 8,
+          "actual_rate": 0.2222,
+          "gap_pp": -7.46,
+          "ci_95": [
+            0.1172,
+            0.3809
+          ]
+        },
+        {
+          "bin": "35-50%",
+          "n": 21,
+          "mean_pg": 0.4087,
+          "discoveries": 5,
+          "actual_rate": 0.2381,
+          "gap_pp": -17.06,
+          "ci_95": [
+            0.1063,
+            0.4509
+          ]
+        },
+        {
+          "bin": "50%+",
+          "n": 8,
+          "mean_pg": 0.6538,
+          "discoveries": 5,
+          "actual_rate": 0.625,
+          "gap_pp": -2.88,
+          "ci_95": [
+            0.3057,
+            0.8632
+          ]
+        }
+      ]
+    },
+    "full_in_licence_exploration": {
+      "n": 150,
+      "discoveries": 30,
+      "mean_predicted_pg": 0.2836,
+      "actual_discovery_rate": 0.2,
+      "gap_pp": -8.36,
+      "actual_ci_95": [
+        0.1438,
+        0.2711
+      ],
+      "brier_score": 0.1453,
+      "ece": 0.0836,
+      "z_stat": -2.401,
+      "p_value": 0.016343,
+      "bins": [
+        {
+          "bin": "<15%",
+          "n": 18,
+          "mean_pg": 0.1013,
+          "discoveries": 1,
+          "actual_rate": 0.0556,
+          "gap_pp": -4.57,
+          "ci_95": [
+            0.0099,
+            0.2576
+          ]
+        },
+        {
+          "bin": "15-25%",
+          "n": 57,
+          "mean_pg": 0.1986,
+          "discoveries": 6,
+          "actual_rate": 0.1053,
+          "gap_pp": -9.34,
+          "ci_95": [
+            0.0491,
+            0.2112
+          ]
+        },
+        {
+          "bin": "25-35%",
+          "n": 38,
+          "mean_pg": 0.2978,
+          "discoveries": 8,
+          "actual_rate": 0.2105,
+          "gap_pp": -8.73,
+          "ci_95": [
+            0.1107,
+            0.3635
+          ]
+        },
+        {
+          "bin": "35-50%",
+          "n": 22,
+          "mean_pg": 0.4083,
+          "discoveries": 6,
+          "actual_rate": 0.2727,
+          "gap_pp": -13.56,
+          "ci_95": [
+            0.1315,
+            0.4815
+          ]
+        },
+        {
+          "bin": "50%+",
+          "n": 15,
+          "mean_pg": 0.606,
+          "discoveries": 9,
+          "actual_rate": 0.6,
+          "gap_pp": -0.6,
+          "ci_95": [
+            0.3575,
+            0.8018
+          ]
+        }
+      ]
+    },
+    "post_relinquishment_out_of_sample": {
+      "n": 92,
+      "discoveries": 44,
+      "mean_predicted_pg": 0.2357,
+      "actual_discovery_rate": 0.4783,
+      "gap_pp": 24.25,
+      "actual_ci_95": [
+        0.3791,
+        0.5791
+      ],
+      "brier_score": 0.2711,
+      "ece": 0.2425,
+      "z_stat": 6.093,
+      "p_value": 0.0,
+      "bins": [
+        {
+          "bin": "<15%",
+          "n": 35,
+          "mean_pg": 0.0882,
+          "discoveries": 10,
+          "actual_rate": 0.2857,
+          "gap_pp": 19.75,
+          "ci_95": [
+            0.1633,
+            0.4506
+          ]
+        },
+        {
+          "bin": "15-25%",
+          "n": 26,
+          "mean_pg": 0.1968,
+          "discoveries": 13,
+          "actual_rate": 0.5,
+          "gap_pp": 30.32,
+          "ci_95": [
+            0.3206,
+            0.6794
+          ]
+        },
+        {
+          "bin": "25-35%",
+          "n": 11,
+          "mean_pg": 0.3,
+          "discoveries": 5,
+          "actual_rate": 0.4545,
+          "gap_pp": 15.45,
+          "ci_95": [
+            0.2127,
+            0.7199
+          ]
+        },
+        {
+          "bin": "35-50%",
+          "n": 14,
+          "mean_pg": 0.3932,
+          "discoveries": 10,
+          "actual_rate": 0.7143,
+          "gap_pp": 32.11,
+          "ci_95": [
+            0.4535,
+            0.8828
+          ]
+        },
+        {
+          "bin": "50%+",
+          "n": 6,
+          "mean_pg": 0.78,
+          "discoveries": 6,
+          "actual_rate": 1.0,
+          "gap_pp": 22.0,
+          "ci_95": [
+            0.6097,
+            1.0
+          ]
+        }
+      ]
+    },
+    "post_relinquishment_tight_le50km2": {
+      "n": 76,
+      "discoveries": 40,
+      "mean_predicted_pg": 0.2547,
+      "actual_discovery_rate": 0.5263,
+      "gap_pp": 27.16,
+      "actual_ci_95": [
+        0.4155,
+        0.6346
+      ],
+      "brier_score": 0.2876,
+      "ece": 0.2716,
+      "z_stat": 6.07,
+      "p_value": 0.0,
+      "bins": [
+        {
+          "bin": "<15%",
+          "n": 24,
+          "mean_pg": 0.0865,
+          "discoveries": 7,
+          "actual_rate": 0.2917,
+          "gap_pp": 20.51,
+          "ci_95": [
+            0.1491,
+            0.4917
+          ]
+        },
+        {
+          "bin": "15-25%",
+          "n": 24,
+          "mean_pg": 0.1978,
+          "discoveries": 13,
+          "actual_rate": 0.5417,
+          "gap_pp": 34.39,
+          "ci_95": [
+            0.3507,
+            0.7211
+          ]
+        },
+        {
+          "bin": "25-35%",
+          "n": 9,
+          "mean_pg": 0.3011,
+          "discoveries": 5,
+          "actual_rate": 0.5556,
+          "gap_pp": 25.44,
+          "ci_95": [
+            0.2666,
+            0.8112
+          ]
+        },
+        {
+          "bin": "35-50%",
+          "n": 13,
+          "mean_pg": 0.3958,
+          "discoveries": 9,
+          "actual_rate": 0.6923,
+          "gap_pp": 29.65,
+          "ci_95": [
+            0.4237,
+            0.8732
+          ]
+        },
+        {
+          "bin": "50%+",
+          "n": 6,
+          "mean_pg": 0.78,
+          "discoveries": 6,
+          "actual_rate": 1.0,
+          "gap_pp": 22.0,
+          "ci_95": [
+            0.6097,
+            1.0
+          ]
+        }
+      ]
+    },
+    "combined_exploration": {
+      "n": 242,
+      "discoveries": 74,
+      "mean_predicted_pg": 0.2654,
+      "actual_discovery_rate": 0.3058,
+      "gap_pp": 4.04,
+      "actual_ci_95": [
+        0.2511,
+        0.3665
+      ],
+      "brier_score": 0.1931,
+      "ece": 0.0538,
+      "z_stat": 1.533,
+      "p_value": 0.125297,
+      "bins": [
+        {
+          "bin": "<15%",
+          "n": 53,
+          "mean_pg": 0.0926,
+          "discoveries": 11,
+          "actual_rate": 0.2075,
+          "gap_pp": 11.49,
+          "ci_95": [
+            0.12,
+            0.3346
+          ]
+        },
+        {
+          "bin": "15-25%",
+          "n": 83,
+          "mean_pg": 0.1981,
+          "discoveries": 19,
+          "actual_rate": 0.2289,
+          "gap_pp": 3.08,
+          "ci_95": [
+            0.1517,
+            0.3301
+          ]
+        },
+        {
+          "bin": "25-35%",
+          "n": 49,
+          "mean_pg": 0.2983,
+          "discoveries": 13,
+          "actual_rate": 0.2653,
+          "gap_pp": -3.3,
+          "ci_95": [
+            0.1621,
+            0.4026
+          ]
+        },
+        {
+          "bin": "35-50%",
+          "n": 36,
+          "mean_pg": 0.4024,
+          "discoveries": 16,
+          "actual_rate": 0.4444,
+          "gap_pp": 4.2,
+          "ci_95": [
+            0.2954,
+            0.6042
+          ]
+        },
+        {
+          "bin": "50%+",
+          "n": 21,
+          "mean_pg": 0.6557,
+          "discoveries": 15,
+          "actual_rate": 0.7143,
+          "gap_pp": 5.86,
+          "ci_95": [
+            0.5004,
+            0.8619
+          ]
+        }
+      ]
+    },
+    "commercial_only_strict_in_licence": {
+      "n": 138,
+      "discoveries": 11,
+      "mean_predicted_pg": 0.27,
+      "actual_discovery_rate": 0.0797,
+      "gap_pp": -19.03,
+      "actual_ci_95": [
+        0.0451,
+        0.1371
+      ],
+      "brier_score": 0.1112,
+      "ece": 0.1903,
+      "z_stat": -5.298,
+      "p_value": 0.0,
+      "bins": [
+        {
+          "bin": "<15%",
+          "n": 18,
+          "mean_pg": 0.1013,
+          "discoveries": 0,
+          "actual_rate": 0.0,
+          "gap_pp": -10.13,
+          "ci_95": [
+            0.0,
+            0.1759
+          ]
+        },
+        {
+          "bin": "15-25%",
+          "n": 55,
+          "mean_pg": 0.199,
+          "discoveries": 1,
+          "actual_rate": 0.0182,
+          "gap_pp": -18.08,
+          "ci_95": [
+            0.0032,
+            0.0961
+          ]
+        },
+        {
+          "bin": "25-35%",
+          "n": 36,
+          "mean_pg": 0.2969,
+          "discoveries": 6,
+          "actual_rate": 0.1667,
+          "gap_pp": -13.02,
+          "ci_95": [
+            0.0787,
+            0.3189
+          ]
+        },
+        {
+          "bin": "35-50%",
+          "n": 21,
+          "mean_pg": 0.4087,
+          "discoveries": 3,
+          "actual_rate": 0.1429,
+          "gap_pp": -26.59,
+          "ci_95": [
+            0.0498,
+            0.3464
+          ]
+        },
+        {
+          "bin": "50%+",
+          "n": 8,
+          "mean_pg": 0.6538,
+          "discoveries": 1,
+          "actual_rate": 0.125,
+          "gap_pp": -52.88,
+          "ci_95": [
+            0.0224,
+            0.4709
+          ]
+        }
+      ]
+    },
+    "commercial_only_full_in_licence": {
+      "n": 150,
+      "discoveries": 14,
+      "mean_predicted_pg": 0.2836,
+      "actual_discovery_rate": 0.0933,
+      "gap_pp": -19.02,
+      "actual_ci_95": [
+        0.0564,
+        0.1506
+      ],
+      "brier_score": 0.1201,
+      "ece": 0.1902,
+      "z_stat": -5.466,
+      "p_value": 0.0,
+      "bins": [
+        {
+          "bin": "<15%",
+          "n": 18,
+          "mean_pg": 0.1013,
+          "discoveries": 0,
+          "actual_rate": 0.0,
+          "gap_pp": -10.13,
+          "ci_95": [
+            0.0,
+            0.1759
+          ]
+        },
+        {
+          "bin": "15-25%",
+          "n": 57,
+          "mean_pg": 0.1986,
+          "discoveries": 1,
+          "actual_rate": 0.0175,
+          "gap_pp": -18.11,
+          "ci_95": [
+            0.0031,
+            0.0929
+          ]
+        },
+        {
+          "bin": "25-35%",
+          "n": 38,
+          "mean_pg": 0.2978,
+          "discoveries": 6,
+          "actual_rate": 0.1579,
+          "gap_pp": -13.99,
+          "ci_95": [
+            0.0744,
+            0.3042
+          ]
+        },
+        {
+          "bin": "35-50%",
+          "n": 22,
+          "mean_pg": 0.4083,
+          "discoveries": 4,
+          "actual_rate": 0.1818,
+          "gap_pp": -22.65,
+          "ci_95": [
+            0.0731,
+            0.3852
+          ]
+        },
+        {
+          "bin": "50%+",
+          "n": 15,
+          "mean_pg": 0.606,
+          "discoveries": 3,
+          "actual_rate": 0.2,
+          "gap_pp": -40.6,
+          "ci_95": [
+            0.0705,
+            0.4519
+          ]
+        }
+      ]
+    },
+    "by_basin_in_licence": {
+      "North Sea": {
+        "n": 90,
+        "discoveries": 20,
+        "mean_predicted_pg": 0.2867,
+        "actual_discovery_rate": 0.2222,
+        "gap_pp": -6.45,
+        "actual_ci_95": [
+          0.1487,
+          0.3185
+        ],
+        "brier_score": 0.1413,
+        "ece": 0.0918,
+        "z_stat": -1.433,
+        "p_value": 0.151904,
+        "bins": [
+          {
+            "bin": "<15%",
+            "n": 12,
+            "mean_pg": 0.0887,
+            "discoveries": 1,
+            "actual_rate": 0.0833,
+            "gap_pp": -0.53,
+            "ci_95": [
+              0.0149,
+              0.3539
+            ]
+          },
+          {
+            "bin": "15-25%",
+            "n": 33,
+            "mean_pg": 0.2007,
+            "discoveries": 4,
+            "actual_rate": 0.1212,
+            "gap_pp": -7.95,
+            "ci_95": [
+              0.0482,
+              0.2733
+            ]
+          },
+          {
+            "bin": "25-35%",
+            "n": 20,
+            "mean_pg": 0.3011,
+            "discoveries": 2,
+            "actual_rate": 0.1,
+            "gap_pp": -20.11,
+            "ci_95": [
+              0.0279,
+              0.301
+            ]
+          },
+          {
+            "bin": "35-50%",
+            "n": 15,
+            "mean_pg": 0.4215,
+            "discoveries": 6,
+            "actual_rate": 0.4,
+            "gap_pp": -2.15,
+            "ci_95": [
+              0.1982,
+              0.6425
+            ]
+          },
+          {
+            "bin": "50%+",
+            "n": 10,
+            "mean_pg": 0.577,
+            "discoveries": 7,
+            "actual_rate": 0.7,
+            "gap_pp": 12.3,
+            "ci_95": [
+              0.3968,
+              0.8922
+            ]
+          }
+        ]
+      },
+      "Norwegian Sea": {
+        "n": 41,
+        "discoveries": 8,
+        "mean_predicted_pg": 0.2839,
+        "actual_discovery_rate": 0.1951,
+        "gap_pp": -8.88,
+        "actual_ci_95": [
+          0.1023,
+          0.3401
+        ],
+        "brier_score": 0.1601,
+        "ece": 0.1015,
+        "z_stat": -1.323,
+        "p_value": 0.185993,
+        "bins": [
+          {
+            "bin": "<15%",
+            "n": 2,
+            "mean_pg": 0.125,
+            "discoveries": 0,
+            "actual_rate": 0.0,
+            "gap_pp": -12.5,
+            "ci_95": [
+              0.0,
+              0.6576
+            ]
+          },
+          {
+            "bin": "15-25%",
+            "n": 17,
+            "mean_pg": 0.1959,
+            "discoveries": 2,
+            "actual_rate": 0.1176,
+            "gap_pp": -7.82,
+            "ci_95": [
+              0.0329,
+              0.3434
+            ]
+          },
+          {
+            "bin": "25-35%",
+            "n": 13,
+            "mean_pg": 0.2877,
+            "discoveries": 4,
+            "actual_rate": 0.3077,
+            "gap_pp": 2.0,
+            "ci_95": [
+              0.1268,
+              0.5763
+            ]
+          },
+          {
+            "bin": "35-50%",
+            "n": 6,
+            "mean_pg": 0.3833,
+            "discoveries": 0,
+            "actual_rate": 0.0,
+            "gap_pp": -38.33,
+            "ci_95": [
+              0.0,
+              0.3903
+            ]
+          },
+          {
+            "bin": "50%+",
+            "n": 3,
+            "mean_pg": 0.6733,
+            "discoveries": 2,
+            "actual_rate": 0.6667,
+            "gap_pp": -0.67,
+            "ci_95": [
+              0.2077,
+              0.9385
+            ]
+          }
+        ]
+      },
+      "Barents Sea": {
+        "n": 19,
+        "discoveries": 2,
+        "mean_predicted_pg": 0.2681,
+        "actual_discovery_rate": 0.1053,
+        "gap_pp": -16.28,
+        "actual_ci_95": [
+          0.0294,
+          0.3139
+        ],
+        "brier_score": 0.1321,
+        "ece": 0.2097,
+        "z_stat": -1.707,
+        "p_value": 0.087782,
+        "bins": [
+          {
+            "bin": "<15%",
+            "n": 4,
+            "mean_pg": 0.1273,
+            "discoveries": 0,
+            "actual_rate": 0.0,
+            "gap_pp": -12.72,
+            "ci_95": [
+              0.0,
+              0.4899
+            ]
+          },
+          {
+            "bin": "15-25%",
+            "n": 7,
+            "mean_pg": 0.1957,
+            "discoveries": 0,
+            "actual_rate": 0.0,
+            "gap_pp": -19.57,
+            "ci_95": [
+              0.0,
+              0.3543
+            ]
+          },
+          {
+            "bin": "25-35%",
+            "n": 5,
+            "mean_pg": 0.311,
+            "discoveries": 2,
+            "actual_rate": 0.4,
+            "gap_pp": 8.9,
+            "ci_95": [
+              0.1176,
+              0.7693
+            ]
+          },
+          {
+            "bin": "35-50%",
+            "n": 1,
+            "mean_pg": 0.36,
+            "discoveries": 0,
+            "actual_rate": 0.0,
+            "gap_pp": -36.0,
+            "ci_95": [
+              0.0,
+              0.7935
+            ]
+          },
+          {
+            "bin": "50%+",
+            "n": 2,
+            "mean_pg": 0.65,
+            "discoveries": 0,
+            "actual_rate": 0.0,
+            "gap_pp": -65.0,
+            "ci_95": [
+              0.0,
+              0.6576
+            ]
+          }
+        ]
+      }
+    },
+    "by_basin_combined": {
+      "North Sea": {
+        "n": 147,
+        "discoveries": 45,
+        "mean_predicted_pg": 0.2559,
+        "actual_discovery_rate": 0.3061,
+        "gap_pp": 5.02,
+        "actual_ci_95": [
+          0.2373,
+          0.3848
+        ],
+        "brier_score": 0.196,
+        "ece": 0.102,
+        "z_stat": 1.509,
+        "p_value": 0.13135,
+        "bins": [
+          {
+            "bin": "<15%",
+            "n": 38,
+            "mean_pg": 0.0834,
+            "discoveries": 10,
+            "actual_rate": 0.2632,
+            "gap_pp": 17.97,
+            "ci_95": [
+              0.1497,
+              0.4201
+            ]
+          },
+          {
+            "bin": "15-25%",
+            "n": 49,
+            "mean_pg": 0.2019,
+            "discoveries": 12,
+            "actual_rate": 0.2449,
+            "gap_pp": 4.3,
+            "ci_95": [
+              0.146,
+              0.3809
+            ]
+          },
+          {
+            "bin": "25-35%",
+            "n": 26,
+            "mean_pg": 0.3001,
+            "discoveries": 4,
+            "actual_rate": 0.1538,
+            "gap_pp": -14.62,
+            "ci_95": [
+              0.0615,
+              0.3353
+            ]
+          },
+          {
+            "bin": "35-50%",
+            "n": 22,
+            "mean_pg": 0.4158,
+            "discoveries": 10,
+            "actual_rate": 0.4545,
+            "gap_pp": 3.87,
+            "ci_95": [
+              0.2692,
+              0.6534
+            ]
+          },
+          {
+            "bin": "50%+",
+            "n": 12,
+            "mean_pg": 0.6333,
+            "discoveries": 9,
+            "actual_rate": 0.75,
+            "gap_pp": 11.67,
+            "ci_95": [
+              0.4677,
+              0.9111
+            ]
+          }
+        ]
+      },
+      "Norwegian Sea": {
+        "n": 64,
+        "discoveries": 23,
+        "mean_predicted_pg": 0.3008,
+        "actual_discovery_rate": 0.3594,
+        "gap_pp": 5.86,
+        "actual_ci_95": [
+          0.2529,
+          0.4818
+        ],
+        "brier_score": 0.1997,
+        "ece": 0.0777,
+        "z_stat": 1.091,
+        "p_value": 0.275181,
+        "bins": [
+          {
+            "bin": "<15%",
+            "n": 5,
+            "mean_pg": 0.122,
+            "discoveries": 0,
+            "actual_rate": 0.0,
+            "gap_pp": -12.2,
+            "ci_95": [
+              0.0,
+              0.4345
+            ]
+          },
+          {
+            "bin": "15-25%",
+            "n": 23,
+            "mean_pg": 0.1939,
+            "discoveries": 5,
+            "actual_rate": 0.2174,
+            "gap_pp": 2.35,
+            "ci_95": [
+              0.0966,
+              0.419
+            ]
+          },
+          {
+            "bin": "25-35%",
+            "n": 18,
+            "mean_pg": 0.2922,
+            "discoveries": 7,
+            "actual_rate": 0.3889,
+            "gap_pp": 9.67,
+            "ci_95": [
+              0.203,
+              0.6138
+            ]
+          },
+          {
+            "bin": "35-50%",
+            "n": 12,
+            "mean_pg": 0.385,
+            "discoveries": 6,
+            "actual_rate": 0.5,
+            "gap_pp": 11.5,
+            "ci_95": [
+              0.2538,
+              0.7462
+            ]
+          },
+          {
+            "bin": "50%+",
+            "n": 6,
+            "mean_pg": 0.7167,
+            "discoveries": 5,
+            "actual_rate": 0.8333,
+            "gap_pp": 11.67,
+            "ci_95": [
+              0.4365,
+              0.9699
+            ]
+          }
+        ]
+      },
+      "Barents Sea": {
+        "n": 31,
+        "discoveries": 6,
+        "mean_predicted_pg": 0.2374,
+        "actual_discovery_rate": 0.1935,
+        "gap_pp": -4.39,
+        "actual_ci_95": [
+          0.0919,
+          0.3628
+        ],
+        "brier_score": 0.1659,
+        "ece": 0.0726,
+        "z_stat": -0.615,
+        "p_value": 0.538791,
+        "bins": [
+          {
+            "bin": "<15%",
+            "n": 10,
+            "mean_pg": 0.1129,
+            "discoveries": 1,
+            "actual_rate": 0.1,
+            "gap_pp": -1.29,
+            "ci_95": [
+              0.0179,
+              0.4042
+            ]
+          },
+          {
+            "bin": "15-25%",
+            "n": 11,
+            "mean_pg": 0.1896,
+            "discoveries": 2,
+            "actual_rate": 0.1818,
+            "gap_pp": -0.78,
+            "ci_95": [
+              0.0514,
+              0.477
+            ]
+          },
+          {
+            "bin": "25-35%",
+            "n": 5,
+            "mean_pg": 0.311,
+            "discoveries": 2,
+            "actual_rate": 0.4,
+            "gap_pp": 8.9,
+            "ci_95": [
+              0.1176,
+              0.7693
+            ]
+          },
+          {
+            "bin": "35-50%",
+            "n": 2,
+            "mean_pg": 0.36,
+            "discoveries": 0,
+            "actual_rate": 0.0,
+            "gap_pp": -36.0,
+            "ci_95": [
+              0.0,
+              0.6576
+            ]
+          },
+          {
+            "bin": "50%+",
+            "n": 3,
+            "mean_pg": 0.6233,
+            "discoveries": 1,
+            "actual_rate": 0.3333,
+            "gap_pp": -29.0,
+            "ci_95": [
+              0.0615,
+              0.7923
+            ]
+          }
+        ]
+      }
+    },
+    "by_decade_in_licence": {
+      "2000s": {
+        "n": 2,
+        "discoveries": 0,
+        "mean_predicted_pg": 0.23,
+        "actual_discovery_rate": 0.0,
+        "gap_pp": -23.0,
+        "actual_ci_95": [
+          0.0,
+          0.6576
+        ],
+        "brier_score": 0.0698,
+        "ece": 0.23,
+        "z_stat": -0.813,
+        "p_value": 0.41641,
+        "bins": [
+          {
+            "bin": "<15%",
+            "n": 1,
+            "mean_pg": 0.1,
+            "discoveries": 0,
+            "actual_rate": 0.0,
+            "gap_pp": -10.0,
+            "ci_95": [
+              0.0,
+              0.7935
+            ]
+          },
+          {
+            "bin": "15-25%",
+            "n": 0
+          },
+          {
+            "bin": "25-35%",
+            "n": 0
+          },
+          {
+            "bin": "35-50%",
+            "n": 1,
+            "mean_pg": 0.36,
+            "discoveries": 0,
+            "actual_rate": 0.0,
+            "gap_pp": -36.0,
+            "ci_95": [
+              0.0,
+              0.7935
+            ]
+          },
+          {
+            "bin": "50%+",
+            "n": 0
+          }
+        ]
+      },
+      "2010s": {
+        "n": 91,
+        "discoveries": 19,
+        "mean_predicted_pg": 0.2812,
+        "actual_discovery_rate": 0.2088,
+        "gap_pp": -7.24,
+        "actual_ci_95": [
+          0.1379,
+          0.3032
+        ],
+        "brier_score": 0.151,
+        "ece": 0.0724,
+        "z_stat": -1.621,
+        "p_value": 0.104972,
+        "bins": [
+          {
+            "bin": "<15%",
+            "n": 10,
+            "mean_pg": 0.1126,
+            "discoveries": 1,
+            "actual_rate": 0.1,
+            "gap_pp": -1.26,
+            "ci_95": [
+              0.0179,
+              0.4042
+            ]
+          },
+          {
+            "bin": "15-25%",
+            "n": 40,
+            "mean_pg": 0.1995,
+            "discoveries": 4,
+            "actual_rate": 0.1,
+            "gap_pp": -9.95,
+            "ci_95": [
+              0.0396,
+              0.2305
+            ]
+          },
+          {
+            "bin": "25-35%",
+            "n": 19,
+            "mean_pg": 0.3033,
+            "discoveries": 5,
+            "actual_rate": 0.2632,
+            "gap_pp": -4.01,
+            "ci_95": [
+              0.1181,
+              0.4879
+            ]
+          },
+          {
+            "bin": "35-50%",
+            "n": 14,
+            "mean_pg": 0.4159,
+            "discoveries": 5,
+            "actual_rate": 0.3571,
+            "gap_pp": -5.88,
+            "ci_95": [
+              0.1634,
+              0.6124
+            ]
+          },
+          {
+            "bin": "50%+",
+            "n": 8,
+            "mean_pg": 0.6125,
+            "discoveries": 4,
+            "actual_rate": 0.5,
+            "gap_pp": -11.25,
+            "ci_95": [
+              0.2152,
+              0.7848
+            ]
+          }
+        ]
+      },
+      "2020s": {
+        "n": 56,
+        "discoveries": 11,
+        "mean_predicted_pg": 0.2917,
+        "actual_discovery_rate": 0.1964,
+        "gap_pp": -9.52,
+        "actual_ci_95": [
+          0.1134,
+          0.3184
+        ],
+        "brier_score": 0.141,
+        "ece": 0.1242,
+        "z_stat": -1.664,
+        "p_value": 0.096114,
+        "bins": [
+          {
+            "bin": "<15%",
+            "n": 7,
+            "mean_pg": 0.0853,
+            "discoveries": 0,
+            "actual_rate": 0.0,
+            "gap_pp": -8.53,
+            "ci_95": [
+              0.0,
+              0.3543
+            ]
+          },
+          {
+            "bin": "15-25%",
+            "n": 16,
+            "mean_pg": 0.1995,
+            "discoveries": 2,
+            "actual_rate": 0.125,
+            "gap_pp": -7.45,
+            "ci_95": [
+              0.035,
+              0.3602
+            ]
+          },
+          {
+            "bin": "25-35%",
+            "n": 19,
+            "mean_pg": 0.2924,
+            "discoveries": 3,
+            "actual_rate": 0.1579,
+            "gap_pp": -13.45,
+            "ci_95": [
+              0.0552,
+              0.3757
+            ]
+          },
+          {
+            "bin": "35-50%",
+            "n": 7,
+            "mean_pg": 0.4,
+            "discoveries": 1,
+            "actual_rate": 0.1429,
+            "gap_pp": -25.71,
+            "ci_95": [
+              0.0257,
+              0.5131
+            ]
+          },
+          {
+            "bin": "50%+",
+            "n": 7,
+            "mean_pg": 0.5986,
+            "discoveries": 5,
+            "actual_rate": 0.7143,
+            "gap_pp": 11.57,
+            "ci_95": [
+              0.3589,
+              0.9178
+            ]
+          }
+        ]
+      }
+    },
+    "stage_evolution_application_to_dod": {
+      "n": 12,
+      "mean_pg_application": 0.2208,
+      "mean_pg_drill_or_drop": 0.2875,
+      "mean_shift_pp": 6.67,
+      "upgraded_count": 6,
+      "downgraded_count": 4,
+      "unchanged_count": 2,
+      "actual_discovery_rate": 0.1667
+    }
+  },
+  "fear_vs_failure": {
+    "total_dry_holes": 340,
+    "dry_holes_with_identified_failure_factor": 214,
+    "macro_fear_vs_reality": {
+      "reservoir": {
+        "atlas_top_fear_pct": 21.5,
+        "actual_dry_hole_cause_pct": 47.6,
+        "reality_to_fear_ratio": 2.21
+      },
+      "charge": {
+        "atlas_top_fear_pct": 32.6,
+        "actual_dry_hole_cause_pct": 32.5,
+        "reality_to_fear_ratio": 1.0
+      },
+      "retention": {
+        "atlas_top_fear_pct": 16.3,
+        "actual_dry_hole_cause_pct": 14.0,
+        "reality_to_fear_ratio": 0.86
+      },
+      "trap": {
+        "atlas_top_fear_pct": 29.5,
+        "actual_dry_hole_cause_pct": 5.9,
+        "reality_to_fear_ratio": 0.2
+      }
+    },
+    "dry_holes_with_4_factors_and_actual_cause": 10,
+    "top_fear_hit_rate_count": 6,
+    "top_fear_hit_rate_pct": 60.0,
+    "dry_holes_with_qual_high_risk_and_actual_cause": 52,
+    "qual_high_risk_overlap_hits": 42,
+    "qual_high_risk_overlap_pct": 80.8,
+    "qual_blind_spots_by_actual_cause": {
+      "reservoir": {
+        "n_killed": 30,
+        "flagged_high_risk_pre_drill": 20,
+        "unflagged_blind_spot_count": 10,
+        "unflagged_blind_spot_pct": 33.3
+      },
+      "trap": {
+        "n_killed": 3,
+        "flagged_high_risk_pre_drill": 2,
+        "unflagged_blind_spot_count": 1,
+        "unflagged_blind_spot_pct": 33.3
+      },
+      "charge": {
+        "n_killed": 20,
+        "flagged_high_risk_pre_drill": 15,
+        "unflagged_blind_spot_count": 5,
+        "unflagged_blind_spot_pct": 25.0
+      },
+      "retention": {
+        "n_killed": 13,
+        "flagged_high_risk_pre_drill": 8,
+        "unflagged_blind_spot_count": 5,
+        "unflagged_blind_spot_pct": 38.5
+      }
+    },
+    "atlas_wide_lowest_factor_counts": {
+      "charge": 285.3,
+      "reservoir": 188.3,
+      "trap": 258.3,
+      "retention": 143.0
+    },
+    "atlas_wide_high_risk_element_counts": {
+      "retention": 356,
+      "trap": 77,
+      "reservoir": 227,
+      "charge": 417
+    },
+    "actual_dry_hole_factor_counts": {
+      "reservoir": 129,
+      "charge": 88,
+      "retention": 38,
+      "trap": 16
+    },
+    "actual_dry_hole_raw_reason_counts": {
+      "reservoir_absent": 78,
+      "migration": 62,
+      "reservoir_quality": 59,
+      "unknown": 45,
+      "charge": 36,
+      "top_seal": 23,
+      "fault_seal": 21,
+      "trap": 16,
+      "reservoir_absent_at_location": 14,
+      "source_absent": 5,
+      "timing": 4
+    },
+    "confusion_matrix_pre_fear_vs_actual_cause": {
+      "reservoir": {
+        "reservoir": 1,
+        "trap": 0,
+        "charge": 0,
+        "retention": 0
+      },
+      "trap": {
+        "reservoir": 2,
+        "trap": 1,
+        "charge": 1,
+        "retention": 1
+      },
+      "charge": {
+        "reservoir": 3,
+        "trap": 1,
+        "charge": 3,
+        "retention": 0
+      },
+      "retention": {
+        "reservoir": 0,
+        "trap": 0,
+        "charge": 0,
+        "retention": 0
+      }
+    },
+    "quant_blind_spots_by_actual_cause": {
+      "reservoir": {
+        "n_killed_by_factor": 6,
+        "mean_pre_drill_p": 0.5567,
+        "median_pre_drill_p": 0.565,
+        "rated_ge_070_count": 1,
+        "rated_ge_070_pct": 16.7,
+        "rated_ge_080_count": 0,
+        "rated_ge_080_pct": 0.0,
+        "not_top_fear_count": 5,
+        "not_top_fear_pct": 83.3
+      },
+      "trap": {
+        "n_killed_by_factor": 2,
+        "mean_pre_drill_p": 0.725,
+        "median_pre_drill_p": 0.725,
+        "rated_ge_070_count": 1,
+        "rated_ge_070_pct": 50.0,
+        "rated_ge_080_count": 1,
+        "rated_ge_080_pct": 50.0,
+        "not_top_fear_count": 1,
+        "not_top_fear_pct": 50.0
+      },
+      "charge": {
+        "n_killed_by_factor": 4,
+        "mean_pre_drill_p": 0.45,
+        "median_pre_drill_p": 0.5,
+        "rated_ge_070_count": 0,
+        "rated_ge_070_pct": 0.0,
+        "rated_ge_080_count": 0,
+        "rated_ge_080_pct": 0.0,
+        "not_top_fear_count": 0,
+        "not_top_fear_pct": 0.0
+      },
+      "retention": {
+        "n_killed_by_factor": 1,
+        "mean_pre_drill_p": 1.0,
+        "median_pre_drill_p": 1.0,
+        "rated_ge_070_count": 1,
+        "rated_ge_070_pct": 100.0,
+        "rated_ge_080_count": 1,
+        "rated_ge_080_pct": 100.0,
+        "not_top_fear_count": 1,
+        "not_top_fear_pct": 100.0
+      }
+    }
+  },
+  "fingerprints": {
+    "by_basin": {
+      "North Sea": {
+        "n_with_pg": 1047,
+        "mean_pg": 0.1999,
+        "median_pg": 0.16,
+        "n_with_p10_p90": 710,
+        "median_p10_p90": 6.15,
+        "mean_p10_p90": 14.67,
+        "mean_p_reservoir": 0.6772,
+        "n_p_reservoir": 432,
+        "mean_p_trap": 0.6401,
+        "n_p_trap": 427,
+        "mean_p_charge": 0.6539,
+        "n_p_charge": 422,
+        "mean_p_retention": 0.8081,
+        "n_p_retention": 376
+      },
+      "Norwegian Sea": {
+        "n_with_pg": 786,
+        "mean_pg": 0.1888,
+        "median_pg": 0.15,
+        "n_with_p10_p90": 643,
+        "median_p10_p90": 7.42,
+        "mean_p10_p90": 17.71,
+        "mean_p_reservoir": 0.7091,
+        "n_p_reservoir": 388,
+        "mean_p_trap": 0.6374,
+        "n_p_trap": 383,
+        "mean_p_charge": 0.5588,
+        "n_p_charge": 383,
+        "mean_p_retention": 0.8544,
+        "n_p_retention": 369
+      },
+      "Barents Sea": {
+        "n_with_pg": 400,
+        "mean_pg": 0.1955,
+        "median_pg": 0.15,
+        "n_with_p10_p90": 348,
+        "median_p10_p90": 5.25,
+        "mean_p10_p90": 16.14,
+        "mean_p_reservoir": 0.693,
+        "n_p_reservoir": 174,
+        "mean_p_trap": 0.5911,
+        "n_p_trap": 173,
+        "mean_p_charge": 0.6326,
+        "n_p_charge": 168,
+        "mean_p_retention": 0.726,
+        "n_p_retention": 158
+      }
+    },
+    "by_decade": {
+      "2000s": {
+        "n_with_pg": 12,
+        "mean_pg": 0.1493,
+        "median_pg": 0.1,
+        "n_with_p10_p90": 5,
+        "median_p10_p90": 5.92,
+        "mean_p10_p90": 6.3,
+        "mean_p_reservoir": 0.496,
+        "n_p_reservoir": 5,
+        "mean_p_trap": 0.8,
+        "n_p_trap": 5,
+        "mean_p_charge": 0.82,
+        "n_p_charge": 5,
+        "mean_p_retention": 0.5,
+        "n_p_retention": 5
+      },
+      "2010s": {
+        "n_with_pg": 1004,
+        "mean_pg": 0.2002,
+        "median_pg": 0.16,
+        "n_with_p10_p90": 602,
+        "median_p10_p90": 8.51,
+        "mean_p10_p90": 20.1,
+        "mean_p_reservoir": 0.6696,
+        "n_p_reservoir": 296,
+        "mean_p_trap": 0.6741,
+        "n_p_trap": 286,
+        "mean_p_charge": 0.6252,
+        "n_p_charge": 282,
+        "mean_p_retention": 0.7158,
+        "n_p_retention": 238
+      },
+      "2020s": {
+        "n_with_pg": 1204,
+        "mean_pg": 0.1918,
+        "median_pg": 0.15,
+        "n_with_p10_p90": 1082,
+        "median_p10_p90": 5.67,
+        "mean_p10_p90": 14.06,
+        "mean_p_reservoir": 0.7037,
+        "n_p_reservoir": 686,
+        "mean_p_trap": 0.6123,
+        "n_p_trap": 685,
+        "mean_p_charge": 0.6051,
+        "n_p_charge": 680,
+        "mean_p_retention": 0.8508,
+        "n_p_retention": 655
+      }
+    },
+    "by_operator": {
+      "Equinor": {
+        "n_with_pg": 615,
+        "mean_pg": 0.1792,
+        "median_pg": 0.13,
+        "n_with_p10_p90": 544,
+        "median_p10_p90": 5.85,
+        "mean_p10_p90": 9.57,
+        "mean_p_reservoir": 0.7299,
+        "n_p_reservoir": 271,
+        "mean_p_trap": 0.5301,
+        "n_p_trap": 270,
+        "mean_p_charge": 0.4922,
+        "n_p_charge": 269,
+        "mean_p_retention": 0.9788,
+        "n_p_retention": 226,
+        "basin_adjusted_pg_pp": -1.44,
+        "in_licence_drilled_n": 24,
+        "in_licence_mean_pg": 0.2516,
+        "in_licence_actual_rate": 0.1667,
+        "in_licence_gap_pp": -8.49
+      },
+      "Aker BP": {
+        "n_with_pg": 379,
+        "mean_pg": 0.1919,
+        "median_pg": 0.15,
+        "n_with_p10_p90": 230,
+        "median_p10_p90": 3.94,
+        "mean_p10_p90": 8.9,
+        "mean_p_reservoir": 0.652,
+        "n_p_reservoir": 166,
+        "mean_p_trap": 0.5222,
+        "n_p_trap": 159,
+        "mean_p_charge": 0.6379,
+        "n_p_charge": 159,
+        "mean_p_retention": 0.9147,
+        "n_p_retention": 148,
+        "basin_adjusted_pg_pp": -0.53,
+        "in_licence_drilled_n": 40,
+        "in_licence_mean_pg": 0.2913,
+        "in_licence_actual_rate": 0.2,
+        "in_licence_gap_pp": -9.13
+      },
+      "Wintershall Dea": {
+        "n_with_pg": 126,
+        "mean_pg": 0.26,
+        "median_pg": 0.195,
+        "n_with_p10_p90": 100,
+        "median_p10_p90": 14.05,
+        "mean_p10_p90": 31.93,
+        "mean_p_reservoir": 0.6786,
+        "n_p_reservoir": 21,
+        "mean_p_trap": 0.7243,
+        "n_p_trap": 21,
+        "mean_p_charge": 0.7433,
+        "n_p_charge": 30,
+        "mean_p_retention": 0.6962,
+        "n_p_retention": 26,
+        "basin_adjusted_pg_pp": 6.66,
+        "in_licence_drilled_n": 13,
+        "in_licence_mean_pg": 0.3968,
+        "in_licence_actual_rate": 0.2308,
+        "in_licence_gap_pp": -16.6
+      },
+      "DNO": {
+        "n_with_pg": 105,
+        "mean_pg": 0.2923,
+        "median_pg": 0.224,
+        "n_with_p10_p90": 96,
+        "median_p10_p90": 5.23,
+        "mean_p10_p90": 10.71,
+        "mean_p_reservoir": 0.742,
+        "n_p_reservoir": 70,
+        "mean_p_trap": 0.656,
+        "n_p_trap": 70,
+        "mean_p_charge": 0.7687,
+        "n_p_charge": 70,
+        "mean_p_retention": 0.9545,
+        "n_p_retention": 55,
+        "basin_adjusted_pg_pp": 9.61
+      },
+      "Lundin": {
+        "n_with_pg": 95,
+        "mean_pg": 0.1538,
+        "median_pg": 0.14,
+        "n_with_p10_p90": 64,
+        "median_p10_p90": 7.0,
+        "mean_p10_p90": 30.88,
+        "mean_p_reservoir": 0.6086,
+        "n_p_reservoir": 42,
+        "mean_p_trap": 0.71,
+        "n_p_trap": 42,
+        "mean_p_charge": 0.6038,
+        "n_p_charge": 39,
+        "mean_p_retention": 0.65,
+        "n_p_retention": 41,
+        "basin_adjusted_pg_pp": -4.21,
+        "in_licence_drilled_n": 7,
+        "in_licence_mean_pg": 0.2186,
+        "in_licence_actual_rate": 0.0,
+        "in_licence_gap_pp": -21.86
+      },
+      "Vår Energi": {
+        "n_with_pg": 87,
+        "mean_pg": 0.1786,
+        "median_pg": 0.17,
+        "n_with_p10_p90": 77,
+        "median_p10_p90": 5.71,
+        "mean_p10_p90": 14.52,
+        "mean_p_reservoir": 0.6942,
+        "n_p_reservoir": 45,
+        "mean_p_trap": 0.6487,
+        "n_p_trap": 45,
+        "mean_p_charge": 0.7695,
+        "n_p_charge": 40,
+        "mean_p_retention": 0.7288,
+        "n_p_retention": 41,
+        "basin_adjusted_pg_pp": -1.87,
+        "in_licence_drilled_n": 5,
+        "in_licence_mean_pg": 0.2044,
+        "in_licence_actual_rate": 0.4,
+        "in_licence_gap_pp": 19.56
+      },
+      "Shell": {
+        "n_with_pg": 59,
+        "mean_pg": 0.1497,
+        "median_pg": 0.12,
+        "n_with_p10_p90": 55,
+        "median_p10_p90": 11.67,
+        "mean_p10_p90": 41.0,
+        "mean_p_reservoir": 0.5323,
+        "n_p_reservoir": 31,
+        "mean_p_trap": 0.7228,
+        "n_p_trap": 32,
+        "mean_p_charge": 0.5934,
+        "n_p_charge": 32,
+        "mean_p_retention": 0.6126,
+        "n_p_retention": 31,
+        "basin_adjusted_pg_pp": -4.4,
+        "in_licence_drilled_n": 6,
+        "in_licence_mean_pg": 0.3883,
+        "in_licence_actual_rate": 0.1667,
+        "in_licence_gap_pp": -22.16
+      },
+      "Spirit / Centrica": {
+        "n_with_pg": 55,
+        "mean_pg": 0.1858,
+        "median_pg": 0.16,
+        "n_with_p10_p90": 49,
+        "median_p10_p90": 17.35,
+        "mean_p10_p90": 28.18,
+        "mean_p_reservoir": 0.7176,
+        "n_p_reservoir": 38,
+        "mean_p_trap": 0.6946,
+        "n_p_trap": 37,
+        "mean_p_charge": 0.6716,
+        "n_p_charge": 38,
+        "mean_p_retention": 0.6592,
+        "n_p_retention": 36,
+        "basin_adjusted_pg_pp": -0.93
+      },
+      "TotalEnergies": {
+        "n_with_pg": 51,
+        "mean_pg": 0.1869,
+        "median_pg": 0.14,
+        "n_with_p10_p90": 29,
+        "median_p10_p90": 7.13,
+        "mean_p10_p90": 11.08,
+        "mean_p_reservoir": 0.7755,
+        "n_p_reservoir": 11,
+        "mean_p_trap": 0.7111,
+        "n_p_trap": 9,
+        "mean_p_charge": 0.8556,
+        "n_p_charge": 9,
+        "mean_p_retention": 0.4778,
+        "n_p_retention": 9,
+        "basin_adjusted_pg_pp": -0.99
+      },
+      "E.ON": {
+        "n_with_pg": 46,
+        "mean_pg": 0.1725,
+        "median_pg": 0.13,
+        "n_with_p10_p90": 20,
+        "median_p10_p90": 13.05,
+        "mean_p10_p90": 17.25,
+        "mean_p_reservoir": 0.688,
+        "n_p_reservoir": 5,
+        "mean_p_trap": 0.85,
+        "n_p_trap": 5,
+        "mean_p_charge": 0.632,
+        "n_p_charge": 5,
+        "mean_p_retention": 0.5,
+        "n_p_retention": 4,
+        "basin_adjusted_pg_pp": -1.92
+      },
+      "Neptune / ENGIE": {
+        "n_with_pg": 46,
+        "mean_pg": 0.1287,
+        "median_pg": 0.1,
+        "n_with_p10_p90": 35,
+        "median_p10_p90": 7.29,
+        "mean_p10_p90": 10.59,
+        "mean_p_reservoir": 0.6892,
+        "n_p_reservoir": 24,
+        "mean_p_trap": 0.7833,
+        "n_p_trap": 24,
+        "mean_p_charge": 0.5667,
+        "n_p_charge": 21,
+        "mean_p_retention": 0.5667,
+        "n_p_retention": 24,
+        "basin_adjusted_pg_pp": -6.84
+      },
+      "Repsol": {
+        "n_with_pg": 42,
+        "mean_pg": 0.2032,
+        "median_pg": 0.171,
+        "n_with_p10_p90": 28,
+        "median_p10_p90": 7.82,
+        "mean_p10_p90": 9.34,
+        "mean_p_reservoir": 0.775,
+        "n_p_reservoir": 8,
+        "mean_p_trap": 0.6271,
+        "n_p_trap": 7,
+        "mean_p_charge": 0.67,
+        "n_p_charge": 6,
+        "mean_p_retention": 0.6214,
+        "n_p_retention": 7,
+        "basin_adjusted_pg_pp": 0.92,
+        "in_licence_drilled_n": 7,
+        "in_licence_mean_pg": 0.2349,
+        "in_licence_actual_rate": 0.1429,
+        "in_licence_gap_pp": -9.2
+      },
+      "OMV": {
+        "n_with_pg": 41,
+        "mean_pg": 0.2038,
+        "median_pg": 0.18,
+        "n_with_p10_p90": 32,
+        "median_p10_p90": 16.95,
+        "mean_p10_p90": 34.71,
+        "mean_p_reservoir": 0.6311,
+        "n_p_reservoir": 35,
+        "mean_p_trap": 0.83,
+        "n_p_trap": 35,
+        "mean_p_charge": 0.6969,
+        "n_p_charge": 35,
+        "mean_p_retention": 0.5946,
+        "n_p_retention": 35,
+        "basin_adjusted_pg_pp": 0.92
+      },
+      "Wellesley": {
+        "n_with_pg": 38,
+        "mean_pg": 0.2017,
+        "median_pg": 0.1527,
+        "n_with_p10_p90": 29,
+        "median_p10_p90": 3.61,
+        "mean_p10_p90": 15.87,
+        "mean_p_reservoir": 0.781,
+        "n_p_reservoir": 21,
+        "mean_p_trap": 0.8019,
+        "n_p_trap": 21,
+        "mean_p_charge": 0.6837,
+        "n_p_charge": 19,
+        "mean_p_retention": 0.7417,
+        "n_p_retention": 18,
+        "basin_adjusted_pg_pp": 0.44
+      },
+      "Suncor": {
+        "n_with_pg": 36,
+        "mean_pg": 0.1856,
+        "median_pg": 0.105,
+        "n_with_p10_p90": 31,
+        "median_p10_p90": 10.2,
+        "mean_p10_p90": 13.12,
+        "mean_p_reservoir": 0.6764,
+        "n_p_reservoir": 22,
+        "mean_p_trap": 0.7523,
+        "n_p_trap": 22,
+        "mean_p_charge": 0.7409,
+        "n_p_charge": 22,
+        "mean_p_retention": 0.4864,
+        "n_p_retention": 22,
+        "basin_adjusted_pg_pp": -1.27
+      },
+      "Edison": {
+        "n_with_pg": 35,
+        "mean_pg": 0.2223,
+        "median_pg": 0.21,
+        "n_with_p10_p90": 18,
+        "median_p10_p90": 10.38,
+        "mean_p10_p90": 30.42,
+        "mean_p_reservoir": 0.6,
+        "n_p_reservoir": 1,
+        "mean_p_trap": 0.65,
+        "n_p_trap": 1,
+        "mean_p_charge": 0.9,
+        "n_p_charge": 1,
+        "mean_p_retention": 0.55,
+        "n_p_retention": 1,
+        "basin_adjusted_pg_pp": 2.73
+      },
+      "ConocoPhillips": {
+        "n_with_pg": 34,
+        "mean_pg": 0.1428,
+        "median_pg": 0.13,
+        "n_with_p10_p90": 21,
+        "median_p10_p90": 8.8,
+        "mean_p10_p90": 37.77,
+        "mean_p_reservoir": 0.6917,
+        "n_p_reservoir": 23,
+        "mean_p_trap": 0.757,
+        "n_p_trap": 23,
+        "mean_p_charge": 0.4639,
+        "n_p_charge": 18,
+        "mean_p_retention": 0.6691,
+        "n_p_retention": 22,
+        "basin_adjusted_pg_pp": -5.32
+      },
+      "Tullow": {
+        "n_with_pg": 27,
+        "mean_pg": 0.1611,
+        "median_pg": 0.15,
+        "n_with_p10_p90": 6,
+        "median_p10_p90": 9.19,
+        "mean_p10_p90": 10.48,
+        "mean_p_reservoir": 0.8,
+        "n_p_reservoir": 5,
+        "mean_p_trap": 0.48,
+        "n_p_trap": 5,
+        "mean_p_charge": 0.41,
+        "n_p_charge": 5,
+        "mean_p_retention": 0.88,
+        "n_p_retention": 5,
+        "basin_adjusted_pg_pp": -3.55
+      },
+      "OKEA": {
+        "n_with_pg": 27,
+        "mean_pg": 0.2276,
+        "median_pg": 0.17,
+        "n_with_p10_p90": 24,
+        "median_p10_p90": 6.16,
+        "mean_p10_p90": 15.51,
+        "mean_p_reservoir": 0.8055,
+        "n_p_reservoir": 20,
+        "mean_p_trap": 0.8155,
+        "n_p_trap": 20,
+        "mean_p_charge": 0.6025,
+        "n_p_charge": 20,
+        "mean_p_retention": 0.7125,
+        "n_p_retention": 20,
+        "basin_adjusted_pg_pp": 3.88
+      },
+      "Harbour Energy": {
+        "n_with_pg": 26,
+        "mean_pg": 0.2254,
+        "median_pg": 0.185,
+        "n_with_p10_p90": 25,
+        "median_p10_p90": 10.45,
+        "mean_p10_p90": 13.67,
+        "mean_p_reservoir": 0.5464,
+        "n_p_reservoir": 22,
+        "mean_p_trap": 0.7477,
+        "n_p_trap": 22,
+        "mean_p_charge": 0.77,
+        "n_p_charge": 22,
+        "mean_p_retention": 0.6864,
+        "n_p_retention": 22,
+        "basin_adjusted_pg_pp": 3.1
+      },
+      "Premier Oil": {
+        "n_with_pg": 22,
+        "mean_pg": 0.2368,
+        "median_pg": 0.18,
+        "n_with_p10_p90": 20,
+        "median_p10_p90": 17.25,
+        "mean_p10_p90": 38.54,
+        "mean_p_reservoir": 0.8,
+        "n_p_reservoir": 2,
+        "mean_p_trap": 0.5533,
+        "n_p_trap": 3,
+        "mean_p_charge": 0.7333,
+        "n_p_charge": 3,
+        "mean_p_retention": null,
+        "n_p_retention": 0,
+        "basin_adjusted_pg_pp": 3.69
+      }
+    }
+  },
+  "pg_math_gap": {
+    "n_assessments_with_pg_and_4_factors": 1240,
+    "exact_within_05pp_count": 1061,
+    "exact_within_05pp_pct": 85.56,
+    "disagree_gt_05pp_count": 179,
+    "disagree_gt_05pp_pct": 14.44,
+    "pg_higher_than_product_05pp_count": 73,
+    "pg_higher_than_product_05pp_pct": 5.89,
+    "pg_lower_than_product_05pp_count": 106,
+    "pg_lower_than_product_05pp_pct": 8.55,
+    "material_disagree_gt_15pp_count": 118,
+    "material_disagree_gt_15pp_pct": 9.52,
+    "material_pg_higher_15pp_count": 38,
+    "material_pg_lower_15pp_count": 80,
+    "mean_gap_all_pp": -0.256,
+    "mean_gap_disagree_05pp": -1.69,
+    "mean_positive_gap_pp": 6.24,
+    "mean_negative_gap_pp": -7.15,
+    "lower_explained_by_p_play_count": 3,
+    "lower_with_dependencies_count": 0,
+    "higher_with_pg_before_dhi_count": 10,
+    "by_operator": {
+      "Equinor": {
+        "n": 391,
+        "disagree_pct": 12.5,
+        "higher_count": 23,
+        "lower_count": 26,
+        "mean_gap_pp": -0.3
+      },
+      "Aker BP": {
+        "n": 165,
+        "disagree_pct": 9.1,
+        "higher_count": 7,
+        "lower_count": 8,
+        "mean_gap_pp": 0.25
+      },
+      "DNO": {
+        "n": 71,
+        "disagree_pct": 5.6,
+        "higher_count": 2,
+        "lower_count": 2,
+        "mean_gap_pp": 0.01
+      },
+      "Vår Energi": {
+        "n": 53,
+        "disagree_pct": 26.4,
+        "higher_count": 4,
+        "lower_count": 10,
+        "mean_gap_pp": -1.16
+      },
+      "Spirit / Centrica": {
+        "n": 44,
+        "disagree_pct": 25.0,
+        "higher_count": 2,
+        "lower_count": 9,
+        "mean_gap_pp": -1.57
+      },
+      "Lundin": {
+        "n": 44,
+        "disagree_pct": 6.8,
+        "higher_count": 1,
+        "lower_count": 2,
+        "mean_gap_pp": -0.47
+      },
+      "Shell": {
+        "n": 43,
+        "disagree_pct": 27.9,
+        "higher_count": 5,
+        "lower_count": 7,
+        "mean_gap_pp": 0.29
+      },
+      "OKEA": {
+        "n": 42,
+        "disagree_pct": 11.9,
+        "higher_count": 1,
+        "lower_count": 4,
+        "mean_gap_pp": -0.28
+      },
+      "OMV": {
+        "n": 39,
+        "disagree_pct": 35.9,
+        "higher_count": 1,
+        "lower_count": 13,
+        "mean_gap_pp": -3.28
+      },
+      "Harbour Energy": {
+        "n": 30,
+        "disagree_pct": 3.3,
+        "higher_count": 1,
+        "lower_count": 0,
+        "mean_gap_pp": -0.05
+      },
+      "Wintershall Dea": {
+        "n": 27,
+        "disagree_pct": 14.8,
+        "higher_count": 1,
+        "lower_count": 3,
+        "mean_gap_pp": 0.96
+      },
+      "Neptune / ENGIE": {
+        "n": 27,
+        "disagree_pct": 7.4,
+        "higher_count": 1,
+        "lower_count": 1,
+        "mean_gap_pp": -0.35
+      },
+      "Wellesley": {
+        "n": 27,
+        "disagree_pct": 40.7,
+        "higher_count": 4,
+        "lower_count": 7,
+        "mean_gap_pp": -4.52
+      },
+      "Suncor": {
+        "n": 22,
+        "disagree_pct": 22.7,
+        "higher_count": 5,
+        "lower_count": 0,
+        "mean_gap_pp": 4.93
+      },
+      "ConocoPhillips": {
+        "n": 20,
+        "disagree_pct": 15.0,
+        "higher_count": 1,
+        "lower_count": 2,
+        "mean_gap_pp": -0.52
+      },
+      "PGNiG / ORLEN": {
+        "n": 20,
+        "disagree_pct": 35.0,
+        "higher_count": 3,
+        "lower_count": 4,
+        "mean_gap_pp": 1.44
+      }
+    },
+    "top_positive_examples": [
+      {
+        "licence_id": "PL472",
+        "prospect_name": "Imsa",
+        "operator": "Wintershall Dea",
+        "pg": 0.87,
+        "product": 0.448,
+        "gap_pp": 42.2,
+        "pg_before_dhi": null,
+        "pg_definition": "Probability of discovery, technical (oil+gas case, consolidated)"
+      },
+      {
+        "licence_id": "PL814",
+        "prospect_name": "Freke Discovery and Downdip",
+        "operator": "Aker BP",
+        "pg": 0.72,
+        "product": 0.32,
+        "gap_pp": 40.0,
+        "pg_before_dhi": null,
+        "pg_definition": "Pg in Table 3.1 (report p.15, latest post-15/6-15 risk). Sodir form Pdiscovery ="
+      },
+      {
+        "licence_id": "PL887",
+        "prospect_name": "Novus East",
+        "operator": "PGNiG / ORLEN",
+        "pg": 0.57,
+        "product": 0.275,
+        "gap_pp": 29.5,
+        "pg_before_dhi": 0.27,
+        "pg_definition": "COS % (Table 4.1) = CoS after SAAM DHI uplift (geological CoS 27 % + 30 % DHI up"
+      },
+      {
+        "licence_id": "PL1035",
+        "prospect_name": "Aurelius North",
+        "operator": "Suncor",
+        "pg": 0.6,
+        "product": 0.342,
+        "gap_pp": 25.8,
+        "pg_before_dhi": null,
+        "pg_definition": "Sodir form \"Total (oil + gas + oil & gas case)\"; for the Aurelius segments the P"
+      },
+      {
+        "licence_id": "PL1035",
+        "prospect_name": "Aurelius Main",
+        "operator": "Suncor",
+        "pg": 0.6,
+        "product": 0.342,
+        "gap_pp": 25.8,
+        "pg_before_dhi": null,
+        "pg_definition": "Sodir form \"Total (oil + gas + oil & gas case)\"; for the Aurelius segments the P"
+      },
+      {
+        "licence_id": "PL1035",
+        "prospect_name": "Aurelius South",
+        "operator": "Suncor",
+        "pg": 0.6,
+        "product": 0.342,
+        "gap_pp": 25.8,
+        "pg_before_dhi": null,
+        "pg_definition": "Sodir form \"Total (oil + gas + oil & gas case)\"; for the Aurelius segments the P"
+      },
+      {
+        "licence_id": "PL1035",
+        "prospect_name": "Aurelius East",
+        "operator": "Suncor",
+        "pg": 0.6,
+        "product": 0.342,
+        "gap_pp": 25.8,
+        "pg_before_dhi": null,
+        "pg_definition": "Sodir form \"Total (oil + gas + oil & gas case)\"; for the Aurelius segments the P"
+      },
+      {
+        "licence_id": "PL997",
+        "prospect_name": "Jazz",
+        "operator": "Shell",
+        "pg": 0.36,
+        "product": 0.133,
+        "gap_pp": 22.7,
+        "pg_before_dhi": null,
+        "pg_definition": "Probability Total (oil + gas + oil & gas case) in the Table 5 prospect data form"
+      }
+    ],
+    "top_negative_examples": [
+      {
+        "licence_id": "PL884",
+        "prospect_name": "Counterparts",
+        "operator": "Wellesley",
+        "pg": 0.36,
+        "product": 1.0,
+        "gap_pp": -64.0,
+        "p_play": null,
+        "pg_definition": "Total (oil + gas + oil & gas case) probability, Sodir Table 4 form"
+      },
+      {
+        "licence_id": "PL884",
+        "prospect_name": "Feedback Johansen Fm",
+        "operator": "Wellesley",
+        "pg": 0.5,
+        "product": 1.0,
+        "gap_pp": -50.0,
+        "p_play": null,
+        "pg_definition": "Total (oil + gas + oil & gas case) probability, Sodir Table 4 form"
+      },
+      {
+        "licence_id": "PL1040",
+        "prospect_name": "Ramstadslottet",
+        "operator": "Equinor",
+        "pg": 0.14,
+        "product": 0.49,
+        "gap_pp": -35.0,
+        "p_play": null,
+        "pg_definition": "Table 4.1 Pg 0.14 (after DHI downgrade); Sodir form Pdiscovery cell 0.29 and P1 "
+      },
+      {
+        "licence_id": "PL606",
+        "prospect_name": "Thebe",
+        "operator": "OMV",
+        "pg": 0.2,
+        "product": 0.49,
+        "gap_pp": -29.0,
+        "p_play": null,
+        "pg_definition": "Probability of discovery, Technical (oil+gas case): \"0.49*DHI Scenario Weight 0."
+      },
+      {
+        "licence_id": "PL695",
+        "prospect_name": "Friskis Fruholmen",
+        "operator": "Equinor",
+        "pg": 0.008,
+        "product": 0.252,
+        "gap_pp": -24.4,
+        "p_play": null,
+        "pg_definition": "Pdiscovery = P1xP2xP3xP4 (Sodir form)"
+      },
+      {
+        "licence_id": "PL606",
+        "prospect_name": "Metis",
+        "operator": "OMV",
+        "pg": 0.29,
+        "product": 0.49,
+        "gap_pp": -20.0,
+        "p_play": null,
+        "pg_definition": "Probability of discovery, Technical (oil+gas case): \"0.49*DHI Scenario Weight 0."
+      },
+      {
+        "licence_id": "PL1027",
+        "prospect_name": "Anarjok North",
+        "operator": "Lundin",
+        "pg": 0.1,
+        "product": 0.297,
+        "gap_pp": -19.7,
+        "p_play": null,
+        "pg_definition": "CoS (oil) (%) in Table 4.1 (image p.7)"
+      },
+      {
+        "licence_id": "PL1096",
+        "prospect_name": "Snota",
+        "operator": "Vår Energi",
+        "pg": 0.08,
+        "product": 0.272,
+        "gap_pp": -19.2,
+        "p_play": 0.4,
+        "pg_definition": "Pdiscovery = P1xP2xP3xP4 (Sodir form)"
+      }
+    ]
+  }
+}
