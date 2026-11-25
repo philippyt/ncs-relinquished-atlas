@@ -1,99 +1,93 @@
-# Empirical Audit of 756 Norwegian Continental Shelf Relinquishment Reports
+# Screened Relinquished Prospect Inventory and Conditional Audit of 756 NCS Licences
 
-**Bottom line.** Cross-referencing 738 deduplicated Norwegian Continental Shelf licence relinquishment reports (5,325 prospects) against 2,149 completed SODIR FactPages exploration wells reveals four structural patterns in offshore exploration decisions. In-licence drilling is systematically overconfident (18.1% realized discovery rate against 27.0% mean pre-drill Pg, p = 0.013), yet relinquished prospects later redrilled by fresh operators hit 50.0% discoveries and four producing or approved fields. Across 214 dry holes, reservoir failure causes 47.6% of dry holes while trap failure causes 5.9%, reversing pre-drill fears. Between licence award and relinquishment, 79.2% of re-evaluated prospects shrink with a median risked-volume cut of 61.4%, and in the Barents Sea positive direct hydrocarbon indicators triple technical success to 68.4% while yielding 84.6% gas-only hits.
-
----
-
-## Data Cleaning and Scope
-
-**Bottom line.** All analyses run on 738 unique licences and 5,325 prospects after removing 18 duplicate multi-licence reports and correcting three 1,000x unit-scaling errors in the source Zenodo release (`10.5281/zenodo.24528585`).
-
-- **Multi-licence deduplication.** 18 joint relinquishment PDFs appear twice under paired licence NPDIDs (such as PL1003 and PL1003B, PL1043 and PL1043B, PL785S and PL785SB). Retaining the richer extraction per `licence_id` prevents double-counting roughly 150 prospects.
-- **Unit-scale corrections.** Three upstream unit errors inflated canonical volumes by 1,000x and were corrected before aggregation (`PL531_JURASSIC` bcf converted with the tcf factor 28.3168, `PL1019` GSm3 OE header multiplied by 1,000 against explicit MSm3 OE text, and `PL883 Taren East` condensate mistyped as 1e9 Sm3).
-- **Spatial join.** Every prospect and lead GeoJSON polygon (3,476 unique polygons) was tested via ray-casting point-in-polygon against completed SODIR exploration well coordinates (`wlbEwDecDeg`, `wlbNsDecDeg`) from `wellbore_exploration_all.parquet`.
+**Bottom line.** Cleaning 756 Norwegian Continental Shelf relinquishment reports (`10.5281/zenodo.24528585`, 738 unique licences and 5,325 prospects after removing 18 duplicate multi-licence reports and three 1,000x unit-scaling errors) and spatially joining them to 536 currently active SODIR production licences identifies **287 georeferenced undrilled prospects (`Pg >= 0.20`) sitting in currently open acreage, holding 426.6 MSm3 o.e. (2.68 Bboe) risked**. Testing post-relinquishment redrills per unique wildcat (`n = 83`) against the exact year-matched shelf-wide wildcat baseline (50.1%) shows **no outperformance** (41.0% overall, 48.1% vs 48.0% on vertical, tight, stratigraphic-matched wells). On standalone SODIR discoveries with pre-drill volume ranges (`n = 10`), 80.0% fall inside stated P90 to P10 bounds. All in-licence calibration and shrinkage metrics below are strictly **conditional on relinquishment** and reflect selection of disappointing licences rather than shelf-wide operator bias.
 
 ---
 
-## 1. Two-Regime Calibration and Post-Relinquishment Redrills
+## 1. Data Cleaning and Live Open-Acreage Inventory
 
-**Bottom line.** Operators over-predict success by 8.9 percentage points when drilling inside active licences, yet strictly undrilled prospects handed back at relinquishment achieve a 50.0% discovery rate when later penetrated by wildcats, with 100% of field discoveries made by a different returning operator.
+**Bottom line.** Out of 469 georeferenced undrilled relinquished prospects with `Pg >= 0.20`, **61.2% (287 prospects, 2.68 Bboe risked)** remain in currently unlicensed open acreage while **38.8% (182 prospects, 1.31 Bboe risked)** have already been re-awarded into active SODIR licences.
 
-![Spatial point-in-polygon join and two-regime calibration curve](figures/fig1_spatial_join_and_calibration.svg)
+- **Deduplication and unit fixes.** 18 joint relinquishment PDFs appear twice under paired licence NPDIDs (such as PL1003 and PL1003B, PL1043 and PL1043B, PL785S and PL785SB) and were deduplicated to 738 unique licences. Three 1,000x unit-scaling bugs (`PL531_JURASSIC` bcf converted with tcf factor 28.3168, `PL1019` GSm3 OE header multiplied by 1,000 against explicit MSm3 OE text, and `PL883 Taren East` condensate mistyped as 1e9 Sm3) were corrected prior to aggregation. Quieter extraction errors (such as swapped P10 and P90 labels or gas Sm3 vs oil-equivalent ambiguity) remain possible and require checking the source PDF page before relying on any individual prospect.
+- **Active acreage join.** Prospect centroids were tested via point-in-polygon against all 536 currently active production licence polygons from SODIR FactMaps Layer 616 (`Production licence, all - current with geometry`).
+- **Context.** Volume and `Pg` figures are the relinquishing operator's post-shrinkage estimates and are already counted inside SODIR's shelf-wide undiscovered resource inventory. The practical value is a georeferenced, queryable shortlist replacing manual reading of 738 PDFs.
 
-**Method.** Panel A plots all relinquished prospect polygon centroids in gray against post-relinquishment SODIR wildcat penetrations (`wlbCompletionYear > report_year`), separating dry holes (red), discoveries (green), and named fields (gold stars). Panel B bins strict in-licence exploration wells (`n = 138`, excluding appraisal wells with `Pg = 1.0`) by stated pre-drill `Pg` with 95% Wilson confidence intervals and overlays the out-of-sample redrilled relinquishments.
-
-| Cohort | Prospects (n) | Mean Pre-Drill Pg | Realized Discovery Rate | Gap (pp) | Statistical Test |
-| --- | --- | --- | --- | --- | --- |
-| Strict in-licence exploration | 138 | 27.0% | 18.1% (25/138) | -8.9 | z = -2.47, p = 0.0134 |
-| Commercial-only in-licence | 138 | 27.0% | 8.0% (11/138) | -19.0 | p < 0.0001 |
-| Redrilled post-relinquishment (all) | 130 | 24.0% (n=86) | 50.0% (65/130) | +22.5 (on n=86) | Binomial p = 1.0e-6 |
-| Redrilled tight polygons (<= 50 km2) | 76 | 25.5% | 52.6% (40/76) | +27.2 | p < 1.0e-9 |
-| Different operator returning | 97 | n/a | 53.6% (52/97) | 9/9 fields | 45.3% unique wildcats |
-| Same operator / successor returning | 33 | n/a | 39.4% (13/33) | 0/9 fields | 34.8% unique wildcats |
-
-- **Northward overconfidence gradient.** In-licence calibration bias widens from -6.5 pp in the North Sea (`n = 90`) to -8.9 pp in the Norwegian Sea (`n = 41`) and -16.3 pp in the Barents Sea (`n = 19`, 26.8% predicted vs 10.5% realized).
-- **Four fields relinquished before discovery.** `6506/11-10 Berling` (`BERLING`, OMV 2018, relinquished twice by Det norske in 2011 and Centrica in 2015), `31/7-1 Bestla` (`BESTLA`, Faroe 2016, dropped by Lundin in 2013 as too small), `6507/4-2 S` (`DVALIN`, Wintershall Dea 2021, dropped by Maersk in 2014 at 36% Pg), and `36/7-5 B` (`DUVA`, Var Energi 2024, dropped by Shell in 2015 at 9% Pg).
-- **False-negative vs true-positive drop reasons.** Relinquished prospects later redrilled after being dropped for `commercial` (63.2% hit rate) or `trap_risk` (61.9%) frequently succeeded, while `migration_risk` (28.6%) and `seal_risk` (35.5%) warnings mostly held up.
+| Prospect | Relinquished Licence | Basin | Stated Pg | Risked (MMboe) | Current Status | Active Licence / Operator |
+| --- | --- | --- | --- | --- | --- | --- |
+| Edinburgh | PL660 (2016) | North Sea | 44% | 93.1 | Open acreage | None |
+| Natator Cluster | PL728 (2018) | North Sea | 24% | 75.1 | Re-licensed | PL1136 (ORLEN Upstream Norway) |
+| Kelvin | PL653 (2016) | Norwegian Sea | 35% | 64.7 | Open acreage | None |
+| Balderbra | PL522 (2014) | Norwegian Sea | 37% | 58.6 | Open acreage | None |
+| Sjampis | PL695 (2021) | Barents Sea | 25% | 55.8 | Open acreage | None |
+| Fjellflokk Far East 1 | PL847 (2020) | Norwegian Sea | 60% | 52.5 | Open acreage | None |
+| Svartbakkestjerne Springar | PL847 (2020) | Norwegian Sea | 42% | 49.6 | Open acreage | None |
+| Maiblom | PL944 (2021) | Norwegian Sea | 32% | 45.8 | Open acreage | None |
+| Faering South | PL809 (2018) | North Sea | 29% | 42.3 | Open acreage | None |
+| Barlind | PL503 | North Sea | 20% | n/a | Re-licensed | PL1283 (Equinor Energy) |
 
 ---
 
-## 2. Reservoir Blind Spot and Operator Optimism Fingerprints
+## 2. Unique-Well Redrills vs Year-Matched Shelf Baseline
 
-**Bottom line.** Reservoir absence or poor quality kills 47.6% of dry holes despite ranking third in pre-drill fear (21.5%), whereas trap risk accounts for 29.5% of pre-drill fear but only 5.9% of actual dry holes. Across major operators, basin-adjusted stated `Pg` spans 16.5 percentage points.
+**Bottom line.** Once overlapping prospect polygons are deduplicated to unique wildcats (`n = 83`) and benchmarked against the exact year-matched NCS shelf-wide wildcat discovery rate (50.1%), post-relinquishment redrills show **no discovery-rate edge** (41.0% overall, -9.2 pp vs shelf, z = -1.67). Restricting to vertical-only, tight polygons (`<= 50 km2`), and stratigraphic-age-matched targets (`n = 27`) yields 48.1% against a 48.0% year-matched shelf baseline (+0.1 pp, z = 0.01).
+
+![Spatial point-in-polygon join and calibration comparison](figures/fig1_spatial_join_and_calibration.svg)
+
+**Method.** All undrilled relinquished prospect polygons were joined by point-in-polygon to completed SODIR wildcat wellhead coordinates (`wlbCompletionYear > report_year`). Wells penetrating multiple overlapping polygons (35 of 83 unique wildcats, inflating 83 wells to 141 polygon hits) were collapsed to one record per unique well. Each subset was compared against the exact completion-year-weighted shelf-wide wildcat discovery rate computed from `wellbore_exploration_all.parquet`, with additional filters for vertical wells (excluding `S`, `A`, `B`, and `T` sidetrack/deviated suffixes) and stratigraphic period overlap (`reservoir.chrono.period` matching `wlbAgeWithHc1..3` or `wlbAgeAtTd`).
+
+| Unique-Well Redrill Cohort | Unique Wildcats (n) | Discoveries | Observed Rate | Year-Matched Shelf Baseline | Diff vs Shelf (pp) | z-stat |
+| --- | --- | --- | --- | --- | --- | --- |
+| All unique post-relinquishment wildcats | 83 | 34 | 41.0% | 50.1% | -9.2 | -1.67 |
+| Vertical-only wildcats | 39 | 16 | 41.0% | 48.2% | -7.1 | -0.89 |
+| Deviated or sidetrack wildcats | 44 | 18 | 40.9% | 51.9% | -11.0 | -1.46 |
+| Tight polygons (`<= 50 km2`) | 69 | 29 | 42.0% | 49.6% | -7.6 | -1.26 |
+| Stratigraphic-age-matched wildcats | 63 | 32 | 50.8% | 51.2% | -0.4 | -0.06 |
+| Vertical + tight + stratigraphic-matched | 27 | 13 | 48.1% | 48.0% | +0.1 | +0.01 |
+
+- **Standalone fields vs near-field satellites.** Among redrilled discoveries linked to FactPages `wlbField`, two represent standalone field discoveries (`6506/11-10 Berling` in 2018, relinquished twice by Det norske in 2011 and Centrica in 2015, and `31/7-1 Bestla` in 2016, dropped by Lundin in 2013). Two others are near-field satellites filed under existing field names in FactPages (`6507/4-2 S Adriana` near `DVALIN` and `36/7-5 B` near `DUVA`, where the `DUVA` field itself was discovered earlier by `36/7-4` in 2016).
+- **Different-operator share.** Different returning operators account for 75% of redrills, so observing all field-linked hits from different operators is consistent with base rates (roughly 7% under random assignment) rather than statistically significant.
+- **Coordinate limitation.** FactPages `wlbEwDecDeg` and `wlbNsDecDeg` record surface wellhead locations rather than reservoir penetration points, which is why the vertical-only and stratigraphic-matched subset (`n = 27`, 48.1% vs 48.0%) is the cleanest test.
+
+---
+
+## 3. P90 to P10 Volume Calibration Against SODIR Reserves
+
+**Bottom line.** Across 10 standalone SODIR discoveries (`discovery_reserves`) matched to tight (`<= 100 km2`) relinquished prospect polygons with pre-drill `[P90, P10]` ranges, **80.0% (8/10) of actual discovered volumes fall inside the stated P90 to P10 interval** (exact theoretical target for an 80% range), with 20.0% above P10, 0.0% below P90, and a median actual-to-pre-drill-mean ratio of 1.11x.
+
+- **Method and scope.** Pre-drill recoverable oil-equivalent `[P90, P10]` distributions were matched to SODIR `discovery_reserves` (`dscRecoverableOe`). Four additional matches to `field_reserves` (`fldRecoverableOE`, including Statfjord Ost, Breidablikk, and Jotun) all sit above single-prospect P10 because field totals aggregate multiple segments and appraisal wells, so they are excluded from the single-prospect coverage rate.
+- **Sample-size limit.** With `n = 10` standalone matches, overall coverage is well calibrated, but the sample is too small to test whether operators with ultra-narrow P10/P90 ratios (Wellesley 3.61x, Aker BP 3.94x vs Spirit/Centrica 17.35x, OMV 16.95x) under-cover realized volumes. Testing that requires SODIR's full pre-drill database across non-relinquished licences.
+
+---
+
+## 4. Conditional Findings Inside Relinquished Licences
+
+**Bottom line.** All metrics in this section are **conditional on licence relinquishment**. Because licences with commercial discoveries or growing prospects mostly remain active and never file relinquishment reports, selection bias pushes in-licence outcomes toward lower discovery rates and shrinking volumes.
 
 ![Pre-drill fear vs dry-hole killer and basin-adjusted operator Pg residuals](figures/fig2_reservoir_blindspot_and_operators.svg)
 
-**Method.** Panel A compares the lowest pre-drill risk factor across 891 four-factor prospects against documented post-drill failure mechanisms across 214 dry holes (271 factor mentions). Panel B computes each operator's mean stated `Pg` minus the basin-weighted average `Pg` across operators with at least 20 risked prospects.
-
-- **Quantitative blind spot.** In matched four-factor dry holes killed by reservoir failure (`n = 6`), reservoir was not the lowest-rated pre-drill risk factor in 5 of 6 wells (83.3%).
-- **Operator calibration spread.** DNO (+9.6 pp) and Wintershall Dea (+6.7 pp) report the highest basin-adjusted `Pg`, while Neptune/ENGIE (-6.8 pp), ConocoPhillips (-5.3 pp), Shell (-4.4 pp), and Lundin (-4.2 pp) report the lowest. Median P10/P90 volume ratios span 4.8x from Wellesley (3.61x) and Aker BP (3.94x) to Spirit/Centrica (17.35x) and OMV (16.95x).
-- **Probability math gap.** Across 1,240 assessments with all four risk elements and a stated `Pg`, 14.4% (179) deviate from `P_res * P_trp * P_chg * P_ret` by more than 0.5 pp, tilting 2.1 to 1 downward at material gaps above 1.5 pp (80 lower vs 38 higher).
-
----
-
-## 3. Post-Award Volume Shrinkage and the Untested Prize
-
-**Bottom line.** Among re-evaluated prospects with paired award and relinquishment assessments, 79.2% shrink in volume (median cut -52.0%) and 71.9% drop in `Pg` (median -6.0 pp), wiping 61.4% off median risked volume. Shrinkage is sharpest in the North Sea (-60.8%) and intensified in the 2020s (-52.1% portfolio cut).
-
 ![Paired award vs relinquishment volume scatter and risked volume drift histogram](figures/fig3_apa_shrinkage_method.svg)
 
-**Method.** Panel A plots award or application mean recoverable volume against final relinquishment mean recoverable volume on log-log axes for re-evaluated pairs (`n = 183`, excluding unchanged carry-overs), compared against the 1 to 1 diagonal and the 0.48x median cut line. Panel B plots the `log2(Final / Award)` distribution of risked volume (`Pg * Mean`, `n = 165`), shading shrinking prospects in red (83.0%) and growing prospects in green (17.0%).
-
-| Metric | Paired Sample (n) | Share Shrinking | Median Ratio | Portfolio Change |
-| --- | --- | --- | --- | --- |
-| Mean volume (re-evaluated) | 183 | 79.2% | 0.480x (-52.0%) | -41.3% (all 248 pairs) |
-| Risked volume `Pg * Mean` | 165 | 83.0% | 0.386x (-61.4%) | -48.3% |
-| North Sea re-evaluated volume | 71 | 83.1% | 0.392x (-60.8%) | -62.7% |
-| 2020s award cohort volume | 71 | 63.4% | n/a | -52.1% (Pg -5.1 pp) |
-| 2010s award cohort volume | 163 | 55.2% | n/a | -37.9% (Pg -2.2 pp) |
-
-- **Non-technical walk-away drivers.** Across all 738 licences, 34.4% (254) cite infrastructure or host capacity constraints (peaking at 45.1% in the Barents Sea), 14.0% cite licence expiry, and 13.6% (100) document partner disagreement, failed farm-outs, or sole-risk splits.
-- **Untested relinquished inventory.** Filtering to deduplicated, post-award assessed, undrilled prospects with `Pg >= 0.20` dropped for commercial or non-technical reasons yields 355 prospects holding 1,496.7 MSm3 o.e. (9.41 Bboe) unrisked and 471.3 MSm3 o.e. (2.97 Bboe) risked, led by the Norwegian Sea (46.0% of risked volume).
+- **Conditional in-licence discovery rate (`n = 138`).** Within relinquished licences, mean stated pre-drill `Pg` is 27.0% against an 18.1% realized hydrocarbon discovery rate (-8.9 pp, p = 0.0134). This measures disappointment inside dropped licences, not unconditional shelf-wide operator calibration.
+- **Conditional award-to-relinquishment volume drift.** Among re-evaluated pairs with both award and relinquishment assessments (`n = 183` mean volume, `n = 165` risked volume), 79.2% shrink in mean volume (median cut -52.0%) and 83.0% lose risked volume (median cut -61.4%). Comparing 2020s against 2010s awards is right-censored because 2020s licences already relinquished are the fastest failures, so decade drift comparisons are omitted.
+- **Conditional dry-hole causes (`n = 214` dry holes).** Reservoir absence or quality accounts for 47.6% of documented dry-hole causes against 21.5% of pre-drill top risk ratings, while trap accounts for 5.9% of dry-hole causes against 29.5% of pre-drill top risk ratings. Two selection mechanisms contribute to this gap, trap-risked prospects are frequently dropped undrilled before ever reaching a well, and water-wet good reservoir is often attributed to charge rather than trap failure.
+- **Operator Pg spread.** Basin-adjusted stated `Pg` spans 16.5 pp across major operators (`n >= 20`, DNO +9.6 pp and Wintershall Dea +6.7 pp vs Neptune/ENGIE -6.8 pp, ConocoPhillips -5.3 pp, Shell -4.4 pp, and Lundin -4.2 pp). Without unconditional outcomes and play/vintage controls, this reflects reporting style and portfolio mix rather than proven optimism.
 
 ---
 
-## 4. Barents DHI Gas-Trap Paradox, Flat Spots, and VLM Map Consistency
+## 5. DHI Patterns and 18-PDF Extraction Reproducibility
 
-**Bottom line.** Positive direct hydrocarbon indicators boost technical discovery rates to 54.2% against 22.6% for negative DHI (p = 5.6e-5), but claimed flat spots underperform the unassessed baseline at 28.0%, and 84.6% of Barents positive-DHI discoveries are gas-only. Across the 18 duplicate multi-licence PDFs extracted twice independently by Claude, true VLM map digitizations achieve 0.861 median polygon IoU and 116.8 m median centroid shift.
+**Bottom line.** Across drilled prospects in the atlas, positive DHI yields a 54.2% technical discovery rate vs 22.6% for negative DHI (p = 5.6e-5), reproducing known NCS DHI behavior (including Barents uplift gas expansion, where positive DHI lifts technical success 2.5x from 26.9% to 68.4% with 84.6% gas-only hits vs 6.7% in the North Sea). Across 18 duplicate joint-licence PDFs independently processed twice by Claude, true VLM map digitizations (`n = 52`, excluding GIS shapefiles) show 0.861 median polygon IoU and 116.8 m median centroid shift.
 
 ![DHI discovery rates with Barents gas-only inset and 18-PDF VLM polygon IoU consistency](figures/fig4_dhi_paradox_and_llm_iou.svg)
 
-**Method.** Panel A compares technical discovery rates across seismic DHI categories (with inset showing the gas-only share of positive-DHI discoveries by basin). Panel B isolates the 18 duplicate joint-licence PDFs that were independently processed twice, separating companion GIS shapefiles (`n = 48`, IoU 1.000) from true independent VLM map digitizations (`n = 52`, `geometry_source.method == digitised_figure`) to measure geometric and tabular reproducibility.
-
-- **Flat spot trap vs amplitude conformance.** Positive `amplitude_conformance` reaches 69.0% (29/42) and positive `bright_spot` reaches 61.5% (16/26), while claimed `flat_spot` hits 28.0% (7/25) overall and 12.5% (1/8) in the North Sea (Fisher p = 0.0018 vs amplitude conformance).
-- **Barents gas-only skew.** Positive DHI triples Barents technical discovery rates from 26.9% (25/93) to 68.4% (13/19, p = 0.001), yet 11 of 13 hits are gas-only (84.6%) compared to 1 of 15 (6.7%) in the North Sea (p = 5.4e-5), with only 1 of 19 finding commercial oil.
-- **Play and depth extremes.** Cretaceous prospects hit 49.1% (78/159, 15.0 MSm3 mean) against Permian at 18.8% (6/32, p = 0.0016). Deep HPHT closures below 4,500 m hit 80.0% (12/15, p = 0.0051), with 83.3% gas or gas-condensate.
-- **LLM/VLM extraction reproducibility (`n = 18` duplicate PDF pairs).** Reservoir period matches 100.0% (129/129), exact `Pg` matches 95.5% (84/88, MAE 0.11 pp), exact volume matches 92.2% (71/77, median diff 0.0%), prospect name Jaccard averages 0.862, and independent VLM polygon traces achieve 0.861 median IoU (92.3% at IoU >= 0.50, median area diff 7.95%).
+- **Flat-spot anomaly (unadjusted for multiple testing).** Claimed `flat_spot` prospects hit 28.0% (7/25) overall and 12.5% (1/8) in the North Sea vs 69.0% (29/42) for positive `amplitude_conformance` (unadjusted Fisher p = 0.0018). Because multiple DHI and play contrasts were tested without family-wise correction, treat this as exploratory.
+- **Reproducibility vs accuracy.** Measuring inter-run agreement on the 18 duplicate PDFs (100.0% reservoir period, 95.5% exact `Pg`, 92.2% exact volume, 0.861 median VLM polygon IoU) quantifies self-consistency only, not ground-truth accuracy, since repeated runs can share systematic extraction errors. Validating accuracy requires hand-digitized ground truth on a random sample.
 
 ---
 
 ## Reproducibility
 
-All scripts and structured outputs live in this repository.
-
 - Shared loader and deduplicator `src/loader.py`
-- Track 1 redrilled spatial join `analyses/track1_redrilled_graveyard.py`
-- Track 2 calibration and dry-hole audit `analyses/track2_risk_calibration.py`
-- Track 3 award-to-relinquishment drift and prize `analyses/track3_volume_drift_and_prize.py`
-- Track 4 DHI paradox, plays, and 18-PDF LLM benchmark `analyses/track4_dhi_plays_and_llm_consistency.py`
-- Matplotlib PNG and SVG figure generator `analyses/generate_figures.py`
+- Reviewer upgrade tests (unique-well shelf baseline, P90 to P10 coverage, live FactMaps Layer 616 open-acreage screen) `analyses/track5_reviewer_upgrades.py`
+- Tracks 1 to 4 scripts `analyses/track1_redrilled_graveyard.py`, `analyses/track2_risk_calibration.py`, `analyses/track3_volume_drift_and_prize.py`, `analyses/track4_dhi_plays_and_llm_consistency.py`
+- Matplotlib PNG and SVG generator `analyses/generate_figures.py`
