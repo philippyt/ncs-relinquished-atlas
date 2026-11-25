@@ -1,58 +1,59 @@
 # Screened Relinquished Prospect Inventory and Conditional Audit of 756 NCS Licences
 
-**Bottom line.** Cleaning 756 Norwegian Continental Shelf relinquishment reports (`10.5281/zenodo.24528585`, 738 unique licences and 5,325 prospects) and joining their prospect polygons against 536 active SODIR licences, the APA gross boundary, and 154 in-service surface host facilities identifies **242 APA-eligible open-acreage prospects (`Pg >= 0.20`, post-award assessed, undrilled, >=50% outside active licences) holding 6.30 Bboe unrisked and 1.95 Bboe risked**. Within that APA-open set, **178 prospects (1.31 Bboe risked) were dropped for commercial or non-technical reasons**, and **91 prospects (0.64 Bboe risked) lie within 30 km of an in-service host facility**. Testing post-relinquishment redrills collapsed to unique parent wells (`n = 81`) against a basin-and-year-matched leave-out shelf baseline (56.4%) with outcome-blind formation-top stratigraphic matching shows **no discovery-rate outperformance** (40.7% overall, 45.5% vs 56.0% on formation-top matched wells). All in-licence calibration and shrinkage metrics are strictly **conditional on relinquishment**.
+**Bottom line.** Cleaning 756 Norwegian Continental Shelf relinquishment reports (`10.5281/zenodo.24528585`, 738 unique licences and 5,325 prospects) and joining their Norwegian-sector-clipped polygons against 536 active SODIR licences, the APA gross boundary, and 154 in-service surface host facilities identifies **242 APA-eligible open-acreage prospects (`Pg >= 0.20`, post-award assessed, undrilled, >=50% of the Norwegian slice outside active licences) holding 6.30 Bboe unrisked and 1.95 Bboe risked**. Within that APA-open inventory, **178 prospects (1.31 Bboe risked) were dropped for commercial or non-technical reasons**, **90 prospects (0.63 Bboe risked) lie within 30 km of a fluid-compatible surface host**, and **five of the top prospects form a 238.6 MMboe risked gas cluster around Aasta Hansteen**. Testing post-relinquishment redrills collapsed to unique parent wells (`n = 81`) against a basin-and-year-matched leave-out wildcat baseline (56.4%) shows **significant underperformance** (40.7% overall, -15.7 pp, z = -2.85; 42.9% vs 56.5% on outcome-blind formation-top matched wells), though part of this gap likely reflects the higher share of near-field infrastructure-led exploration wells in the shelf baseline. All in-licence calibration and shrinkage metrics are strictly **conditional on relinquishment**.
 
 ---
 
 ## 1. APA-Eligible Open-Acreage Inventory and Tieback Shortlist
 
-**Bottom line.** Filtering to georeferenced, post-award assessed, undrilled, non-redrilled prospects with `Pg >= 0.20` (`n = 408`, 3.07 Bboe risked) shows **243 prospects (59.6%, 1.95 Bboe risked) have at least half their polygon outside active SODIR licences**, and **242 of those 243 fall inside the annual APA area** (only 1 sits outside APA in numbered-round acreage).
+**Bottom line.** Filtering to georeferenced, post-award assessed, undrilled, non-redrilled prospects with `Pg >= 0.20` (`n = 408`, 3.07 Bboe risked) and clipping polygons to the Norwegian sector yields **242 APA-eligible open prospects (1.95 Bboe risked)** plus 1 prospect in non-APA numbered-round acreage.
 
-- **Explicit filter hierarchy.** Removing pre-work application-only assessments (such as Wegener and Nobel in PL694), removing prospects already penetrated by post-relinquishment SODIR wildcats (such as Celsius and Herzer), and deduplicating straddling prospect names yields 408 georeferenced prospects. Splitting by relinquishment reason separates **Tier A (commercial or non-technical drop reasons, 178 APA-open prospects, 1.31 Bboe risked)** from **Tier B (technical or geological-risk drop reasons, 64 APA-open prospects, 0.64 Bboe risked)**.
-- **Polygon overlap and depth-limited licences.** Rather than testing centroids alone, each prospect polygon was grid-sampled against all 536 active SODIR production licence polygons (FactMaps Layer 616) and the APA gross boundary (FactMaps Layer 603). None of the re-licensed prospects (`<50%` open) overlapped a stratigraphically depth-limited active licence (`prlStratigraphical == YES`).
-- **Host facility tieback distances.** Haversine distance was computed from each prospect centroid to all 154 in-service surface facilities in SODIR `facility_fixed`. **91 APA-open prospects (0.64 Bboe risked)** sit within 30 km of an active surface host, though actual tieback feasibility still depends on host ullage and fluid compatibility.
-- **Deduplication and unit fixes.** 18 duplicate multi-licence PDF pairs were collapsed to 738 unique licences and three 1,000x unit-scaling bugs (`PL531_JURASSIC`, `PL1019`, `PL883 Taren East`) were corrected. Undrilled status still relies on surface wellhead coordinates rather than deviated bottom-hole locations, so deviated wells spudded outside a polygon could have tested some targets.
+- **Explicit filter hierarchy.** Removing pre-work application-only assessments (such as Wegener and Nobel in PL694), removing prospects already penetrated by post-relinquishment SODIR wildcats (such as Celsius and Herzer), and deduplicating straddling names leaves 408 georeferenced prospects. Splitting the 242 APA-open prospects by drop reason separates **Tier A (commercial or non-technical drop reasons, 178 prospects, 1.31 Bboe risked)** from **Tier B (technical or geological-risk drop reasons, 64 prospects, 0.64 Bboe risked)**.
+- **Norwegian-sector clipping and depth-limited licences.** Sampled polygon points were clipped to the Norwegian sector (APA gross boundary plus active Norwegian licences) before computing the open fraction so foreign acreage across median lines (such as the UK portion of Edinburgh) never counts as open Norwegian ground. None of the re-licensed prospects overlapped a stratigraphically depth-limited active licence (`prlStratigraphical == YES`).
+- **Fluid-aware surface host matching.** Haversine distance was computed to 154 in-service surface facilities in SODIR `facility_fixed`, excluding Barents and oil-only gas-reinjection FPSOs (such as Goliat and Johan Castberg) when matching gas prospects. Only surface facilities are included, subsea templates and pipeline tie-in points are excluded, and real tieback feasibility still depends on host ullage and HPHT specifications. **90 APA-open prospects (0.63 Bboe risked)** sit within 30 km of a fluid-compatible surface host.
+- **Aasta Hansteen Voring gas cluster.** Five of the top APA-open prospects (Kelvin, Fjellflokk Far East 1, Svartbakkestjerne Springar, Maiblom, and Birkeland) form a single Cretaceous gas cluster around Aasta Hansteen totaling **600.1 MMboe unrisked and 238.6 MMboe risked** at 52 to 146 km distance, making area-wide hub aggregation the clearest new-ventures theme in the dataset.
+- **Deduplication and coordinate caveats.** 18 duplicate multi-licence PDF pairs were collapsed to 738 unique licences and three 1,000x unit bugs (`PL531_JURASSIC`, `PL1019`, `PL883 Taren East`) were fixed. Undrilled status relies on surface wellheads rather than bottom-hole coordinates, so deviated wells spudded outside a polygon could have tested some targets.
 
 ### Source-Audited Top APA-Eligible Open-Acreage Prospects
 
-| Prospect | Licence (Year) | Basin | Tier | Pg | Unrisked / Risked (MMboe) | Open % | Nearest Host (km) | Source Audit |
+| Prospect | Licence (Year) | Basin | Tier | Pg | Unrisked / Risked (MMboe) | NO Area / Open % | Nearest Fluid-Compatible Surface Host (km) | Source Audit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Kelvin | PL653 (2016) | Norwegian Sea | Tier A | 35% | 184.9 / 64.7 | 100% | Aasta Hansteen (52.3) | Verified p.10 (29.4 BCM rec gas) |
-| Sjampis | PL695 (2021) | Barents Sea | Tier A | 25% | 223.3 / 55.8 | 100% | Goliat FPSO (124.5) | Verified p.12 (35.5 MSm3 rec oil) |
-| Fjellflokk Far East 1 | PL847 (2020) | Norwegian Sea | Tier A | 60% | 87.4 / 52.5 | 100% | Aasta Hansteen (65.4) | Verified p.26 (13.9 GSm3 rec gas) |
-| Svartbakkestjerne Springar | PL847 (2020) | Norwegian Sea | Tier A | 42% | 118.1 / 49.6 | 100% | Aasta Hansteen (71.0) | Verified p.31 (663 bcf rec gas) |
-| Faering East (Ula) | PL809 (2018) | North Sea | Tier B | 34% | 136.0 / 46.2 | 100% | Tambar (14.3) | Verified p.6 (136 Mboe, outside PL809) |
-| Maiblom | PL944 (2021) | Norwegian Sea | Tier B | 32% | 143.0 / 45.8 | 94% | Aasta Hansteen (145.8) | Verified p.14 (143 mmboe rec) |
-| Faering South | PL809 (2018) | North Sea | Tier A | 29% | 146.0 / 42.3 | 100% | Tambar (11.7) | Verified p.4 (146 Mboe, Sand 2) |
-| Firebird | PL678S (2017) | North Sea | Tier B | 28% | 122.3 / 34.2 | 100% | Ringhorne (56.6) | Verified p.41 (122.3 mmboe Brent) |
-| Fannaraken | PL450 (2014) | North Sea | Tier B | 30% | 90.6 / 27.2 | 100% | Ula QP (14.5) | Verified p.27 (14.4 GSm3 HPHT gas) |
-| Arenaria | PL709 (2017) | Barents Sea | Tier A | 56% | 47.9 / 26.8 | 100% | Johan Castberg (159.5) | Verified p.14 (7.61 GSm3 tight gas) |
-| Birkeland | PL694 (2016) | Norwegian Sea | Tier A | 39% | 66.7 / 26.0 | 100% | Aasta Hansteen (51.9) | Verified p.10 (10.6 BCM rec gas) |
-| Edinburgh (border caveat) | PL660 (2016) | North Sea | Tier A | 44% | 211.5 gross / ~20.5 NO | 100% | Ekofisk B (31.0) | Verified p.24 (only ~22% in Norway) |
-| Jaktfalk (basis caveat) | PL595 (2014) | Barents Sea | Tier A | 28% | 170.5 / 47.7 | 100% | Goliat FPSO (92.5) | Caveat p.8 (basis/risking unstated) |
-| Bjork Intra Heather Lower | PL1051 (2023) | North Sea | Tier B | 21% | 240.5 / 50.5 | 100% | Gjoa (24.5) | Unverified (no quote or page cited) |
+| Kelvin | PL653 (2016) | Norwegian Sea | Tier A | 35% | 184.9 / 64.7 | 100% / 100% | Aasta Hansteen Spar (52.3) | Verified p.10 (29.4 BCM rec gas) |
+| Sjampis | PL695 (2021) | Barents Sea | Tier A | 25% | 223.3 / 55.8 | 100% / 100% | Goliat FPSO (124.5) | Verified p.12 (35.5 MSm3 rec oil) |
+| Fjellflokk Far East 1 | PL847 (2020) | Norwegian Sea | Tier A | 60% | 87.4 / 52.5 | 100% / 100% | Aasta Hansteen Spar (65.4) | Verified p.26 (13.9 GSm3 rec gas) |
+| Bjork Intra Heather Lower | PL1051 (2023) | North Sea | Tier B | 21% | 240.5 / 50.5 | 100% / 100% | Gjoa (24.5) | Verified SODIR form p.15 (38.2 MSm3 rec oil, coal risk) |
+| Svartbakkestjerne Springar | PL847 (2020) | Norwegian Sea | Tier A | 42% | 118.1 / 49.6 | 100% / 100% | Aasta Hansteen Spar (71.0) | Verified p.31 (663 bcf rec gas) |
+| Faering East (Ula) | PL809 (2018) | North Sea | Tier B | 34% | 136.0 / 46.2 | 100% / 100% | Tambar (14.3) | Verified p.6 (136 Mboe = million boe, outside PL809) |
+| Maiblom | PL944 (2021) | Norwegian Sea | Tier B | 32% | 143.0 / 45.8 | 100% / 94% | Aasta Hansteen Spar (145.8) | Verified p.14 (143 mmboe rec) |
+| Faering South | PL809 (2018) | North Sea | Tier A | 29% | 146.0 / 42.3 | 100% / 100% | Tambar (11.7) | Verified p.4 and Table 5 (23.5 MSm3 oe, 5,100 m HPHT) |
+| Firebird | PL678S (2017) | North Sea | Tier B | 28% | 122.3 / 34.2 | 100% / 100% | Ringhorne (56.6) | Verified p.41 (122.3 mmboe Brent) |
+| Fannaraken | PL450 (2014) | North Sea | Tier B | 30% | 90.6 / 27.2 | 100% / 100% | Ula QP (14.5, HPHT gas caveat) | Verified p.27 (14.4 GSm3 HPHT gas) |
+| Arenaria | PL709 (2017) | Barents Sea | Tier A | 56% | 47.9 / 26.8 | 100% / 100% | Melkoya LNG (214.0) | Verified p.14 (7.61 GSm3 tight gas) |
+| Birkeland | PL694 (2016) | Norwegian Sea | Tier A | 39% | 66.7 / 26.0 | 100% / 100% | Aasta Hansteen Spar (51.9) | Verified p.10 (10.6 BCM rec gas) |
+| Edinburgh (median-line) | PL660 (2016) | North Sea | Tier A | 44% | 211.5 gross / ~20.5 NO | 67% / 100% | Ekofisk B (31.0) | Verified p.24 (~22% vol in Norway, JWA failed) |
+| Jaktfalk (basis caveat) | PL595 (2014) | Barents Sea | Tier A | 28% | 170.5 / 47.7 | 100% / 100% | Goliat FPSO (92.5) | Caveat p.8 (basis and risking unstated) |
 
 ---
 
 ## 2. Outcome-Blind Parent-Well Redrills vs Basin-and-Year Baseline
 
-**Bottom line.** Collapsing overlapping prospect polygons and correlated sidetracks to unique parent wells (`wlbWell`, `n = 81`) and benchmarking against a basin-and-year-matched leave-out wildcat baseline (56.4%) shows **no redrill outperformance** (40.7% overall, -15.7 pp, z = -2.85). Using outcome-blind stratigraphic matching from FactPages `wellbore_formation_top` eliminates the discovery-biased jump seen when using hydrocarbon-bearing age fields, yielding 45.5% on matched wells (`n = 11`) vs 44.0% on unmatched wells (`n = 50`).
+**Bottom line.** Collapsing overlapping prospect polygons and correlated sidetracks to unique parent wells (`wlbWell`, `n = 81`) and benchmarking against a basin-and-year-matched leave-out wildcat baseline (56.4%) shows **significant underperformance of 15.7 percentage points** (40.7% vs 56.4%, z = -2.85). Using outcome-blind stratigraphic matching (`wellbore_formation_top` plus TD-age superposition, matching 77 of 79 wells with known target period) confirms a consistent **13 to 15 pp deficit across every clean subset** (42.9% vs 56.5% matched, z = -2.41; 41.2% vs 55.5% on vertical, tight, strat-matched wells, `n = 34`).
 
 ![Spatial point-in-polygon join and calibration comparison](figures/fig1_spatial_join_and_calibration.svg)
 
-**Method.** Undrilled relinquished prospect polygons were matched by point-in-polygon to completed SODIR wildcats (`wlbCompletionYear > report_year`) and collapsed to one observation per parent well (`wlbWell`). To test whether a well penetrated the target stratigraphic period without conditioning on discovery outcome, each wellbore's penetrated units in `wellbore_formation_top.parquet` were mapped to geological periods via `strat_litho_overview` (never using `wlbAgeWithHc*`). Baseline discovery rates were computed from all remaining NCS wildcat parent wells matched by `(wlbMainArea, wlbCompletionYear)` after leaving out the redrill parent wells themselves.
+**Method.** Undrilled relinquished prospect polygons were joined by point-in-polygon to completed SODIR wildcats (`wlbCompletionYear > report_year`) and collapsed to one observation per parent well (`wlbWell`). Outcome-blind stratigraphic penetration was determined by mapping each wellbore's penetrated units in `wellbore_formation_top.parquet` to geological periods via `strat_litho_overview` (with parent-group inheritance) combined with `wlbAgeAtTd` stratigraphic superposition (a well reaching Triassic TD penetrated Paleogene, Cretaceous, Jurassic, and Triassic), never touching `wlbAgeWithHc*`. Baseline discovery rates were computed from all remaining NCS wildcat parent wells matched by `(wlbMainArea, wlbCompletionYear)` after leaving out the redrill parent wells.
 
 | Unique Parent-Well Cohort | Parent Wells (n) | Discoveries | Observed Rate | Basin+Year Leave-Out Baseline | Diff (pp) | z-stat |
 | --- | --- | --- | --- | --- | --- | --- |
 | All unique parent wells | 81 | 33 | 40.7% | 56.4% | -15.7 | -2.85 |
-| Vertical-only parent wells | 39 | 16 | 41.0% | 55.8% | -14.7 | -1.85 |
+| Outcome-blind strat matched | 77 | 33 | 42.9% | 56.5% | -13.6 | -2.41 |
 | Tight polygons (`<= 50 km2`) | 68 | 29 | 42.6% | 55.6% | -12.9 | -2.14 |
-| Outcome-blind formation-top matched | 11 | 5 | 45.5% | 56.0% | -10.5 | -0.70 |
-| Outcome-blind formation-top unmatched | 50 | 22 | 44.0% | 53.3% | -9.3 | -1.32 |
-| Vertical + tight + blind strat matched | 8 | 4 | 50.0% | 54.6% | -4.6 | -0.26 |
+| Vertical-only parent wells | 39 | 16 | 41.0% | 55.8% | -14.7 | -1.85 |
+| Vertical + tight + blind strat matched | 34 | 14 | 41.2% | 55.5% | -14.3 | -1.68 |
 
-- **Standalone fields vs near-field satellites.** `6506/11-10 Berling` (2018, relinquished twice by Det norske in 2011 and Centrica in 2015) and `31/7-1 Bestla` (2016, dropped by Lundin in 2013) represent standalone field discoveries. `6507/4-2 S Adriana` (filed under `DVALIN`) and `36/7-5 B` (filed under `DUVA`) are near-field satellites.
-- **Coordinate limitation.** FactPages coordinates reflect surface wellheads rather than reservoir penetration points, which is why vertical-only subsets are reported separately.
+- **Exploration maturity caveat.** The basin-and-year shelf baseline includes a high share of near-field infrastructure-led exploration (ILX) wildcats, which carry higher success rates than outboard or frontier redrills. Part of the 13 to 16 pp gap may therefore reflect distance-to-discovery maturity rather than relinquishment itself; a sharper control would also match on distance to the nearest existing discovery at spud time.
+- **Standalone fields vs satellites.** `6506/11-10 Berling` (2018, relinquished twice by Det norske in 2011 and Centrica in 2015) and `31/7-1 Bestla` (2016, dropped by Lundin in 2013) represent standalone field discoveries. `6507/4-2 S Adriana` (`DVALIN`) and `36/7-5 B` (`DUVA`) are near-field satellites.
+- **Coordinate limitation.** FactPages coordinates reflect surface wellheads rather than bottom-hole reservoir penetrations, which is why vertical-only subsets are reported separately.
 
 ---
 
@@ -60,7 +61,7 @@
 
 **Bottom line.** Across 10 standalone SODIR discoveries (`discovery_reserves`) matched to tight (`<= 100 km2`) relinquished polygons with pre-drill `[P90, P10]` ranges, 8 of 10 (80.0%, 95% Wilson CI 49% to 94%) fall inside `[P90, P10]`, with 2 above P10, 0 below P90, and a median actual-to-pre-drill-mean ratio of 1.11x.
 
-- **Caveats.** Three factors prevent drawing calibration conclusions from this note. First, `n = 10` leaves a wide 49% to 94% confidence interval that cannot distinguish good calibration from under-coverage. Second, matching only later discoveries selects a favourable upward-skewed subset. Third, the ranges are the relinquishing operator's final post-shrinkage estimates rather than the discovering operator's pre-drill estimates. Four additional matches to `field_reserves` aggregate multi-well field totals and are excluded.
+- **Caveats.** Sample size (`n = 10`, CI 49% to 94%) cannot separate good calibration from under-coverage, matching only later discoveries introduces upward selection bias, and the ranges are the relinquishing operator's post-shrinkage estimates rather than the discovering operator's pre-drill estimates. Four multi-well `field_reserves` matches are excluded.
 
 ---
 
@@ -93,6 +94,6 @@
 ## Reproducibility
 
 - Shared loader and deduplicator `src/loader.py`
-- Outcome-blind parent-well audit, APA polygon-fraction screen, and host-facility distance ranking `analyses/track6_production_audit.py`
+- Outcome-blind parent-well audit, Norwegian-sector-clipped APA screen, and fluid-aware host ranking `analyses/track6_production_audit.py`
 - Earlier exploratory track scripts `analyses/track1_redrilled_graveyard.py` through `analyses/track5_reviewer_upgrades.py`
 - Matplotlib PNG and SVG generator `analyses/generate_figures.py`

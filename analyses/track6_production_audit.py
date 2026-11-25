@@ -134,15 +134,67 @@ def norm_period(text: str | None) -> str | None:
     return None
 
 
+PERIOD_ORDER = {
+    "paleogene": 1,
+    "cretaceous": 2,
+    "jurassic": 3,
+    "triassic": 4,
+    "permian": 5,
+    "carboniferous": 6,
+    "devonian": 7,
+    "pre-devonian": 8,
+    "basement": 8,
+}
+
+GROUP_PERIOD_FALLBACK = {
+    "NORDLAND GP": "paleogene",
+    "HORDALAND GP": "paleogene",
+    "ROGALAND GP": "paleogene",
+    "SOTBAKKEN GP": "paleogene",
+    "SHETLAND GP": "cretaceous",
+    "CROMER KNOLL GP": "cretaceous",
+    "ADVENTDALEN GP": "cretaceous",
+    "NYGRUNNEN GP": "cretaceous",
+    "VIKING GP": "jurassic",
+    "BRENT GP": "jurassic",
+    "DUNLIN GP": "jurassic",
+    "STATFJORD GP": "jurassic",
+    "VESTLAND GP": "jurassic",
+    "TYNE GP": "jurassic",
+    "BOKNFJORD GP": "jurassic",
+    "FANGST GP": "jurassic",
+    "BAT GP": "jurassic",
+    "BÅT GP": "jurassic",
+    "KAPP TOSCANA GP": "triassic",
+    "HEGRE GP": "triassic",
+    "GREY BEDS": "triassic",
+    "RED BEDS": "triassic",
+    "SASSENDALEN GP": "triassic",
+    "ZECHSTEIN GP": "permian",
+    "ROTLIEGENDES GP": "permian",
+    "TEMPELFJORDEN GP": "permian",
+    "GIPSDALEN GP": "permian",
+    "BILLEFJORDEN GP": "carboniferous",
+    "BASEMENT": "basement",
+}
+
+
 def build_unit_to_period() -> dict[str, str]:
     strat = pl.read_parquet(CACHE / "strat_litho_overview.parquet")
-    mapping: dict[str, str] = {}
+    mapping: dict[str, str] = dict(GROUP_PERIOD_FALLBACK)
+    parent_of: dict[str, str] = {}
     for r in strat.iter_rows(named=True):
         nm = str(r.get("lsuName") or "").strip().upper()
+        par = str(r.get("lsuNameParent") or "").strip().upper()
+        if nm and par:
+            parent_of[nm] = par
         desc = str(r.get("lsuDescription") or "")
-        per = norm_period(desc[:600])
-        if nm and per:
+        per = norm_period(desc)
+        if nm and per and nm not in mapping:
             mapping[nm] = per
+    for nm, par in parent_of.items():
+        if nm not in mapping and par in mapping:
+            mapping[nm] = mapping[par]
     return mapping
 
 
@@ -267,7 +319,15 @@ def run_parent_well_redrill_audit(
                     pid = pobj.get("prospect_id")
                     if pid:
                         redrilled_pids.add(pid)
-                    w_pers = well_periods.get(wname, set())
+                    w_pers = set(well_periods.get(wname, set()))
+                    td_per = norm_period(w.get("wlbAgeAtTd"))
+                    if td_per:
+                        w_pers.add(td_per)
+                        td_ord = PERIOD_ORDER.get(td_per)
+                        if td_ord is not None:
+                            for pname, pord in PERIOD_ORDER.items():
+                                if pord <= td_ord:
+                                    w_pers.add(pname)
                     blind_strat_match = bool(p_periods & w_pers) if (p_periods and w_pers) else None
                     is_deviated = bool(re.search(r"\s+[A-Z]\d*$|T\d+$", wname))
                     parent_hits[pw].append(
@@ -377,6 +437,7 @@ def run_upgraded_open_acreage_inventory(
 
     fac_df = pl.read_parquet(CACHE / "facility_fixed.parquet")
     hosts = []
+    gas_reinjection_only = {"GOLIAT", "JOHAN CASTBERG", "EDVARD GRIEG", "IVAR AASEN", "YME", "BALDER", "RINGHORNE", "ALVHEIM", "DRAUGEN"}
     for r in fac_df.iter_rows(named=True):
         if str(r.get("fclPhase") or "").upper() != "IN SERVICE":
             continue
@@ -387,7 +448,10 @@ def run_upgraded_open_acreage_inventory(
             lon = float(r["fclEwDeg"]) + float(r["fclEwMin"]) / 60.0 + float(r["fclEwSec"]) / 3600.0
             if str(r.get("fclEwCode") or "").upper() == "W":
                 lon = -lon
-            hosts.append((lon, lat, str(r.get("fclName") or ""), str(r.get("fclBelongsToName") or "")))
+            fname = str(r.get("fclName") or "")
+            ffld = str(r.get("fclBelongsToName") or "")
+            gas_export = ffld.upper() not in gas_reinjection_only and "GOLIAT" not in fname.upper() and "CASTBERG" not in fname.upper()
+            hosts.append((lon, lat, fname, ffld, gas_export))
         except (TypeError, ValueError):
             continue
 
@@ -437,35 +501,46 @@ def run_upgraded_open_acreage_inventory(
             if not pts:
                 continue
 
-            open_pts = 0
+            open_pts_no = 0
             apa_pts = 0
+            no_pts = 0
             hit_lics = {}
             for px, py in pts:
+                in_apa_pt = any(
+                    minx <= px <= maxx and miny <= py <= maxy and pip_geom(px, py, g)
+                    for (minx, maxx, miny, maxy), g in apa_polys
+                )
                 in_active = False
                 for (minx, maxx, miny, maxy), g, prl, aop, is_strat in active_polys:
                     if minx <= px <= maxx and miny <= py <= maxy and pip_geom(px, py, g):
                         in_active = True
                         hit_lics[prl] = (aop, is_strat)
                         break
-                if not in_active:
-                    open_pts += 1
-                for (minx, maxx, miny, maxy), g in apa_polys:
-                    if minx <= px <= maxx and miny <= py <= maxy and pip_geom(px, py, g):
-                        apa_pts += 1
-                        break
+                if in_apa_pt:
+                    apa_pts += 1
+                if in_apa_pt or in_active:
+                    no_pts += 1
+                    if not in_active:
+                        open_pts_no += 1
 
-            open_frac = open_pts / len(pts)
+            no_share = no_pts / len(pts)
+            open_frac = (open_pts_no / no_pts) if no_pts > 0 else 0.0
             in_apa = (apa_pts / len(pts)) >= 0.5
             cx, cy = geom_centroid(geom) or pts[0]
+            dist_obj = (best_obj or {}).get("distribution") or {}
+            phase_str = str((best_obj or {}).get("phase") or "").lower()
+            is_gas_prospect = "gas" in phase_str or ("gas" in str(dist_obj.get("original_text") or "").lower() and "oil" not in phase_str)
             near_km, near_fac = None, None
             if hosts:
                 best_d = 1e9
-                for hlon, hlat, hname, hfld in hosts:
+                for hlon, hlat, hname, hfld, gas_ok in hosts:
+                    if is_gas_prospect and not gas_ok:
+                        continue
                     d = haversine_km(cx, cy, hlon, hlat)
                     if d < best_d:
                         best_d = d
                         near_fac = f"{hname} ({hfld})" if hfld else hname
-                near_km = round(best_d, 1)
+                near_km = round(best_d, 1) if best_d < 1e8 else None
 
             concl = p.get("conclusion") or {}
             reasons = set(str(x).lower() for x in (concl.get("reasons_not_drilled") or []))
@@ -489,7 +564,9 @@ def run_upgraded_open_acreage_inventory(
                     "risked_mmboe": round(pg * best_v * 6.2898, 1),
                     "unrisked_mmboe": round(best_v * 6.2898, 1),
                     "open_fraction_pct": round(open_frac * 100, 1),
+                    "norwegian_sector_area_pct": round(no_share * 100, 1),
                     "in_apa_area": in_apa,
+                    "is_gas_prospect": is_gas_prospect,
                     "active_overlaps": [{"licence": k, "operator": v[0], "depth_limited": v[1]} for k, v in hit_lics.items()],
                     "nearest_host_km": near_km,
                     "nearest_host": near_fac,
