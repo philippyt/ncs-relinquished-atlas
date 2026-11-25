@@ -6,7 +6,10 @@
       "observed_rate_pct": 40.7,
       "basin_year_leaveout_baseline_pct": 56.4,
       "diff_vs_baseline_pp": -15.7,
-      "z_vs_baseline": -2.85
+      "z_vs_baseline": -2.85,
+      "maturity_basin_5yr_baseline_pct": 49.4,
+      "diff_vs_maturity_pp": -8.6,
+      "z_vs_maturity": -1.56
     },
     "vertical_only_parent_wells": {
       "n_parent_wells": 39,
@@ -14,23 +17,27 @@
       "observed_rate_pct": 41.0,
       "basin_year_leaveout_baseline_pct": 55.8,
       "diff_vs_baseline_pp": -14.7,
-      "z_vs_baseline": -1.85
+      "z_vs_baseline": -1.85,
+      "maturity_basin_5yr_baseline_pct": 47.4,
+      "diff_vs_maturity_pp": -6.4,
+      "z_vs_maturity": -0.8
     },
     "outcome_blind_strat_matched": {
-      "n_parent_wells": 77,
-      "discoveries": 33,
-      "observed_rate_pct": 42.9,
-      "basin_year_leaveout_baseline_pct": 56.5,
-      "diff_vs_baseline_pp": -13.6,
-      "z_vs_baseline": -2.41
+      "n_parent_wells": 74,
+      "discoveries": 31,
+      "observed_rate_pct": 41.9,
+      "basin_year_leaveout_baseline_pct": 56.7,
+      "diff_vs_baseline_pp": -14.8,
+      "z_vs_baseline": -2.58,
+      "maturity_basin_5yr_baseline_pct": 47.9,
+      "diff_vs_maturity_pp": -6.0,
+      "z_vs_maturity": -1.04
     },
-    "outcome_blind_strat_unmatched": {
-      "n_parent_wells": 2,
-      "discoveries": 0,
-      "observed_rate_pct": 0.0,
-      "basin_year_leaveout_baseline_pct": 55.6,
-      "diff_vs_baseline_pp": -55.6,
-      "z_vs_baseline": -1.58
+    "strat_matched_source_breakdown": {
+      "via_formation_tops": 60,
+      "via_td_fallback_only_no_tops": 14,
+      "unmatched": 5,
+      "no_target_period_in_json": 2
     },
     "tight_le50km2_parent_wells": {
       "n_parent_wells": 68,
@@ -38,15 +45,58 @@
       "observed_rate_pct": 42.6,
       "basin_year_leaveout_baseline_pct": 55.6,
       "diff_vs_baseline_pp": -12.9,
-      "z_vs_baseline": -2.14
+      "z_vs_baseline": -2.14,
+      "maturity_basin_5yr_baseline_pct": 48.2,
+      "diff_vs_maturity_pp": -5.5,
+      "z_vs_maturity": -0.91
     },
     "vertical_tight_blind_strat_matched": {
-      "n_parent_wells": 34,
-      "discoveries": 14,
-      "observed_rate_pct": 41.2,
-      "basin_year_leaveout_baseline_pct": 55.5,
-      "diff_vs_baseline_pp": -14.3,
-      "z_vs_baseline": -1.68
+      "n_parent_wells": 32,
+      "discoveries": 13,
+      "observed_rate_pct": 40.6,
+      "basin_year_leaveout_baseline_pct": 55.9,
+      "diff_vs_baseline_pp": -15.2,
+      "z_vs_baseline": -1.73,
+      "maturity_basin_5yr_baseline_pct": 44.9,
+      "diff_vs_maturity_pp": -4.3,
+      "z_vs_maturity": -0.49
+    },
+    "maturity_distance_check": {
+      "redrill_median_dist_to_prior_disc_km": 8.1,
+      "shelf_post2012_median_dist_to_prior_disc_km": 5.9,
+      "redrill_near_field_le15km": {
+        "n_parent_wells": 59,
+        "discoveries": 26,
+        "observed_rate_pct": 44.1,
+        "basin_year_leaveout_baseline_pct": 56.1,
+        "diff_vs_baseline_pp": -12.0,
+        "z_vs_baseline": -1.87,
+        "maturity_basin_5yr_baseline_pct": 60.9,
+        "diff_vs_maturity_pp": -16.9,
+        "z_vs_maturity": -2.65
+      },
+      "redrill_mid_field_15_40km": {
+        "n_parent_wells": 13,
+        "discoveries": 4,
+        "observed_rate_pct": 30.8,
+        "basin_year_leaveout_baseline_pct": 57.6,
+        "diff_vs_baseline_pp": -26.9,
+        "z_vs_baseline": -1.96,
+        "maturity_basin_5yr_baseline_pct": 24.3,
+        "diff_vs_maturity_pp": 6.5,
+        "z_vs_maturity": 0.55
+      },
+      "redrill_frontier_gt40km": {
+        "n_parent_wells": 5,
+        "discoveries": 3,
+        "observed_rate_pct": 60.0,
+        "basin_year_leaveout_baseline_pct": 56.2,
+        "diff_vs_baseline_pp": 3.8,
+        "z_vs_baseline": 0.17,
+        "maturity_basin_5yr_baseline_pct": 18.0,
+        "diff_vs_maturity_pp": 42.0,
+        "z_vs_maturity": 2.44
+      }
     }
   },
   "upgraded_open_acreage_inventory": {

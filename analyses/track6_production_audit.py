@@ -267,16 +267,48 @@ def run_parent_well_redrill_audit(
     )
 
     parent_shelf: dict[str, dict] = {}
-    for row in wc.select(["wlbWell", "wlbWellboreName", "wlbMainArea", "wlbCompletionYear", "is_disc"]).iter_rows(named=True):
+    for row in wc.select(["wlbWell", "wlbWellboreName", "wlbMainArea", "wlbCompletionYear", "is_disc", "wlbEwDecDeg", "wlbNsDecDeg"]).iter_rows(named=True):
         pw = str(row["wlbWell"] or row["wlbWellboreName"]).strip()
         yr = int(row["wlbCompletionYear"])
         area = str(row["wlbMainArea"] or "UNKNOWN").strip().upper()
         disc = bool(row["is_disc"])
+        lon, lat = row["wlbEwDecDeg"], row["wlbNsDecDeg"]
         if pw not in parent_shelf:
-            parent_shelf[pw] = {"year": yr, "area": area, "is_disc": disc}
+            parent_shelf[pw] = {"year": yr, "area": area, "is_disc": disc, "lon": lon, "lat": lat}
         else:
             parent_shelf[pw]["is_disc"] = parent_shelf[pw]["is_disc"] or disc
             parent_shelf[pw]["year"] = min(parent_shelf[pw]["year"], yr)
+
+    prior_discs = [
+        (info["year"], float(info["lon"]), float(info["lat"]))
+        for info in parent_shelf.values()
+        if info["is_disc"] and info["lon"] is not None and info["lat"] is not None
+    ]
+
+    def dist_to_prior_disc(year: int, lon: float | None, lat: float | None) -> float | None:
+        if lon is None or lat is None:
+            return None
+        best = 1e9
+        for dy, dlon, dlat in prior_discs:
+            if dy < year:
+                d = haversine_km(float(lon), float(lat), dlon, dlat)
+                if d < best:
+                    best = d
+        return round(best, 1) if best < 1e8 else None
+
+    def maturity_bin(dkm: float | None) -> str:
+        if dkm is None:
+            return "unknown"
+        if dkm <= 15.0:
+            return "near_field_le15km"
+        if dkm <= 40.0:
+            return "mid_field_15_40km"
+        return "frontier_gt40km"
+
+    for pw, info in parent_shelf.items():
+        dkm = dist_to_prior_disc(info["year"], info["lon"], info["lat"])
+        info["dist_prior_disc_km"] = dkm
+        info["maturity_bin"] = maturity_bin(dkm)
 
     wildcats = wc.drop_nulls(subset=["wlbEwDecDeg", "wlbNsDecDeg"]).to_dicts()
     parent_hits: dict[str, list[dict]] = defaultdict(list)
@@ -319,16 +351,18 @@ def run_parent_well_redrill_audit(
                     pid = pobj.get("prospect_id")
                     if pid:
                         redrilled_pids.add(pid)
-                    w_pers = set(well_periods.get(wname, set()))
-                    td_per = norm_period(w.get("wlbAgeAtTd"))
-                    if td_per:
-                        w_pers.add(td_per)
-                        td_ord = PERIOD_ORDER.get(td_per)
-                        if td_ord is not None:
-                            for pname, pord in PERIOD_ORDER.items():
-                                if pord <= td_ord:
-                                    w_pers.add(pname)
-                    blind_strat_match = bool(p_periods & w_pers) if (p_periods and w_pers) else None
+                    ft_pers = set(well_periods.get(wname, set()))
+                    has_ft = len(ft_pers) > 0
+                    if has_ft:
+                        blind_strat_match = bool(p_periods & ft_pers) if p_periods else None
+                        strat_source = "formation_tops"
+                    else:
+                        td_pers = set()
+                        td_per = norm_period(w.get("wlbAgeAtTd"))
+                        if td_per:
+                            td_pers.add(td_per)
+                        blind_strat_match = bool(p_periods & td_pers) if (p_periods and td_pers) else None
+                        strat_source = "td_fallback_no_tops"
                     is_deviated = bool(re.search(r"\s+[A-Z]\d*$|T\d+$", wname))
                     parent_hits[pw].append(
                         {
@@ -339,18 +373,27 @@ def run_parent_well_redrill_audit(
                             "is_disc": bool(w["is_disc"]),
                             "is_deviated": is_deviated,
                             "blind_strat_match": blind_strat_match,
+                            "strat_source": strat_source,
                             "area_km2": props.get("area_km2_geometry"),
                         }
                     )
 
     redrill_parent_ids = set(parent_hits.keys())
     by_area_yr: dict[tuple[str, int], list[bool]] = defaultdict(list)
+    by_area_mat_5yr: dict[tuple[str, str, int], list[bool]] = defaultdict(list)
+    by_mat_5yr: dict[tuple[str, int], list[bool]] = defaultdict(list)
     by_yr: dict[int, list[bool]] = defaultdict(list)
+    non_redrill_dists = []
     for pw, info in parent_shelf.items():
         if pw in redrill_parent_ids:
             continue
         by_area_yr[(info["area"], info["year"])].append(info["is_disc"])
+        yr5 = (info["year"] // 5) * 5
+        by_area_mat_5yr[(info["area"], info["maturity_bin"], yr5)].append(info["is_disc"])
+        by_mat_5yr[(info["maturity_bin"], yr5)].append(info["is_disc"])
         by_yr[info["year"]].append(info["is_disc"])
+        if info["year"] >= 2012 and info["dist_prior_disc_km"] is not None:
+            non_redrill_dists.append(info["dist_prior_disc_km"])
 
     collapsed = []
     for pw, hits in parent_hits.items():
@@ -358,7 +401,9 @@ def run_parent_well_redrill_audit(
         all_vert = all(not h["is_deviated"] for h in hits)
         any_strat = any(h["blind_strat_match"] is True for h in hits)
         known_strat = any(h["blind_strat_match"] is not None for h in hits)
+        matched_via_ft = any(h["blind_strat_match"] is True and h["strat_source"] == "formation_tops" for h in hits)
         min_area = min((h["area_km2"] for h in hits if isinstance(h["area_km2"], (int, float))), default=None)
+        pinfo = parent_shelf.get(pw, {})
         collapsed.append(
             {
                 "parent_well": pw,
@@ -367,7 +412,10 @@ def run_parent_well_redrill_audit(
                 "is_disc": any_disc,
                 "vertical_only": all_vert,
                 "blind_strat_match": True if any_strat else (False if known_strat else None),
+                "matched_via_ft": matched_via_ft,
                 "min_area_km2": min_area,
+                "dist_prior_disc_km": pinfo.get("dist_prior_disc_km"),
+                "maturity_bin": pinfo.get("maturity_bin", "unknown"),
             }
         )
 
@@ -375,20 +423,30 @@ def run_parent_well_redrill_audit(
         n = len(sub)
         d = sum(1 for x in sub if x["is_disc"])
         exp_by = 0.0
-        used_basin = 0
+        exp_mat = 0.0
         for x in sub:
             pool = by_area_yr.get((x["area"], x["year"]))
             if pool and len(pool) >= 2:
                 exp_by += sum(pool) / len(pool)
-                used_basin += 1
             else:
                 pool2 = by_yr.get(x["year"], [])
                 if pool2:
                     exp_by += sum(pool2) / len(pool2)
+            yr5 = (x["year"] // 5) * 5
+            mpool = by_area_mat_5yr.get((x["area"], x["maturity_bin"], yr5))
+            if mpool and len(mpool) >= 3:
+                exp_mat += sum(mpool) / len(mpool)
+            else:
+                mpool2 = by_mat_5yr.get((x["maturity_bin"], yr5), [])
+                if mpool2:
+                    exp_mat += sum(mpool2) / len(mpool2)
         base_rate = (exp_by / n) if n else 0.0
+        mat_rate = (exp_mat / n) if n else 0.0
         obs_rate = (d / n) if n else 0.0
         se = math.sqrt(base_rate * (1 - base_rate) / n) if (n and 0 < base_rate < 1) else 1.0
         z = (obs_rate - base_rate) / se if se > 0 else 0.0
+        se_m = math.sqrt(mat_rate * (1 - mat_rate) / n) if (n and 0 < mat_rate < 1) else 1.0
+        z_m = (obs_rate - mat_rate) / se_m if se_m > 0 else 0.0
         return {
             "n_parent_wells": n,
             "discoveries": d,
@@ -396,16 +454,33 @@ def run_parent_well_redrill_audit(
             "basin_year_leaveout_baseline_pct": round(base_rate * 100, 1),
             "diff_vs_baseline_pp": round((obs_rate - base_rate) * 100, 1),
             "z_vs_baseline": round(z, 2),
+            "maturity_basin_5yr_baseline_pct": round(mat_rate * 100, 1),
+            "diff_vs_maturity_pp": round((obs_rate - mat_rate) * 100, 1),
+            "z_vs_maturity": round(z_m, 2),
         }
 
+    rd_dists = sorted(x["dist_prior_disc_km"] for x in collapsed if x["dist_prior_disc_km"] is not None)
+    non_redrill_dists.sort()
     return (
         {
             "all_unique_parent_wells": summarize(collapsed),
             "vertical_only_parent_wells": summarize([w for w in collapsed if w["vertical_only"]]),
             "outcome_blind_strat_matched": summarize([w for w in collapsed if w["blind_strat_match"] is True]),
-            "outcome_blind_strat_unmatched": summarize([w for w in collapsed if w["blind_strat_match"] is False]),
+            "strat_matched_source_breakdown": {
+                "via_formation_tops": sum(1 for w in collapsed if w["blind_strat_match"] is True and w["matched_via_ft"]),
+                "via_td_fallback_only_no_tops": sum(1 for w in collapsed if w["blind_strat_match"] is True and not w["matched_via_ft"]),
+                "unmatched": sum(1 for w in collapsed if w["blind_strat_match"] is False),
+                "no_target_period_in_json": sum(1 for w in collapsed if w["blind_strat_match"] is None),
+            },
             "tight_le50km2_parent_wells": summarize([w for w in collapsed if w["min_area_km2"] is not None and w["min_area_km2"] <= 50.0]),
             "vertical_tight_blind_strat_matched": summarize([w for w in collapsed if w["vertical_only"] and w["blind_strat_match"] is True and w["min_area_km2"] is not None and w["min_area_km2"] <= 50.0]),
+            "maturity_distance_check": {
+                "redrill_median_dist_to_prior_disc_km": rd_dists[len(rd_dists) // 2] if rd_dists else None,
+                "shelf_post2012_median_dist_to_prior_disc_km": non_redrill_dists[len(non_redrill_dists) // 2] if non_redrill_dists else None,
+                "redrill_near_field_le15km": summarize([w for w in collapsed if w["maturity_bin"] == "near_field_le15km"]),
+                "redrill_mid_field_15_40km": summarize([w for w in collapsed if w["maturity_bin"] == "mid_field_15_40km"]),
+                "redrill_frontier_gt40km": summarize([w for w in collapsed if w["maturity_bin"] == "frontier_gt40km"]),
+            },
         },
         redrilled_pids,
     )
